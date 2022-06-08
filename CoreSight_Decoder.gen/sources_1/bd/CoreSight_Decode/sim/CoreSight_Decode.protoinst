@@ -1,0 +1,9 @@
+{
+	"version": "1.0",
+	"modules": {
+		"CoreSight_Decode": {
+			"proto_instances": {
+			}
+		}
+	}
+}
