@@ -89,7 +89,7 @@ CoreSight_Decode_zynq_ultra_ps_e_0_0_sc::CoreSight_Decode_zynq_ultra_ps_e_0_0_sc
     model_param_props.addLong("C_NUM_F2P_0_INTR_INPUTS", "1");
     model_param_props.addLong("C_NUM_F2P_1_INTR_INPUTS", "1");
     model_param_props.addLong("C_EMIO_GPIO_WIDTH", "1");
-    model_param_props.addLong("C_NUM_FABRIC_RESETS", "0");
+    model_param_props.addLong("C_NUM_FABRIC_RESETS", "1");
     model_param_props.addString("C_EN_FIFO_ENET0", "0");
     model_param_props.addString("C_EN_FIFO_ENET1", "0");
     model_param_props.addString("C_EN_FIFO_ENET2", "0");
@@ -101,6 +101,10 @@ CoreSight_Decode_zynq_ultra_ps_e_0_0_sc::CoreSight_Decode_zynq_ultra_ps_e_0_0_sc
     model_param_props.addString("COMPONENT_NAME", "CoreSight_Decode_zynq_ultra_ps_e_0_0");
 
   mp_impl = new zynq_ultra_ps_e_tlm("inst", model_param_props);
+
+  // initialize AXI sockets
+  M_AXI_HPM0_FPD_rd_socket = mp_impl->M_AXI_HPM0_FPD_rd_socket;
+  M_AXI_HPM0_FPD_wr_socket = mp_impl->M_AXI_HPM0_FPD_wr_socket;
 }
 
 CoreSight_Decode_zynq_ultra_ps_e_0_0_sc::~CoreSight_Decode_zynq_ultra_ps_e_0_0_sc()

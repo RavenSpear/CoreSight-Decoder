@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GenRun Id="CoreSight_Decode_zynq_ultra_ps_e_0_0_synth_1" LaunchPart="xczu9eg-ffvb1156-2-e" LaunchTime="1653987409">
+<GenRun Id="CoreSight_Decode_zynq_ultra_ps_e_0_0_synth_1" LaunchPart="xczu9eg-ffvb1156-2-e" LaunchTime="1654656562">
+  <File Type="VDS-TIMINGSUMMARY" Name="CoreSight_Decode_zynq_ultra_ps_e_0_0_timing_summary_synth.rpt"/>
   <File Type="RDS-DCP" Name="CoreSight_Decode_zynq_ultra_ps_e_0_0.dcp"/>
   <File Type="RDS-UTIL-PB" Name="CoreSight_Decode_zynq_ultra_ps_e_0_0_utilization_synth.pb"/>
-  <File Type="PA-TCL" Name="CoreSight_Decode_zynq_ultra_ps_e_0_0.tcl"/>
   <File Type="RDS-UTIL" Name="CoreSight_Decode_zynq_ultra_ps_e_0_0_utilization_synth.rpt"/>
-  <File Type="REPORTS-TCL" Name="CoreSight_Decode_zynq_ultra_ps_e_0_0_reports.tcl"/>
+  <File Type="RDS-PROPCONSTRS" Name="CoreSight_Decode_zynq_ultra_ps_e_0_0_drc_synth.rpt"/>
   <File Type="RDS-RDS" Name="CoreSight_Decode_zynq_ultra_ps_e_0_0.vds"/>
+  <File Type="REPORTS-TCL" Name="CoreSight_Decode_zynq_ultra_ps_e_0_0_reports.tcl"/>
+  <File Type="VDS-TIMING-PB" Name="CoreSight_Decode_zynq_ultra_ps_e_0_0_timing_summary_synth.pb"/>
+  <File Type="PA-TCL" Name="CoreSight_Decode_zynq_ultra_ps_e_0_0.tcl"/>
   <FileSet Name="sources" Type="BlockSrcs" RelSrcDir="$PSRCDIR/CoreSight_Decode_zynq_ultra_ps_e_0_0">
     <File Path="$PSRCDIR/sources_1/bd/CoreSight_Decode/ip/CoreSight_Decode_zynq_ultra_ps_e_0_0/CoreSight_Decode_zynq_ultra_ps_e_0_0.xci">
       <FileInfo>
@@ -36,6 +39,14 @@
   </FileSet>
   <FileSet Name="utils" Type="Utils" RelSrcDir="$PSRCDIR/utils_1">
     <Filter Type="Utils"/>
+    <File Path="$PSRCDIR/utils_1/imports/synth_1/CoreSight_Decode_wrapper.dcp">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedInSteps" Val="synth_1"/>
+        <Attr Name="AutoDcp" Val="1"/>
+      </FileInfo>
+    </File>
     <Config>
       <Option Name="TopAutoSet" Val="TRUE"/>
     </Config>

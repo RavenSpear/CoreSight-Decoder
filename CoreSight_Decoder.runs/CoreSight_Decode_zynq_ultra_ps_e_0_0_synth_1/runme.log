@@ -9,6 +9,10 @@
     ** Copyright 1986-2021 Xilinx, Inc. All Rights Reserved.
 
 source CoreSight_Decode_zynq_ultra_ps_e_0_0.tcl -notrace
+create_project: Time (s): cpu = 00:00:05 ; elapsed = 00:00:08 . Memory (MB): peak = 2749.492 ; gain = 2.016 ; free physical = 3202 ; free virtual = 6003
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1700] Loaded user IP repository '/home/marvin/VivadoPrj/ip_repo'.
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository '/home/marvin/Xilinx/Vivado/2021.2/data/ip'.
 Command: synth_design -top CoreSight_Decode_zynq_ultra_ps_e_0_0 -part xczu9eg-ffvb1156-2-e -mode out_of_context
 Starting synth_design
 Attempting to get a license for feature 'Synthesis' and/or device 'xczu9eg'
@@ -16,9 +20,9 @@ INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xczu9eg
 INFO: [Device 21-403] Loading part xczu9eg-ffvb1156-2-e
 INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 4 processes.
 INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
-INFO: [Synth 8-7075] Helper process launched with PID 32059
+INFO: [Synth 8-7075] Helper process launched with PID 27366
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:03 ; elapsed = 00:00:08 . Memory (MB): peak = 3037.168 ; gain = 149.793 ; free physical = 361 ; free virtual = 1492
+Starting RTL Elaboration : Time (s): cpu = 00:00:03 ; elapsed = 00:00:07 . Memory (MB): peak = 3040.262 ; gain = 152.762 ; free physical = 176 ; free virtual = 1638
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-6157] synthesizing module 'CoreSight_Decode_zynq_ultra_ps_e_0_0' [/home/marvin/VivadoPrj/CoreSight_Decoder/CoreSight_Decoder.gen/sources_1/bd/CoreSight_Decode/ip/CoreSight_Decode_zynq_ultra_ps_e_0_0/synth/CoreSight_Decode_zynq_ultra_ps_e_0_0.v:59]
 INFO: [Synth 8-6157] synthesizing module 'zynq_ultra_ps_e_v3_3_6_zynq_ultra_ps_e' [/home/marvin/VivadoPrj/CoreSight_Decoder/CoreSight_Decoder.gen/sources_1/bd/CoreSight_Decode/ip/CoreSight_Decode_zynq_ultra_ps_e_0_0/hdl/zynq_ultra_ps_e_v3_3_6.v:340]
@@ -91,11 +95,11 @@ WARNING: [Synth 8-3848] Net irq_ipi_pl_1 in module/entity zynq_ultra_ps_e_v3_3_6
 WARNING: [Synth 8-3848] Net irq_ipi_pl_2 in module/entity zynq_ultra_ps_e_v3_3_6_zynq_ultra_ps_e does not have driver. [/home/marvin/VivadoPrj/CoreSight_Decoder/CoreSight_Decoder.gen/sources_1/bd/CoreSight_Decode/ip/CoreSight_Decode_zynq_ultra_ps_e_0_0/hdl/zynq_ultra_ps_e_v3_3_6.v:1415]
 WARNING: [Synth 8-3848] Net irq_ipi_pl_3 in module/entity zynq_ultra_ps_e_v3_3_6_zynq_ultra_ps_e does not have driver. [/home/marvin/VivadoPrj/CoreSight_Decoder/CoreSight_Decoder.gen/sources_1/bd/CoreSight_Decode/ip/CoreSight_Decode_zynq_ultra_ps_e_0_0/hdl/zynq_ultra_ps_e_v3_3_6.v:1416]
 INFO: [Synth 8-6155] done synthesizing module 'zynq_ultra_ps_e_v3_3_6_zynq_ultra_ps_e' (3#1) [/home/marvin/VivadoPrj/CoreSight_Decoder/CoreSight_Decoder.gen/sources_1/bd/CoreSight_Decode/ip/CoreSight_Decode_zynq_ultra_ps_e_0_0/hdl/zynq_ultra_ps_e_v3_3_6.v:340]
-WARNING: [Synth 8-7071] port 'emio_enet0_signal_detect' of module 'zynq_ultra_ps_e_v3_3_6_zynq_ultra_ps_e' is unconnected for instance 'inst' [/home/marvin/VivadoPrj/CoreSight_Decoder/CoreSight_Decoder.gen/sources_1/bd/CoreSight_Decode/ip/CoreSight_Decode_zynq_ultra_ps_e_0_0/synth/CoreSight_Decode_zynq_ultra_ps_e_0_0.v:119]
-WARNING: [Synth 8-7071] port 'emio_enet1_signal_detect' of module 'zynq_ultra_ps_e_v3_3_6_zynq_ultra_ps_e' is unconnected for instance 'inst' [/home/marvin/VivadoPrj/CoreSight_Decoder/CoreSight_Decoder.gen/sources_1/bd/CoreSight_Decode/ip/CoreSight_Decode_zynq_ultra_ps_e_0_0/synth/CoreSight_Decode_zynq_ultra_ps_e_0_0.v:119]
-WARNING: [Synth 8-7071] port 'emio_enet2_signal_detect' of module 'zynq_ultra_ps_e_v3_3_6_zynq_ultra_ps_e' is unconnected for instance 'inst' [/home/marvin/VivadoPrj/CoreSight_Decoder/CoreSight_Decoder.gen/sources_1/bd/CoreSight_Decode/ip/CoreSight_Decode_zynq_ultra_ps_e_0_0/synth/CoreSight_Decode_zynq_ultra_ps_e_0_0.v:119]
-WARNING: [Synth 8-7071] port 'emio_enet3_signal_detect' of module 'zynq_ultra_ps_e_v3_3_6_zynq_ultra_ps_e' is unconnected for instance 'inst' [/home/marvin/VivadoPrj/CoreSight_Decoder/CoreSight_Decoder.gen/sources_1/bd/CoreSight_Decode/ip/CoreSight_Decode_zynq_ultra_ps_e_0_0/synth/CoreSight_Decode_zynq_ultra_ps_e_0_0.v:119]
-WARNING: [Synth 8-7023] instance 'inst' of module 'zynq_ultra_ps_e_v3_3_6_zynq_ultra_ps_e' has 1491 connections declared, but only 1487 given [/home/marvin/VivadoPrj/CoreSight_Decoder/CoreSight_Decoder.gen/sources_1/bd/CoreSight_Decode/ip/CoreSight_Decode_zynq_ultra_ps_e_0_0/synth/CoreSight_Decode_zynq_ultra_ps_e_0_0.v:119]
+WARNING: [Synth 8-7071] port 'emio_enet0_signal_detect' of module 'zynq_ultra_ps_e_v3_3_6_zynq_ultra_ps_e' is unconnected for instance 'inst' [/home/marvin/VivadoPrj/CoreSight_Decoder/CoreSight_Decoder.gen/sources_1/bd/CoreSight_Decode/ip/CoreSight_Decode_zynq_ultra_ps_e_0_0/synth/CoreSight_Decode_zynq_ultra_ps_e_0_0.v:250]
+WARNING: [Synth 8-7071] port 'emio_enet1_signal_detect' of module 'zynq_ultra_ps_e_v3_3_6_zynq_ultra_ps_e' is unconnected for instance 'inst' [/home/marvin/VivadoPrj/CoreSight_Decoder/CoreSight_Decoder.gen/sources_1/bd/CoreSight_Decode/ip/CoreSight_Decode_zynq_ultra_ps_e_0_0/synth/CoreSight_Decode_zynq_ultra_ps_e_0_0.v:250]
+WARNING: [Synth 8-7071] port 'emio_enet2_signal_detect' of module 'zynq_ultra_ps_e_v3_3_6_zynq_ultra_ps_e' is unconnected for instance 'inst' [/home/marvin/VivadoPrj/CoreSight_Decoder/CoreSight_Decoder.gen/sources_1/bd/CoreSight_Decode/ip/CoreSight_Decode_zynq_ultra_ps_e_0_0/synth/CoreSight_Decode_zynq_ultra_ps_e_0_0.v:250]
+WARNING: [Synth 8-7071] port 'emio_enet3_signal_detect' of module 'zynq_ultra_ps_e_v3_3_6_zynq_ultra_ps_e' is unconnected for instance 'inst' [/home/marvin/VivadoPrj/CoreSight_Decoder/CoreSight_Decoder.gen/sources_1/bd/CoreSight_Decode/ip/CoreSight_Decode_zynq_ultra_ps_e_0_0/synth/CoreSight_Decode_zynq_ultra_ps_e_0_0.v:250]
+WARNING: [Synth 8-7023] instance 'inst' of module 'zynq_ultra_ps_e_v3_3_6_zynq_ultra_ps_e' has 1491 connections declared, but only 1487 given [/home/marvin/VivadoPrj/CoreSight_Decoder/CoreSight_Decoder.gen/sources_1/bd/CoreSight_Decode/ip/CoreSight_Decode_zynq_ultra_ps_e_0_0/synth/CoreSight_Decode_zynq_ultra_ps_e_0_0.v:250]
 INFO: [Synth 8-6155] done synthesizing module 'CoreSight_Decode_zynq_ultra_ps_e_0_0' (4#1) [/home/marvin/VivadoPrj/CoreSight_Decoder/CoreSight_Decoder.gen/sources_1/bd/CoreSight_Decode/ip/CoreSight_Decode_zynq_ultra_ps_e_0_0/synth/CoreSight_Decode_zynq_ultra_ps_e_0_0.v:59]
 WARNING: [Synth 8-7129] Port dp_audio_ref_clk in module zynq_ultra_ps_e_v3_3_6_zynq_ultra_ps_e is either unconnected or has no load
 WARNING: [Synth 8-7129] Port irq_ipi_pl_0 in module zynq_ultra_ps_e_v3_3_6_zynq_ultra_ps_e is either unconnected or has no load
@@ -199,18 +203,18 @@ WARNING: [Synth 8-7129] Port test_adc2_in[8] in module zynq_ultra_ps_e_v3_3_6_zy
 WARNING: [Synth 8-7129] Port test_adc2_in[7] in module zynq_ultra_ps_e_v3_3_6_zynq_ultra_ps_e is either unconnected or has no load
 INFO: [Common 17-14] Message 'Synth 8-7129' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:12 . Memory (MB): peak = 3094.105 ; gain = 206.730 ; free physical = 297 ; free virtual = 1444
+Finished RTL Elaboration : Time (s): cpu = 00:00:05 ; elapsed = 00:00:10 . Memory (MB): peak = 3097.199 ; gain = 209.699 ; free physical = 633 ; free virtual = 1762
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:04 ; elapsed = 00:00:12 . Memory (MB): peak = 3111.918 ; gain = 224.543 ; free physical = 284 ; free virtual = 1441
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:05 ; elapsed = 00:00:12 . Memory (MB): peak = 3115.012 ; gain = 227.512 ; free physical = 606 ; free virtual = 1739
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:04 ; elapsed = 00:00:12 . Memory (MB): peak = 3111.918 ; gain = 224.543 ; free physical = 284 ; free virtual = 1441
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:05 ; elapsed = 00:00:12 . Memory (MB): peak = 3115.012 ; gain = 227.512 ; free physical = 606 ; free virtual = 1739
 ---------------------------------------------------------------------------------
-Netlist sorting complete. Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00.02 . Memory (MB): peak = 3117.855 ; gain = 0.000 ; free physical = 275 ; free virtual = 1438
+Netlist sorting complete. Time (s): cpu = 00:00:00.02 ; elapsed = 00:00:00.01 . Memory (MB): peak = 3121.949 ; gain = 0.000 ; free physical = 577 ; free virtual = 1717
 INFO: [Project 1-570] Preparing netlist for logic optimization
 
 Processing XDC Constraints
@@ -218,65 +222,6 @@ Initializing timing engine
 Parsing XDC File [/home/marvin/VivadoPrj/CoreSight_Decoder/CoreSight_Decoder.gen/sources_1/bd/CoreSight_Decode/ip/CoreSight_Decode_zynq_ultra_ps_e_0_0/CoreSight_Decode_zynq_ultra_ps_e_0_0_ooc.xdc] for cell 'inst'
 Finished Parsing XDC File [/home/marvin/VivadoPrj/CoreSight_Decoder/CoreSight_Decoder.gen/sources_1/bd/CoreSight_Decode/ip/CoreSight_Decode_zynq_ultra_ps_e_0_0/CoreSight_Decode_zynq_ultra_ps_e_0_0_ooc.xdc] for cell 'inst'
 Parsing XDC File [/home/marvin/VivadoPrj/CoreSight_Decoder/CoreSight_Decoder.gen/sources_1/bd/CoreSight_Decode/ip/CoreSight_Decode_zynq_ultra_ps_e_0_0/CoreSight_Decode_zynq_ultra_ps_e_0_0.xdc] for cell 'inst'
-create_clock: Time (s): cpu = 00:00:03 ; elapsed = 00:00:07 . Memory (MB): peak = 3212.605 ; gain = 2.969 ; free physical = 390 ; free virtual = 1456
-Finished Parsing XDC File [/home/marvin/VivadoPrj/CoreSight_Decoder/CoreSight_Decoder.gen/sources_1/bd/CoreSight_Decode/ip/CoreSight_Decode_zynq_ultra_ps_e_0_0/CoreSight_Decode_zynq_ultra_ps_e_0_0.xdc] for cell 'inst'
-Parsing XDC File [/home/marvin/VivadoPrj/CoreSight_Decoder/CoreSight_Decoder.runs/CoreSight_Decode_zynq_ultra_ps_e_0_0_synth_1/dont_touch.xdc]
-Finished Parsing XDC File [/home/marvin/VivadoPrj/CoreSight_Decoder/CoreSight_Decoder.runs/CoreSight_Decode_zynq_ultra_ps_e_0_0_synth_1/dont_touch.xdc]
-Completed Processing XDC Constraints
-
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 3212.605 ; gain = 0.000 ; free physical = 392 ; free virtual = 1462
-INFO: [Project 1-111] Unisim Transformation Summary:
-No Unisim elements were transformed.
-
-Constraint Validation Runtime : Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00.26 . Memory (MB): peak = 3212.605 ; gain = 0.000 ; free physical = 381 ; free virtual = 1454
----------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:12 ; elapsed = 00:00:29 . Memory (MB): peak = 3212.605 ; gain = 325.230 ; free physical = 570 ; free virtual = 1691
----------------------------------------------------------------------------------
----------------------------------------------------------------------------------
-Start Loading Part and Timing Information
----------------------------------------------------------------------------------
-Loading part: xczu9eg-ffvb1156-2-e
-INFO: [Synth 8-6742] Reading net delay rules and data
----------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:12 ; elapsed = 00:00:29 . Memory (MB): peak = 3212.605 ; gain = 325.230 ; free physical = 567 ; free virtual = 1689
----------------------------------------------------------------------------------
----------------------------------------------------------------------------------
-Start Applying 'set_property' XDC Constraints
----------------------------------------------------------------------------------
-Applied set_property DONT_TOUCH = true for inst/PS8_i. (constraint file  /home/marvin/VivadoPrj/CoreSight_Decoder/CoreSight_Decoder.gen/sources_1/bd/CoreSight_Decode/ip/CoreSight_Decode_zynq_ultra_ps_e_0_0/CoreSight_Decode_zynq_ultra_ps_e_0_0.xdc, line 25).
-Applied set_property KEEP_HIERARCHY = SOFT for inst. (constraint file  /home/marvin/VivadoPrj/CoreSight_Decoder/CoreSight_Decoder.runs/CoreSight_Decode_zynq_ultra_ps_e_0_0_synth_1/dont_touch.xdc, line 9).
----------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:12 ; elapsed = 00:00:29 . Memory (MB): peak = 3212.605 ; gain = 325.230 ; free physical = 566 ; free virtual = 1689
----------------------------------------------------------------------------------
----------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:12 ; elapsed = 00:00:30 . Memory (MB): peak = 3212.605 ; gain = 325.230 ; free physical = 562 ; free virtual = 1688
----------------------------------------------------------------------------------
----------------------------------------------------------------------------------
-Start RTL Component Statistics 
----------------------------------------------------------------------------------
-Detailed RTL Component Info : 
-+---Registers : 
-	               32 Bit    Registers := 8     
-	                1 Bit    Registers := 9     
----------------------------------------------------------------------------------
-Finished RTL Component Statistics 
----------------------------------------------------------------------------------
----------------------------------------------------------------------------------
-Start Part Resource Summary
----------------------------------------------------------------------------------
-Part Resources:
-DSPs: 2520 (col length:168)
-BRAMs: 1824 (col length: RAMB18 168 RAMB36 84)
----------------------------------------------------------------------------------
-Finished Part Resource Summary
----------------------------------------------------------------------------------
----------------------------------------------------------------------------------
-Start Cross Boundary and Area Optimization
----------------------------------------------------------------------------------
-WARNING: [Synth 8-7080] Parallel synthesis criteria is not met
----------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:13 ; elapsed = 00:00:31 . Memory (MB): peak = 3212.605 ; gain = 325.230 ; free physical = 534 ; free virtual = 1670
----------------------------------------------------------------------------------
 
 *** Running vivado
     with args -log CoreSight_Decode_zynq_ultra_ps_e_0_0.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source CoreSight_Decode_zynq_ultra_ps_e_0_0.tcl
@@ -288,6 +233,9 @@ Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:13 ; elaps
     ** Copyright 1986-2021 Xilinx, Inc. All Rights Reserved.
 
 source CoreSight_Decode_zynq_ultra_ps_e_0_0.tcl -notrace
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1700] Loaded user IP repository '/home/marvin/VivadoPrj/ip_repo'.
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository '/home/marvin/Xilinx/Vivado/2021.2/data/ip'.
 Command: synth_design -top CoreSight_Decode_zynq_ultra_ps_e_0_0 -part xczu9eg-ffvb1156-2-e -mode out_of_context
 Starting synth_design
 Attempting to get a license for feature 'Synthesis' and/or device 'xczu9eg'
@@ -295,9 +243,9 @@ INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xczu9eg
 INFO: [Device 21-403] Loading part xczu9eg-ffvb1156-2-e
 INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 4 processes.
 INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
-INFO: [Synth 8-7075] Helper process launched with PID 18230
+INFO: [Synth 8-7075] Helper process launched with PID 12901
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:02 ; elapsed = 00:00:03 . Memory (MB): peak = 3039.918 ; gain = 152.762 ; free physical = 4429 ; free virtual = 7399
+Starting RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:14 . Memory (MB): peak = 3036.953 ; gain = 150.793 ; free physical = 3111 ; free virtual = 4773
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-6157] synthesizing module 'CoreSight_Decode_zynq_ultra_ps_e_0_0' [/home/marvin/VivadoPrj/CoreSight_Decoder/CoreSight_Decoder.gen/sources_1/bd/CoreSight_Decode/ip/CoreSight_Decode_zynq_ultra_ps_e_0_0/synth/CoreSight_Decode_zynq_ultra_ps_e_0_0.v:59]
 INFO: [Synth 8-6157] synthesizing module 'zynq_ultra_ps_e_v3_3_6_zynq_ultra_ps_e' [/home/marvin/VivadoPrj/CoreSight_Decoder/CoreSight_Decoder.gen/sources_1/bd/CoreSight_Decode/ip/CoreSight_Decode_zynq_ultra_ps_e_0_0/hdl/zynq_ultra_ps_e_v3_3_6.v:340]
@@ -370,11 +318,11 @@ WARNING: [Synth 8-3848] Net irq_ipi_pl_1 in module/entity zynq_ultra_ps_e_v3_3_6
 WARNING: [Synth 8-3848] Net irq_ipi_pl_2 in module/entity zynq_ultra_ps_e_v3_3_6_zynq_ultra_ps_e does not have driver. [/home/marvin/VivadoPrj/CoreSight_Decoder/CoreSight_Decoder.gen/sources_1/bd/CoreSight_Decode/ip/CoreSight_Decode_zynq_ultra_ps_e_0_0/hdl/zynq_ultra_ps_e_v3_3_6.v:1415]
 WARNING: [Synth 8-3848] Net irq_ipi_pl_3 in module/entity zynq_ultra_ps_e_v3_3_6_zynq_ultra_ps_e does not have driver. [/home/marvin/VivadoPrj/CoreSight_Decoder/CoreSight_Decoder.gen/sources_1/bd/CoreSight_Decode/ip/CoreSight_Decode_zynq_ultra_ps_e_0_0/hdl/zynq_ultra_ps_e_v3_3_6.v:1416]
 INFO: [Synth 8-6155] done synthesizing module 'zynq_ultra_ps_e_v3_3_6_zynq_ultra_ps_e' (3#1) [/home/marvin/VivadoPrj/CoreSight_Decoder/CoreSight_Decoder.gen/sources_1/bd/CoreSight_Decode/ip/CoreSight_Decode_zynq_ultra_ps_e_0_0/hdl/zynq_ultra_ps_e_v3_3_6.v:340]
-WARNING: [Synth 8-7071] port 'emio_enet0_signal_detect' of module 'zynq_ultra_ps_e_v3_3_6_zynq_ultra_ps_e' is unconnected for instance 'inst' [/home/marvin/VivadoPrj/CoreSight_Decoder/CoreSight_Decoder.gen/sources_1/bd/CoreSight_Decode/ip/CoreSight_Decode_zynq_ultra_ps_e_0_0/synth/CoreSight_Decode_zynq_ultra_ps_e_0_0.v:119]
-WARNING: [Synth 8-7071] port 'emio_enet1_signal_detect' of module 'zynq_ultra_ps_e_v3_3_6_zynq_ultra_ps_e' is unconnected for instance 'inst' [/home/marvin/VivadoPrj/CoreSight_Decoder/CoreSight_Decoder.gen/sources_1/bd/CoreSight_Decode/ip/CoreSight_Decode_zynq_ultra_ps_e_0_0/synth/CoreSight_Decode_zynq_ultra_ps_e_0_0.v:119]
-WARNING: [Synth 8-7071] port 'emio_enet2_signal_detect' of module 'zynq_ultra_ps_e_v3_3_6_zynq_ultra_ps_e' is unconnected for instance 'inst' [/home/marvin/VivadoPrj/CoreSight_Decoder/CoreSight_Decoder.gen/sources_1/bd/CoreSight_Decode/ip/CoreSight_Decode_zynq_ultra_ps_e_0_0/synth/CoreSight_Decode_zynq_ultra_ps_e_0_0.v:119]
-WARNING: [Synth 8-7071] port 'emio_enet3_signal_detect' of module 'zynq_ultra_ps_e_v3_3_6_zynq_ultra_ps_e' is unconnected for instance 'inst' [/home/marvin/VivadoPrj/CoreSight_Decoder/CoreSight_Decoder.gen/sources_1/bd/CoreSight_Decode/ip/CoreSight_Decode_zynq_ultra_ps_e_0_0/synth/CoreSight_Decode_zynq_ultra_ps_e_0_0.v:119]
-WARNING: [Synth 8-7023] instance 'inst' of module 'zynq_ultra_ps_e_v3_3_6_zynq_ultra_ps_e' has 1491 connections declared, but only 1487 given [/home/marvin/VivadoPrj/CoreSight_Decoder/CoreSight_Decoder.gen/sources_1/bd/CoreSight_Decode/ip/CoreSight_Decode_zynq_ultra_ps_e_0_0/synth/CoreSight_Decode_zynq_ultra_ps_e_0_0.v:119]
+WARNING: [Synth 8-7071] port 'emio_enet0_signal_detect' of module 'zynq_ultra_ps_e_v3_3_6_zynq_ultra_ps_e' is unconnected for instance 'inst' [/home/marvin/VivadoPrj/CoreSight_Decoder/CoreSight_Decoder.gen/sources_1/bd/CoreSight_Decode/ip/CoreSight_Decode_zynq_ultra_ps_e_0_0/synth/CoreSight_Decode_zynq_ultra_ps_e_0_0.v:250]
+WARNING: [Synth 8-7071] port 'emio_enet1_signal_detect' of module 'zynq_ultra_ps_e_v3_3_6_zynq_ultra_ps_e' is unconnected for instance 'inst' [/home/marvin/VivadoPrj/CoreSight_Decoder/CoreSight_Decoder.gen/sources_1/bd/CoreSight_Decode/ip/CoreSight_Decode_zynq_ultra_ps_e_0_0/synth/CoreSight_Decode_zynq_ultra_ps_e_0_0.v:250]
+WARNING: [Synth 8-7071] port 'emio_enet2_signal_detect' of module 'zynq_ultra_ps_e_v3_3_6_zynq_ultra_ps_e' is unconnected for instance 'inst' [/home/marvin/VivadoPrj/CoreSight_Decoder/CoreSight_Decoder.gen/sources_1/bd/CoreSight_Decode/ip/CoreSight_Decode_zynq_ultra_ps_e_0_0/synth/CoreSight_Decode_zynq_ultra_ps_e_0_0.v:250]
+WARNING: [Synth 8-7071] port 'emio_enet3_signal_detect' of module 'zynq_ultra_ps_e_v3_3_6_zynq_ultra_ps_e' is unconnected for instance 'inst' [/home/marvin/VivadoPrj/CoreSight_Decoder/CoreSight_Decoder.gen/sources_1/bd/CoreSight_Decode/ip/CoreSight_Decode_zynq_ultra_ps_e_0_0/synth/CoreSight_Decode_zynq_ultra_ps_e_0_0.v:250]
+WARNING: [Synth 8-7023] instance 'inst' of module 'zynq_ultra_ps_e_v3_3_6_zynq_ultra_ps_e' has 1491 connections declared, but only 1487 given [/home/marvin/VivadoPrj/CoreSight_Decoder/CoreSight_Decoder.gen/sources_1/bd/CoreSight_Decode/ip/CoreSight_Decode_zynq_ultra_ps_e_0_0/synth/CoreSight_Decode_zynq_ultra_ps_e_0_0.v:250]
 INFO: [Synth 8-6155] done synthesizing module 'CoreSight_Decode_zynq_ultra_ps_e_0_0' (4#1) [/home/marvin/VivadoPrj/CoreSight_Decoder/CoreSight_Decoder.gen/sources_1/bd/CoreSight_Decode/ip/CoreSight_Decode_zynq_ultra_ps_e_0_0/synth/CoreSight_Decode_zynq_ultra_ps_e_0_0.v:59]
 WARNING: [Synth 8-7129] Port dp_audio_ref_clk in module zynq_ultra_ps_e_v3_3_6_zynq_ultra_ps_e is either unconnected or has no load
 WARNING: [Synth 8-7129] Port irq_ipi_pl_0 in module zynq_ultra_ps_e_v3_3_6_zynq_ultra_ps_e is either unconnected or has no load
@@ -478,18 +426,18 @@ WARNING: [Synth 8-7129] Port test_adc2_in[8] in module zynq_ultra_ps_e_v3_3_6_zy
 WARNING: [Synth 8-7129] Port test_adc2_in[7] in module zynq_ultra_ps_e_v3_3_6_zynq_ultra_ps_e is either unconnected or has no load
 INFO: [Common 17-14] Message 'Synth 8-7129' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:00:03 ; elapsed = 00:00:04 . Memory (MB): peak = 3093.887 ; gain = 206.730 ; free physical = 4305 ; free virtual = 7276
+Finished RTL Elaboration : Time (s): cpu = 00:00:05 ; elapsed = 00:00:15 . Memory (MB): peak = 3095.859 ; gain = 209.699 ; free physical = 3291 ; free virtual = 4965
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 3111.699 ; gain = 224.543 ; free physical = 5235 ; free virtual = 8206
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:06 ; elapsed = 00:00:16 . Memory (MB): peak = 3113.672 ; gain = 227.512 ; free physical = 3242 ; free virtual = 4918
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 3111.699 ; gain = 224.543 ; free physical = 5235 ; free virtual = 8206
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:06 ; elapsed = 00:00:16 . Memory (MB): peak = 3113.672 ; gain = 227.512 ; free physical = 3242 ; free virtual = 4918
 ---------------------------------------------------------------------------------
-Netlist sorting complete. Time (s): cpu = 00:00:00.02 ; elapsed = 00:00:00.01 . Memory (MB): peak = 3117.637 ; gain = 0.000 ; free physical = 5230 ; free virtual = 8201
+Netlist sorting complete. Time (s): cpu = 00:00:00.02 ; elapsed = 00:00:00.02 . Memory (MB): peak = 3119.609 ; gain = 0.000 ; free physical = 3239 ; free virtual = 4916
 INFO: [Project 1-570] Preparing netlist for logic optimization
 
 Processing XDC Constraints
@@ -502,13 +450,13 @@ Parsing XDC File [/home/marvin/VivadoPrj/CoreSight_Decoder/CoreSight_Decoder.run
 Finished Parsing XDC File [/home/marvin/VivadoPrj/CoreSight_Decoder/CoreSight_Decoder.runs/CoreSight_Decode_zynq_ultra_ps_e_0_0_synth_1/dont_touch.xdc]
 Completed Processing XDC Constraints
 
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 3208.449 ; gain = 0.000 ; free physical = 5151 ; free virtual = 8141
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 3210.422 ; gain = 0.000 ; free physical = 2967 ; free virtual = 4678
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
-Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.01 . Memory (MB): peak = 3208.449 ; gain = 0.000 ; free physical = 5151 ; free virtual = 8141
+Constraint Validation Runtime : Time (s): cpu = 00:00:00.02 ; elapsed = 00:00:00.01 . Memory (MB): peak = 3210.422 ; gain = 0.000 ; free physical = 2966 ; free virtual = 4677
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:11 ; elapsed = 00:00:12 . Memory (MB): peak = 3208.449 ; gain = 321.293 ; free physical = 5215 ; free virtual = 8201
+Finished Constraint Validation : Time (s): cpu = 00:00:13 ; elapsed = 00:00:25 . Memory (MB): peak = 3210.422 ; gain = 324.262 ; free physical = 3065 ; free virtual = 4803
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
@@ -516,7 +464,7 @@ Start Loading Part and Timing Information
 Loading part: xczu9eg-ffvb1156-2-e
 INFO: [Synth 8-6742] Reading net delay rules and data
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:11 ; elapsed = 00:00:12 . Memory (MB): peak = 3208.449 ; gain = 321.293 ; free physical = 5214 ; free virtual = 8201
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:13 ; elapsed = 00:00:25 . Memory (MB): peak = 3210.422 ; gain = 324.262 ; free physical = 3065 ; free virtual = 4804
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
@@ -524,10 +472,10 @@ Start Applying 'set_property' XDC Constraints
 Applied set_property DONT_TOUCH = true for inst/PS8_i. (constraint file  /home/marvin/VivadoPrj/CoreSight_Decoder/CoreSight_Decoder.gen/sources_1/bd/CoreSight_Decode/ip/CoreSight_Decode_zynq_ultra_ps_e_0_0/CoreSight_Decode_zynq_ultra_ps_e_0_0.xdc, line 25).
 Applied set_property KEEP_HIERARCHY = SOFT for inst. (constraint file  /home/marvin/VivadoPrj/CoreSight_Decoder/CoreSight_Decoder.runs/CoreSight_Decode_zynq_ultra_ps_e_0_0_synth_1/dont_touch.xdc, line 9).
 ---------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:11 ; elapsed = 00:00:12 . Memory (MB): peak = 3208.449 ; gain = 321.293 ; free physical = 5214 ; free virtual = 8200
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:13 ; elapsed = 00:00:25 . Memory (MB): peak = 3210.422 ; gain = 324.262 ; free physical = 3066 ; free virtual = 4807
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:12 ; elapsed = 00:00:13 . Memory (MB): peak = 3208.449 ; gain = 321.293 ; free physical = 5184 ; free virtual = 8171
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:14 ; elapsed = 00:00:25 . Memory (MB): peak = 3210.422 ; gain = 324.262 ; free physical = 3006 ; free virtual = 4750
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start RTL Component Statistics 
@@ -553,25 +501,25 @@ Start Cross Boundary and Area Optimization
 ---------------------------------------------------------------------------------
 WARNING: [Synth 8-7080] Parallel synthesis criteria is not met
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:13 ; elapsed = 00:00:14 . Memory (MB): peak = 3208.449 ; gain = 321.293 ; free physical = 6243 ; free virtual = 9235
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:15 ; elapsed = 00:00:26 . Memory (MB): peak = 3210.422 ; gain = 324.262 ; free physical = 2830 ; free virtual = 4578
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying XDC Timing Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:20 ; elapsed = 00:00:22 . Memory (MB): peak = 4748.074 ; gain = 1860.918 ; free physical = 5093 ; free virtual = 8103
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:23 ; elapsed = 00:00:35 . Memory (MB): peak = 4747.344 ; gain = 1861.184 ; free physical = 186 ; free virtual = 1451
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Timing Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:00:20 ; elapsed = 00:00:22 . Memory (MB): peak = 4773.082 ; gain = 1885.926 ; free physical = 5075 ; free virtual = 8085
+Finished Timing Optimization : Time (s): cpu = 00:00:23 ; elapsed = 00:00:35 . Memory (MB): peak = 4773.352 ; gain = 1887.191 ; free physical = 167 ; free virtual = 1432
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Technology Mapping
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:00:20 ; elapsed = 00:00:23 . Memory (MB): peak = 4789.098 ; gain = 1901.941 ; free physical = 5074 ; free virtual = 8084
+Finished Technology Mapping : Time (s): cpu = 00:00:23 ; elapsed = 00:00:36 . Memory (MB): peak = 4789.367 ; gain = 1903.207 ; free physical = 163 ; free virtual = 1429
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start IO Insertion
@@ -589,37 +537,37 @@ Start Final Netlist Cleanup
 Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:00:23 ; elapsed = 00:00:25 . Memory (MB): peak = 4793.066 ; gain = 1905.910 ; free physical = 5068 ; free virtual = 8078
+Finished IO Insertion : Time (s): cpu = 00:00:26 ; elapsed = 00:00:39 . Memory (MB): peak = 4793.336 ; gain = 1907.176 ; free physical = 214 ; free virtual = 1482
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:00:23 ; elapsed = 00:00:25 . Memory (MB): peak = 4793.066 ; gain = 1905.910 ; free physical = 5068 ; free virtual = 8078
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:26 ; elapsed = 00:00:39 . Memory (MB): peak = 4793.336 ; gain = 1907.176 ; free physical = 214 ; free virtual = 1482
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:23 ; elapsed = 00:00:26 . Memory (MB): peak = 4793.066 ; gain = 1905.910 ; free physical = 5068 ; free virtual = 8078
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:26 ; elapsed = 00:00:39 . Memory (MB): peak = 4793.336 ; gain = 1907.176 ; free physical = 210 ; free virtual = 1478
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:00:23 ; elapsed = 00:00:26 . Memory (MB): peak = 4793.066 ; gain = 1905.910 ; free physical = 5068 ; free virtual = 8078
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:26 ; elapsed = 00:00:39 . Memory (MB): peak = 4793.336 ; gain = 1907.176 ; free physical = 209 ; free virtual = 1477
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:23 ; elapsed = 00:00:26 . Memory (MB): peak = 4793.066 ; gain = 1905.910 ; free physical = 5068 ; free virtual = 8078
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:26 ; elapsed = 00:00:39 . Memory (MB): peak = 4793.336 ; gain = 1907.176 ; free physical = 194 ; free virtual = 1462
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:00:23 ; elapsed = 00:00:26 . Memory (MB): peak = 4793.066 ; gain = 1905.910 ; free physical = 5068 ; free virtual = 8078
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:26 ; elapsed = 00:00:39 . Memory (MB): peak = 4793.336 ; gain = 1907.176 ; free physical = 192 ; free virtual = 1460
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Writing Synthesis Report
@@ -641,26 +589,28 @@ Report Cell Usage:
 |4     |FDRE    |   265|
 +------+--------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:00:23 ; elapsed = 00:00:26 . Memory (MB): peak = 4793.066 ; gain = 1905.910 ; free physical = 5068 ; free virtual = 8078
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:26 ; elapsed = 00:00:39 . Memory (MB): peak = 4793.336 ; gain = 1907.176 ; free physical = 191 ; free virtual = 1460
 ---------------------------------------------------------------------------------
 Synthesis finished with 0 errors, 0 critical warnings and 570 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:00:19 ; elapsed = 00:00:20 . Memory (MB): peak = 4793.066 ; gain = 1809.160 ; free physical = 5106 ; free virtual = 8116
-Synthesis Optimization Complete : Time (s): cpu = 00:00:23 ; elapsed = 00:00:26 . Memory (MB): peak = 4793.074 ; gain = 1905.910 ; free physical = 5106 ; free virtual = 8116
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:21 ; elapsed = 00:00:33 . Memory (MB): peak = 4793.336 ; gain = 1810.426 ; free physical = 238 ; free virtual = 1507
+Synthesis Optimization Complete : Time (s): cpu = 00:00:26 ; elapsed = 00:00:39 . Memory (MB): peak = 4793.344 ; gain = 1907.176 ; free physical = 238 ; free virtual = 1507
 INFO: [Project 1-571] Translating synthesized netlist
-Netlist sorting complete. Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00.02 . Memory (MB): peak = 4793.074 ; gain = 0.000 ; free physical = 5195 ; free virtual = 8205
+Netlist sorting complete. Time (s): cpu = 00:00:00.02 ; elapsed = 00:00:00.02 . Memory (MB): peak = 4793.344 ; gain = 0.000 ; free physical = 165 ; free virtual = 1435
 INFO: [Project 1-570] Preparing netlist for logic optimization
 INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 4839.723 ; gain = 0.000 ; free physical = 5115 ; free virtual = 8125
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 4839.992 ; gain = 0.000 ; free physical = 768 ; free virtual = 1844
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
-Synth Design complete, checksum: 90b94681
+Synth Design complete, checksum: 21d0de2e
 INFO: [Common 17-83] Releasing license: Synthesis
-22 Infos, 170 Warnings, 0 Critical Warnings and 0 Errors encountered.
+25 Infos, 170 Warnings, 0 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:00:32 ; elapsed = 00:00:39 . Memory (MB): peak = 4839.723 ; gain = 2055.574 ; free physical = 6363 ; free virtual = 9373
+synth_design: Time (s): cpu = 00:00:32 ; elapsed = 00:00:54 . Memory (MB): peak = 4839.992 ; gain = 2055.840 ; free physical = 2019 ; free virtual = 3098
+report_design_analysis: Time (s): cpu = 00:00:00.36 ; elapsed = 00:00:07 . Memory (MB): peak = 4872.008 ; gain = 24.012 ; free physical = 1918 ; free virtual = 3085
 INFO: [Common 17-1381] The checkpoint '/home/marvin/VivadoPrj/CoreSight_Decoder/CoreSight_Decoder.runs/CoreSight_Decode_zynq_ultra_ps_e_0_0_synth_1/CoreSight_Decode_zynq_ultra_ps_e_0_0.dcp' has been generated.
-INFO: [Coretcl 2-1648] Added synthesis output to IP cache for IP CoreSight_Decode_zynq_ultra_ps_e_0_0, cache-ID = 21c601f7fd6eb9fa
+write_checkpoint: Time (s): cpu = 00:00:00.70 ; elapsed = 00:00:08 . Memory (MB): peak = 4872.008 ; gain = 32.016 ; free physical = 1920 ; free virtual = 3086
+INFO: [Coretcl 2-1648] Added synthesis output to IP cache for IP CoreSight_Decode_zynq_ultra_ps_e_0_0, cache-ID = 4d5a482e553d1e53
 INFO: [Common 17-1381] The checkpoint '/home/marvin/VivadoPrj/CoreSight_Decoder/CoreSight_Decoder.runs/CoreSight_Decode_zynq_ultra_ps_e_0_0_synth_1/CoreSight_Decode_zynq_ultra_ps_e_0_0.dcp' has been generated.
 INFO: [runtcl-4] Executing : report_utilization -file CoreSight_Decode_zynq_ultra_ps_e_0_0_utilization_synth.rpt -pb CoreSight_Decode_zynq_ultra_ps_e_0_0_utilization_synth.pb
-INFO: [Common 17-206] Exiting Vivado at Tue May 31 16:57:44 2022...
+INFO: [Common 17-206] Exiting Vivado at Wed Jun  8 10:50:43 2022...

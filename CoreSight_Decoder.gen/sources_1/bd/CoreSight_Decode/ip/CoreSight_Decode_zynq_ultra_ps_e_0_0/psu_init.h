@@ -38408,6 +38408,8 @@
 #define CRF_APB_RST_FPD_TOP_OFFSET                                                 0XFD1A0100
 #undef CRL_APB_RST_LPD_TOP_OFFSET 
 #define CRL_APB_RST_LPD_TOP_OFFSET                                                 0XFF5E023C
+#undef FPD_SLCR_AFI_FS_OFFSET 
+#define FPD_SLCR_AFI_FS_OFFSET                                                     0XFD615000
 
 /*
 * AF_FM0 block level reset
@@ -38478,6 +38480,30 @@
 #define CRL_APB_RST_LPD_TOP_AFI_FM6_RESET_DEFVAL               0x00188FDF
 #define CRL_APB_RST_LPD_TOP_AFI_FM6_RESET_SHIFT                19
 #define CRL_APB_RST_LPD_TOP_AFI_FM6_RESET_MASK                 0x00080000U
+
+/*
+* Select the 32/64/128-bit data width selection for the Slave 0 00: 32-bit
+    *  AXI data width (default) 01: 64-bit AXI data width 10: 128-bit AXI data
+    *  width 11: reserved
+*/
+#undef FPD_SLCR_AFI_FS_DW_SS0_SEL_DEFVAL 
+#undef FPD_SLCR_AFI_FS_DW_SS0_SEL_SHIFT 
+#undef FPD_SLCR_AFI_FS_DW_SS0_SEL_MASK 
+#define FPD_SLCR_AFI_FS_DW_SS0_SEL_DEFVAL                      0x00000A00
+#define FPD_SLCR_AFI_FS_DW_SS0_SEL_SHIFT                       8
+#define FPD_SLCR_AFI_FS_DW_SS0_SEL_MASK                        0x00000300U
+#undef GPIO_MASK_DATA_5_MSW_OFFSET 
+#define GPIO_MASK_DATA_5_MSW_OFFSET                                                0XFF0A002C
+#undef GPIO_DIRM_5_OFFSET 
+#define GPIO_DIRM_5_OFFSET                                                         0XFF0A0344
+#undef GPIO_OEN_5_OFFSET 
+#define GPIO_OEN_5_OFFSET                                                          0XFF0A0348
+#undef GPIO_DATA_5_OFFSET 
+#define GPIO_DATA_5_OFFSET                                                         0XFF0A0054
+#undef GPIO_DATA_5_OFFSET 
+#define GPIO_DATA_5_OFFSET                                                         0XFF0A0054
+#undef GPIO_DATA_5_OFFSET 
+#define GPIO_DATA_5_OFFSET                                                         0XFF0A0054
 #undef TPIU_LAR_OFFSET 
 #define TPIU_LAR_OFFSET                                                            0XFE980FB0
 #undef TPIU_CURRENT_PORT_SIZE_OFFSET 
@@ -38486,6 +38512,66 @@
 #define TPIU_EXTCTL_OUT_PORT_OFFSET                                                0XFE980404
 #undef TPIU_LAR_OFFSET 
 #define TPIU_LAR_OFFSET                                                            0XFE980FB0
+
+/*
+* Operation is the same as MASK_DATA_0_LSW[MASK_0_LSW]
+*/
+#undef GPIO_MASK_DATA_5_MSW_MASK_5_MSW_DEFVAL 
+#undef GPIO_MASK_DATA_5_MSW_MASK_5_MSW_SHIFT 
+#undef GPIO_MASK_DATA_5_MSW_MASK_5_MSW_MASK 
+#define GPIO_MASK_DATA_5_MSW_MASK_5_MSW_DEFVAL                 0x00000000
+#define GPIO_MASK_DATA_5_MSW_MASK_5_MSW_SHIFT                  16
+#define GPIO_MASK_DATA_5_MSW_MASK_5_MSW_MASK                   0xFFFF0000U
+
+/*
+* Operation is the same as DIRM_0[DIRECTION_0]
+*/
+#undef GPIO_DIRM_5_DIRECTION_5_DEFVAL 
+#undef GPIO_DIRM_5_DIRECTION_5_SHIFT 
+#undef GPIO_DIRM_5_DIRECTION_5_MASK 
+#define GPIO_DIRM_5_DIRECTION_5_DEFVAL                         
+#define GPIO_DIRM_5_DIRECTION_5_SHIFT                          0
+#define GPIO_DIRM_5_DIRECTION_5_MASK                           0xFFFFFFFFU
+
+/*
+* Operation is the same as OEN_0[OP_ENABLE_0]
+*/
+#undef GPIO_OEN_5_OP_ENABLE_5_DEFVAL 
+#undef GPIO_OEN_5_OP_ENABLE_5_SHIFT 
+#undef GPIO_OEN_5_OP_ENABLE_5_MASK 
+#define GPIO_OEN_5_OP_ENABLE_5_DEFVAL                          
+#define GPIO_OEN_5_OP_ENABLE_5_SHIFT                           0
+#define GPIO_OEN_5_OP_ENABLE_5_MASK                            0xFFFFFFFFU
+
+/*
+* Output Data
+*/
+#undef GPIO_DATA_5_DATA_5_DEFVAL 
+#undef GPIO_DATA_5_DATA_5_SHIFT 
+#undef GPIO_DATA_5_DATA_5_MASK 
+#define GPIO_DATA_5_DATA_5_DEFVAL                              
+#define GPIO_DATA_5_DATA_5_SHIFT                               0
+#define GPIO_DATA_5_DATA_5_MASK                                0xFFFFFFFFU
+
+/*
+* Output Data
+*/
+#undef GPIO_DATA_5_DATA_5_DEFVAL 
+#undef GPIO_DATA_5_DATA_5_SHIFT 
+#undef GPIO_DATA_5_DATA_5_MASK 
+#define GPIO_DATA_5_DATA_5_DEFVAL                              
+#define GPIO_DATA_5_DATA_5_SHIFT                               0
+#define GPIO_DATA_5_DATA_5_MASK                                0xFFFFFFFFU
+
+/*
+* Output Data
+*/
+#undef GPIO_DATA_5_DATA_5_DEFVAL 
+#undef GPIO_DATA_5_DATA_5_SHIFT 
+#undef GPIO_DATA_5_DATA_5_MASK 
+#define GPIO_DATA_5_DATA_5_DEFVAL                              
+#define GPIO_DATA_5_DATA_5_SHIFT                               0
+#define GPIO_DATA_5_DATA_5_MASK                                0xFFFFFFFFU
 
 /*
 * A write of 0xC5ACCE55 enables further write access to this device. A wri

@@ -17581,9 +17581,74 @@ set psu_afi_config {
 		#(OFFSET, MASK, VALUE)      (0XFF5E023C, 0x00080000U ,0x00000000U)  */
     mask_write 0XFF5E023C 0x00080000 0x00000000
 		# : AFIFM INTERFACE WIDTH
+		# Register : afi_fs @ 0XFD615000</p>
+
+		# Select the 32/64/128-bit data width selection for the Slave 0 00: 32-bit
+    #  AXI data width (default) 01: 64-bit AXI data width 10: 128-bit AXI data
+    #  width 11: reserved
+		# PSU_FPD_SLCR_AFI_FS_DW_SS0_SEL                                                  0x2
+
+		# afi fs SLCR control register. This register is static and should not be
+    # modified during operation.
+		#(OFFSET, MASK, VALUE)      (0XFD615000, 0x00000300U ,0x00000200U)  */
+    mask_write 0XFD615000 0x00000300 0x00000200
 }
 
 set psu_ps_pl_reset_config_data {
+		# : PS PL RESET SEQUENCE
+		# : FABRIC RESET USING EMIO
+		# Register : MASK_DATA_5_MSW @ 0XFF0A002C</p>
+
+		# Operation is the same as MASK_DATA_0_LSW[MASK_0_LSW]
+		# PSU_GPIO_MASK_DATA_5_MSW_MASK_5_MSW                                             0x8000
+
+		# Maskable Output Data (GPIO Bank5, EMIO, Upper 16bits)
+		#(OFFSET, MASK, VALUE)      (0XFF0A002C, 0xFFFF0000U ,0x80000000U)  */
+    mask_write 0XFF0A002C 0xFFFF0000 0x80000000
+		# Register : DIRM_5 @ 0XFF0A0344</p>
+
+		# Operation is the same as DIRM_0[DIRECTION_0]
+		# PSU_GPIO_DIRM_5_DIRECTION_5                                                     0x80000000
+
+		# Direction mode (GPIO Bank5, EMIO)
+		#(OFFSET, MASK, VALUE)      (0XFF0A0344, 0xFFFFFFFFU ,0x80000000U)  */
+    mask_write 0XFF0A0344 0xFFFFFFFF 0x80000000
+		# Register : OEN_5 @ 0XFF0A0348</p>
+
+		# Operation is the same as OEN_0[OP_ENABLE_0]
+		# PSU_GPIO_OEN_5_OP_ENABLE_5                                                      0x80000000
+
+		# Output enable (GPIO Bank5, EMIO)
+		#(OFFSET, MASK, VALUE)      (0XFF0A0348, 0xFFFFFFFFU ,0x80000000U)  */
+    mask_write 0XFF0A0348 0xFFFFFFFF 0x80000000
+		# Register : DATA_5 @ 0XFF0A0054</p>
+
+		# Output Data
+		# PSU_GPIO_DATA_5_DATA_5                                                          0x80000000
+
+		# Output Data (GPIO Bank5, EMIO)
+		#(OFFSET, MASK, VALUE)      (0XFF0A0054, 0xFFFFFFFFU ,0x80000000U)  */
+    mask_write 0XFF0A0054 0xFFFFFFFF 0x80000000
+    mask_delay 0x00000000 1
+		# : FABRIC RESET USING DATA_5 TOGGLE
+		# Register : DATA_5 @ 0XFF0A0054</p>
+
+		# Output Data
+		# PSU_GPIO_DATA_5_DATA_5                                                          0X00000000
+
+		# Output Data (GPIO Bank5, EMIO)
+		#(OFFSET, MASK, VALUE)      (0XFF0A0054, 0xFFFFFFFFU ,0x00000000U)  */
+    mask_write 0XFF0A0054 0xFFFFFFFF 0x00000000
+    mask_delay 0x00000000 1
+		# : FABRIC RESET USING DATA_5 TOGGLE
+		# Register : DATA_5 @ 0XFF0A0054</p>
+
+		# Output Data
+		# PSU_GPIO_DATA_5_DATA_5                                                          0x80000000
+
+		# Output Data (GPIO Bank5, EMIO)
+		#(OFFSET, MASK, VALUE)      (0XFF0A0054, 0xFFFFFFFFU ,0x80000000U)  */
+    mask_write 0XFF0A0054 0xFFFFFFFF 0x80000000
 		# : TPIU WIDTH
 		# : TRACE LOCK ACCESS REGISTER
 		# Register : LAR @ 0XFE980FB0</p>

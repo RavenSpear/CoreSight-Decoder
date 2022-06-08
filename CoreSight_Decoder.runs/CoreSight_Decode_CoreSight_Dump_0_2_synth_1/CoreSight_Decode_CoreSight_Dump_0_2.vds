@@ -1,0 +1,402 @@
+#-----------------------------------------------------------
+# Vivado v2021.2 (64-bit)
+# SW Build 3367213 on Tue Oct 19 02:47:39 MDT 2021
+# IP Build 3369179 on Thu Oct 21 08:25:16 MDT 2021
+# Start of session at: Wed Jun  8 10:49:28 2022
+# Process ID: 12548
+# Current directory: /home/marvin/VivadoPrj/CoreSight_Decoder/CoreSight_Decoder.runs/CoreSight_Decode_CoreSight_Dump_0_2_synth_1
+# Command line: vivado -log CoreSight_Decode_CoreSight_Dump_0_2.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source CoreSight_Decode_CoreSight_Dump_0_2.tcl
+# Log file: /home/marvin/VivadoPrj/CoreSight_Decoder/CoreSight_Decoder.runs/CoreSight_Decode_CoreSight_Dump_0_2_synth_1/CoreSight_Decode_CoreSight_Dump_0_2.vds
+# Journal file: /home/marvin/VivadoPrj/CoreSight_Decoder/CoreSight_Decoder.runs/CoreSight_Decode_CoreSight_Dump_0_2_synth_1/vivado.jou
+# Running On: marvin, OS: Linux, CPU Frequency: 3708.044 MHz, CPU Physical cores: 6, Host memory: 16555 MB
+#-----------------------------------------------------------
+source CoreSight_Decode_CoreSight_Dump_0_2.tcl -notrace
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1700] Loaded user IP repository '/home/marvin/VivadoPrj/ip_repo'.
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository '/home/marvin/Xilinx/Vivado/2021.2/data/ip'.
+Command: synth_design -top CoreSight_Decode_CoreSight_Dump_0_2 -part xczu9eg-ffvb1156-2-e -mode out_of_context
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xczu9eg'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xczu9eg'
+INFO: [Device 21-403] Loading part xczu9eg-ffvb1156-2-e
+INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 4 processes.
+INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
+INFO: [Synth 8-7075] Helper process launched with PID 12902
+---------------------------------------------------------------------------------
+Starting RTL Elaboration : Time (s): cpu = 00:00:03 ; elapsed = 00:00:14 . Memory (MB): peak = 3026.949 ; gain = 150.793 ; free physical = 3111 ; free virtual = 4773
+---------------------------------------------------------------------------------
+INFO: [Synth 8-6157] synthesizing module 'CoreSight_Decode_CoreSight_Dump_0_2' [/home/marvin/VivadoPrj/CoreSight_Decoder/CoreSight_Decoder.gen/sources_1/bd/CoreSight_Decode/ip/CoreSight_Decode_CoreSight_Dump_0_2/synth/CoreSight_Decode_CoreSight_Dump_0_2.v:56]
+INFO: [Synth 8-6157] synthesizing module 'CoreSight_Dump_v1_0' [/home/marvin/VivadoPrj/CoreSight_Decoder/CoreSight_Decoder.gen/sources_1/bd/CoreSight_Decode/ipshared/c9d8/hdl/CoreSight_Dump_v1_0.v:4]
+INFO: [Synth 8-6157] synthesizing module 'CoreSight_Dump_v1_0_S_AXI' [/home/marvin/VivadoPrj/CoreSight_Decoder/CoreSight_Decoder.gen/sources_1/bd/CoreSight_Decode/ipshared/c9d8/hdl/CoreSight_Dump_v1_0_S_AXI.v:4]
+INFO: [Synth 8-226] default block is never used [/home/marvin/VivadoPrj/CoreSight_Decoder/CoreSight_Decoder.gen/sources_1/bd/CoreSight_Decode/ipshared/c9d8/hdl/CoreSight_Dump_v1_0_S_AXI.v:363]
+INFO: [Synth 8-226] default block is never used [/home/marvin/VivadoPrj/CoreSight_Decoder/CoreSight_Decoder.gen/sources_1/bd/CoreSight_Decode/ipshared/c9d8/hdl/CoreSight_Dump_v1_0_S_AXI.v:984]
+WARNING: [Synth 8-6014] Unused sequential element axi_awaddr_reg was removed.  [/home/marvin/VivadoPrj/CoreSight_Decoder/CoreSight_Decoder.gen/sources_1/bd/CoreSight_Decode/ipshared/c9d8/hdl/CoreSight_Dump_v1_0_S_AXI.v:242]
+WARNING: [Synth 8-6014] Unused sequential element slv_reg0_reg was removed.  [/home/marvin/VivadoPrj/CoreSight_Decoder/CoreSight_Decoder.gen/sources_1/bd/CoreSight_Decode/ipshared/c9d8/hdl/CoreSight_Dump_v1_0_S_AXI.v:295]
+WARNING: [Synth 8-6014] Unused sequential element slv_reg1_reg was removed.  [/home/marvin/VivadoPrj/CoreSight_Decoder/CoreSight_Decoder.gen/sources_1/bd/CoreSight_Decode/ipshared/c9d8/hdl/CoreSight_Dump_v1_0_S_AXI.v:296]
+WARNING: [Synth 8-6014] Unused sequential element slv_reg2_reg was removed.  [/home/marvin/VivadoPrj/CoreSight_Decoder/CoreSight_Decoder.gen/sources_1/bd/CoreSight_Decode/ipshared/c9d8/hdl/CoreSight_Dump_v1_0_S_AXI.v:297]
+WARNING: [Synth 8-6014] Unused sequential element slv_reg3_reg was removed.  [/home/marvin/VivadoPrj/CoreSight_Decoder/CoreSight_Decoder.gen/sources_1/bd/CoreSight_Decode/ipshared/c9d8/hdl/CoreSight_Dump_v1_0_S_AXI.v:298]
+WARNING: [Synth 8-6014] Unused sequential element slv_reg4_reg was removed.  [/home/marvin/VivadoPrj/CoreSight_Decoder/CoreSight_Decoder.gen/sources_1/bd/CoreSight_Decode/ipshared/c9d8/hdl/CoreSight_Dump_v1_0_S_AXI.v:299]
+WARNING: [Synth 8-6014] Unused sequential element slv_reg5_reg was removed.  [/home/marvin/VivadoPrj/CoreSight_Decoder/CoreSight_Decoder.gen/sources_1/bd/CoreSight_Decode/ipshared/c9d8/hdl/CoreSight_Dump_v1_0_S_AXI.v:300]
+WARNING: [Synth 8-6014] Unused sequential element slv_reg6_reg was removed.  [/home/marvin/VivadoPrj/CoreSight_Decoder/CoreSight_Decoder.gen/sources_1/bd/CoreSight_Decode/ipshared/c9d8/hdl/CoreSight_Dump_v1_0_S_AXI.v:301]
+WARNING: [Synth 8-6014] Unused sequential element slv_reg7_reg was removed.  [/home/marvin/VivadoPrj/CoreSight_Decoder/CoreSight_Decoder.gen/sources_1/bd/CoreSight_Decode/ipshared/c9d8/hdl/CoreSight_Dump_v1_0_S_AXI.v:302]
+WARNING: [Synth 8-6014] Unused sequential element slv_reg8_reg was removed.  [/home/marvin/VivadoPrj/CoreSight_Decoder/CoreSight_Decoder.gen/sources_1/bd/CoreSight_Decode/ipshared/c9d8/hdl/CoreSight_Dump_v1_0_S_AXI.v:303]
+WARNING: [Synth 8-6014] Unused sequential element slv_reg9_reg was removed.  [/home/marvin/VivadoPrj/CoreSight_Decoder/CoreSight_Decoder.gen/sources_1/bd/CoreSight_Decode/ipshared/c9d8/hdl/CoreSight_Dump_v1_0_S_AXI.v:304]
+WARNING: [Synth 8-6014] Unused sequential element slv_reg10_reg was removed.  [/home/marvin/VivadoPrj/CoreSight_Decoder/CoreSight_Decoder.gen/sources_1/bd/CoreSight_Decode/ipshared/c9d8/hdl/CoreSight_Dump_v1_0_S_AXI.v:305]
+WARNING: [Synth 8-6014] Unused sequential element slv_reg11_reg was removed.  [/home/marvin/VivadoPrj/CoreSight_Decoder/CoreSight_Decoder.gen/sources_1/bd/CoreSight_Decode/ipshared/c9d8/hdl/CoreSight_Dump_v1_0_S_AXI.v:306]
+WARNING: [Synth 8-6014] Unused sequential element slv_reg12_reg was removed.  [/home/marvin/VivadoPrj/CoreSight_Decoder/CoreSight_Decoder.gen/sources_1/bd/CoreSight_Decode/ipshared/c9d8/hdl/CoreSight_Dump_v1_0_S_AXI.v:307]
+WARNING: [Synth 8-6014] Unused sequential element slv_reg13_reg was removed.  [/home/marvin/VivadoPrj/CoreSight_Decoder/CoreSight_Decoder.gen/sources_1/bd/CoreSight_Decode/ipshared/c9d8/hdl/CoreSight_Dump_v1_0_S_AXI.v:308]
+WARNING: [Synth 8-6014] Unused sequential element slv_reg14_reg was removed.  [/home/marvin/VivadoPrj/CoreSight_Decoder/CoreSight_Decoder.gen/sources_1/bd/CoreSight_Decode/ipshared/c9d8/hdl/CoreSight_Dump_v1_0_S_AXI.v:309]
+WARNING: [Synth 8-6014] Unused sequential element slv_reg15_reg was removed.  [/home/marvin/VivadoPrj/CoreSight_Decoder/CoreSight_Decoder.gen/sources_1/bd/CoreSight_Decode/ipshared/c9d8/hdl/CoreSight_Dump_v1_0_S_AXI.v:310]
+WARNING: [Synth 8-6014] Unused sequential element slv_reg16_reg was removed.  [/home/marvin/VivadoPrj/CoreSight_Decoder/CoreSight_Decoder.gen/sources_1/bd/CoreSight_Decode/ipshared/c9d8/hdl/CoreSight_Dump_v1_0_S_AXI.v:311]
+WARNING: [Synth 8-6014] Unused sequential element slv_reg17_reg was removed.  [/home/marvin/VivadoPrj/CoreSight_Decoder/CoreSight_Decoder.gen/sources_1/bd/CoreSight_Decode/ipshared/c9d8/hdl/CoreSight_Dump_v1_0_S_AXI.v:312]
+WARNING: [Synth 8-6014] Unused sequential element slv_reg18_reg was removed.  [/home/marvin/VivadoPrj/CoreSight_Decoder/CoreSight_Decoder.gen/sources_1/bd/CoreSight_Decode/ipshared/c9d8/hdl/CoreSight_Dump_v1_0_S_AXI.v:313]
+WARNING: [Synth 8-6014] Unused sequential element slv_reg19_reg was removed.  [/home/marvin/VivadoPrj/CoreSight_Decoder/CoreSight_Decoder.gen/sources_1/bd/CoreSight_Decode/ipshared/c9d8/hdl/CoreSight_Dump_v1_0_S_AXI.v:314]
+WARNING: [Synth 8-6014] Unused sequential element slv_reg20_reg was removed.  [/home/marvin/VivadoPrj/CoreSight_Decoder/CoreSight_Decoder.gen/sources_1/bd/CoreSight_Decode/ipshared/c9d8/hdl/CoreSight_Dump_v1_0_S_AXI.v:315]
+WARNING: [Synth 8-6014] Unused sequential element slv_reg21_reg was removed.  [/home/marvin/VivadoPrj/CoreSight_Decoder/CoreSight_Decoder.gen/sources_1/bd/CoreSight_Decode/ipshared/c9d8/hdl/CoreSight_Dump_v1_0_S_AXI.v:316]
+WARNING: [Synth 8-6014] Unused sequential element slv_reg22_reg was removed.  [/home/marvin/VivadoPrj/CoreSight_Decoder/CoreSight_Decoder.gen/sources_1/bd/CoreSight_Decode/ipshared/c9d8/hdl/CoreSight_Dump_v1_0_S_AXI.v:317]
+WARNING: [Synth 8-6014] Unused sequential element slv_reg23_reg was removed.  [/home/marvin/VivadoPrj/CoreSight_Decoder/CoreSight_Decoder.gen/sources_1/bd/CoreSight_Decode/ipshared/c9d8/hdl/CoreSight_Dump_v1_0_S_AXI.v:318]
+WARNING: [Synth 8-6014] Unused sequential element slv_reg24_reg was removed.  [/home/marvin/VivadoPrj/CoreSight_Decoder/CoreSight_Decoder.gen/sources_1/bd/CoreSight_Decode/ipshared/c9d8/hdl/CoreSight_Dump_v1_0_S_AXI.v:319]
+WARNING: [Synth 8-6014] Unused sequential element slv_reg25_reg was removed.  [/home/marvin/VivadoPrj/CoreSight_Decoder/CoreSight_Decoder.gen/sources_1/bd/CoreSight_Decode/ipshared/c9d8/hdl/CoreSight_Dump_v1_0_S_AXI.v:320]
+WARNING: [Synth 8-6014] Unused sequential element slv_reg26_reg was removed.  [/home/marvin/VivadoPrj/CoreSight_Decoder/CoreSight_Decoder.gen/sources_1/bd/CoreSight_Decode/ipshared/c9d8/hdl/CoreSight_Dump_v1_0_S_AXI.v:321]
+WARNING: [Synth 8-6014] Unused sequential element slv_reg27_reg was removed.  [/home/marvin/VivadoPrj/CoreSight_Decoder/CoreSight_Decoder.gen/sources_1/bd/CoreSight_Decode/ipshared/c9d8/hdl/CoreSight_Dump_v1_0_S_AXI.v:322]
+WARNING: [Synth 8-6014] Unused sequential element slv_reg28_reg was removed.  [/home/marvin/VivadoPrj/CoreSight_Decoder/CoreSight_Decoder.gen/sources_1/bd/CoreSight_Decode/ipshared/c9d8/hdl/CoreSight_Dump_v1_0_S_AXI.v:323]
+WARNING: [Synth 8-6014] Unused sequential element slv_reg29_reg was removed.  [/home/marvin/VivadoPrj/CoreSight_Decoder/CoreSight_Decoder.gen/sources_1/bd/CoreSight_Decode/ipshared/c9d8/hdl/CoreSight_Dump_v1_0_S_AXI.v:324]
+WARNING: [Synth 8-6014] Unused sequential element slv_reg30_reg was removed.  [/home/marvin/VivadoPrj/CoreSight_Decoder/CoreSight_Decoder.gen/sources_1/bd/CoreSight_Decode/ipshared/c9d8/hdl/CoreSight_Dump_v1_0_S_AXI.v:325]
+WARNING: [Synth 8-6014] Unused sequential element slv_reg31_reg was removed.  [/home/marvin/VivadoPrj/CoreSight_Decoder/CoreSight_Decoder.gen/sources_1/bd/CoreSight_Decode/ipshared/c9d8/hdl/CoreSight_Dump_v1_0_S_AXI.v:326]
+WARNING: [Synth 8-6014] Unused sequential element slv_reg32_reg was removed.  [/home/marvin/VivadoPrj/CoreSight_Decoder/CoreSight_Decoder.gen/sources_1/bd/CoreSight_Decode/ipshared/c9d8/hdl/CoreSight_Dump_v1_0_S_AXI.v:327]
+WARNING: [Synth 8-6014] Unused sequential element slv_reg33_reg was removed.  [/home/marvin/VivadoPrj/CoreSight_Decoder/CoreSight_Decoder.gen/sources_1/bd/CoreSight_Decode/ipshared/c9d8/hdl/CoreSight_Dump_v1_0_S_AXI.v:328]
+WARNING: [Synth 8-6014] Unused sequential element slv_reg34_reg was removed.  [/home/marvin/VivadoPrj/CoreSight_Decoder/CoreSight_Decoder.gen/sources_1/bd/CoreSight_Decode/ipshared/c9d8/hdl/CoreSight_Dump_v1_0_S_AXI.v:329]
+WARNING: [Synth 8-6014] Unused sequential element slv_reg35_reg was removed.  [/home/marvin/VivadoPrj/CoreSight_Decoder/CoreSight_Decoder.gen/sources_1/bd/CoreSight_Decode/ipshared/c9d8/hdl/CoreSight_Dump_v1_0_S_AXI.v:330]
+WARNING: [Synth 8-6014] Unused sequential element slv_reg36_reg was removed.  [/home/marvin/VivadoPrj/CoreSight_Decoder/CoreSight_Decoder.gen/sources_1/bd/CoreSight_Decode/ipshared/c9d8/hdl/CoreSight_Dump_v1_0_S_AXI.v:331]
+WARNING: [Synth 8-6014] Unused sequential element slv_reg37_reg was removed.  [/home/marvin/VivadoPrj/CoreSight_Decoder/CoreSight_Decoder.gen/sources_1/bd/CoreSight_Decode/ipshared/c9d8/hdl/CoreSight_Dump_v1_0_S_AXI.v:332]
+WARNING: [Synth 8-6014] Unused sequential element slv_reg38_reg was removed.  [/home/marvin/VivadoPrj/CoreSight_Decoder/CoreSight_Decoder.gen/sources_1/bd/CoreSight_Decode/ipshared/c9d8/hdl/CoreSight_Dump_v1_0_S_AXI.v:333]
+WARNING: [Synth 8-6014] Unused sequential element slv_reg39_reg was removed.  [/home/marvin/VivadoPrj/CoreSight_Decoder/CoreSight_Decoder.gen/sources_1/bd/CoreSight_Decode/ipshared/c9d8/hdl/CoreSight_Dump_v1_0_S_AXI.v:334]
+WARNING: [Synth 8-6014] Unused sequential element slv_reg40_reg was removed.  [/home/marvin/VivadoPrj/CoreSight_Decoder/CoreSight_Decoder.gen/sources_1/bd/CoreSight_Decode/ipshared/c9d8/hdl/CoreSight_Dump_v1_0_S_AXI.v:335]
+WARNING: [Synth 8-6014] Unused sequential element slv_reg41_reg was removed.  [/home/marvin/VivadoPrj/CoreSight_Decoder/CoreSight_Decoder.gen/sources_1/bd/CoreSight_Decode/ipshared/c9d8/hdl/CoreSight_Dump_v1_0_S_AXI.v:336]
+WARNING: [Synth 8-6014] Unused sequential element slv_reg42_reg was removed.  [/home/marvin/VivadoPrj/CoreSight_Decoder/CoreSight_Decoder.gen/sources_1/bd/CoreSight_Decode/ipshared/c9d8/hdl/CoreSight_Dump_v1_0_S_AXI.v:337]
+WARNING: [Synth 8-6014] Unused sequential element slv_reg43_reg was removed.  [/home/marvin/VivadoPrj/CoreSight_Decoder/CoreSight_Decoder.gen/sources_1/bd/CoreSight_Decode/ipshared/c9d8/hdl/CoreSight_Dump_v1_0_S_AXI.v:338]
+WARNING: [Synth 8-6014] Unused sequential element slv_reg44_reg was removed.  [/home/marvin/VivadoPrj/CoreSight_Decoder/CoreSight_Decoder.gen/sources_1/bd/CoreSight_Decode/ipshared/c9d8/hdl/CoreSight_Dump_v1_0_S_AXI.v:339]
+WARNING: [Synth 8-6014] Unused sequential element slv_reg45_reg was removed.  [/home/marvin/VivadoPrj/CoreSight_Decoder/CoreSight_Decoder.gen/sources_1/bd/CoreSight_Decode/ipshared/c9d8/hdl/CoreSight_Dump_v1_0_S_AXI.v:340]
+WARNING: [Synth 8-6014] Unused sequential element slv_reg46_reg was removed.  [/home/marvin/VivadoPrj/CoreSight_Decoder/CoreSight_Decoder.gen/sources_1/bd/CoreSight_Decode/ipshared/c9d8/hdl/CoreSight_Dump_v1_0_S_AXI.v:341]
+WARNING: [Synth 8-6014] Unused sequential element slv_reg47_reg was removed.  [/home/marvin/VivadoPrj/CoreSight_Decoder/CoreSight_Decoder.gen/sources_1/bd/CoreSight_Decode/ipshared/c9d8/hdl/CoreSight_Dump_v1_0_S_AXI.v:342]
+WARNING: [Synth 8-6014] Unused sequential element slv_reg48_reg was removed.  [/home/marvin/VivadoPrj/CoreSight_Decoder/CoreSight_Decoder.gen/sources_1/bd/CoreSight_Decode/ipshared/c9d8/hdl/CoreSight_Dump_v1_0_S_AXI.v:343]
+WARNING: [Synth 8-6014] Unused sequential element slv_reg49_reg was removed.  [/home/marvin/VivadoPrj/CoreSight_Decoder/CoreSight_Decoder.gen/sources_1/bd/CoreSight_Decode/ipshared/c9d8/hdl/CoreSight_Dump_v1_0_S_AXI.v:344]
+WARNING: [Synth 8-6014] Unused sequential element slv_reg50_reg was removed.  [/home/marvin/VivadoPrj/CoreSight_Decoder/CoreSight_Decoder.gen/sources_1/bd/CoreSight_Decode/ipshared/c9d8/hdl/CoreSight_Dump_v1_0_S_AXI.v:345]
+WARNING: [Synth 8-6014] Unused sequential element slv_reg51_reg was removed.  [/home/marvin/VivadoPrj/CoreSight_Decoder/CoreSight_Decoder.gen/sources_1/bd/CoreSight_Decode/ipshared/c9d8/hdl/CoreSight_Dump_v1_0_S_AXI.v:346]
+WARNING: [Synth 8-6014] Unused sequential element slv_reg52_reg was removed.  [/home/marvin/VivadoPrj/CoreSight_Decoder/CoreSight_Decoder.gen/sources_1/bd/CoreSight_Decode/ipshared/c9d8/hdl/CoreSight_Dump_v1_0_S_AXI.v:347]
+WARNING: [Synth 8-6014] Unused sequential element slv_reg53_reg was removed.  [/home/marvin/VivadoPrj/CoreSight_Decoder/CoreSight_Decoder.gen/sources_1/bd/CoreSight_Decode/ipshared/c9d8/hdl/CoreSight_Dump_v1_0_S_AXI.v:348]
+WARNING: [Synth 8-6014] Unused sequential element slv_reg54_reg was removed.  [/home/marvin/VivadoPrj/CoreSight_Decoder/CoreSight_Decoder.gen/sources_1/bd/CoreSight_Decode/ipshared/c9d8/hdl/CoreSight_Dump_v1_0_S_AXI.v:349]
+WARNING: [Synth 8-6014] Unused sequential element slv_reg55_reg was removed.  [/home/marvin/VivadoPrj/CoreSight_Decoder/CoreSight_Decoder.gen/sources_1/bd/CoreSight_Decode/ipshared/c9d8/hdl/CoreSight_Dump_v1_0_S_AXI.v:350]
+WARNING: [Synth 8-6014] Unused sequential element slv_reg56_reg was removed.  [/home/marvin/VivadoPrj/CoreSight_Decoder/CoreSight_Decoder.gen/sources_1/bd/CoreSight_Decode/ipshared/c9d8/hdl/CoreSight_Dump_v1_0_S_AXI.v:351]
+WARNING: [Synth 8-6014] Unused sequential element slv_reg57_reg was removed.  [/home/marvin/VivadoPrj/CoreSight_Decoder/CoreSight_Decoder.gen/sources_1/bd/CoreSight_Decode/ipshared/c9d8/hdl/CoreSight_Dump_v1_0_S_AXI.v:352]
+WARNING: [Synth 8-6014] Unused sequential element slv_reg58_reg was removed.  [/home/marvin/VivadoPrj/CoreSight_Decoder/CoreSight_Decoder.gen/sources_1/bd/CoreSight_Decode/ipshared/c9d8/hdl/CoreSight_Dump_v1_0_S_AXI.v:353]
+WARNING: [Synth 8-6014] Unused sequential element slv_reg59_reg was removed.  [/home/marvin/VivadoPrj/CoreSight_Decoder/CoreSight_Decoder.gen/sources_1/bd/CoreSight_Decode/ipshared/c9d8/hdl/CoreSight_Dump_v1_0_S_AXI.v:354]
+WARNING: [Synth 8-6014] Unused sequential element slv_reg60_reg was removed.  [/home/marvin/VivadoPrj/CoreSight_Decoder/CoreSight_Decoder.gen/sources_1/bd/CoreSight_Decode/ipshared/c9d8/hdl/CoreSight_Dump_v1_0_S_AXI.v:355]
+WARNING: [Synth 8-6014] Unused sequential element slv_reg61_reg was removed.  [/home/marvin/VivadoPrj/CoreSight_Decoder/CoreSight_Decoder.gen/sources_1/bd/CoreSight_Decode/ipshared/c9d8/hdl/CoreSight_Dump_v1_0_S_AXI.v:356]
+WARNING: [Synth 8-6014] Unused sequential element slv_reg62_reg was removed.  [/home/marvin/VivadoPrj/CoreSight_Decoder/CoreSight_Decoder.gen/sources_1/bd/CoreSight_Decode/ipshared/c9d8/hdl/CoreSight_Dump_v1_0_S_AXI.v:357]
+WARNING: [Synth 8-6014] Unused sequential element slv_reg63_reg was removed.  [/home/marvin/VivadoPrj/CoreSight_Decoder/CoreSight_Decoder.gen/sources_1/bd/CoreSight_Decode/ipshared/c9d8/hdl/CoreSight_Dump_v1_0_S_AXI.v:358]
+INFO: [Synth 8-6155] done synthesizing module 'CoreSight_Dump_v1_0_S_AXI' (1#1) [/home/marvin/VivadoPrj/CoreSight_Decoder/CoreSight_Decoder.gen/sources_1/bd/CoreSight_Decode/ipshared/c9d8/hdl/CoreSight_Dump_v1_0_S_AXI.v:4]
+INFO: [Synth 8-6155] done synthesizing module 'CoreSight_Dump_v1_0' (2#1) [/home/marvin/VivadoPrj/CoreSight_Decoder/CoreSight_Decoder.gen/sources_1/bd/CoreSight_Decode/ipshared/c9d8/hdl/CoreSight_Dump_v1_0.v:4]
+INFO: [Synth 8-6155] done synthesizing module 'CoreSight_Decode_CoreSight_Dump_0_2' (3#1) [/home/marvin/VivadoPrj/CoreSight_Decoder/CoreSight_Decoder.gen/sources_1/bd/CoreSight_Decode/ip/CoreSight_Decode_CoreSight_Dump_0_2/synth/CoreSight_Decode_CoreSight_Dump_0_2.v:56]
+WARNING: [Synth 8-7129] Port S_AXI_AWADDR[7] in module CoreSight_Dump_v1_0_S_AXI is either unconnected or has no load
+WARNING: [Synth 8-7129] Port S_AXI_AWADDR[6] in module CoreSight_Dump_v1_0_S_AXI is either unconnected or has no load
+WARNING: [Synth 8-7129] Port S_AXI_AWADDR[5] in module CoreSight_Dump_v1_0_S_AXI is either unconnected or has no load
+WARNING: [Synth 8-7129] Port S_AXI_AWADDR[4] in module CoreSight_Dump_v1_0_S_AXI is either unconnected or has no load
+WARNING: [Synth 8-7129] Port S_AXI_AWADDR[3] in module CoreSight_Dump_v1_0_S_AXI is either unconnected or has no load
+WARNING: [Synth 8-7129] Port S_AXI_AWADDR[2] in module CoreSight_Dump_v1_0_S_AXI is either unconnected or has no load
+WARNING: [Synth 8-7129] Port S_AXI_AWADDR[1] in module CoreSight_Dump_v1_0_S_AXI is either unconnected or has no load
+WARNING: [Synth 8-7129] Port S_AXI_AWADDR[0] in module CoreSight_Dump_v1_0_S_AXI is either unconnected or has no load
+WARNING: [Synth 8-7129] Port S_AXI_AWPROT[2] in module CoreSight_Dump_v1_0_S_AXI is either unconnected or has no load
+WARNING: [Synth 8-7129] Port S_AXI_AWPROT[1] in module CoreSight_Dump_v1_0_S_AXI is either unconnected or has no load
+WARNING: [Synth 8-7129] Port S_AXI_AWPROT[0] in module CoreSight_Dump_v1_0_S_AXI is either unconnected or has no load
+WARNING: [Synth 8-7129] Port S_AXI_WDATA[31] in module CoreSight_Dump_v1_0_S_AXI is either unconnected or has no load
+WARNING: [Synth 8-7129] Port S_AXI_WDATA[30] in module CoreSight_Dump_v1_0_S_AXI is either unconnected or has no load
+WARNING: [Synth 8-7129] Port S_AXI_WDATA[29] in module CoreSight_Dump_v1_0_S_AXI is either unconnected or has no load
+WARNING: [Synth 8-7129] Port S_AXI_WDATA[28] in module CoreSight_Dump_v1_0_S_AXI is either unconnected or has no load
+WARNING: [Synth 8-7129] Port S_AXI_WDATA[27] in module CoreSight_Dump_v1_0_S_AXI is either unconnected or has no load
+WARNING: [Synth 8-7129] Port S_AXI_WDATA[26] in module CoreSight_Dump_v1_0_S_AXI is either unconnected or has no load
+WARNING: [Synth 8-7129] Port S_AXI_WDATA[25] in module CoreSight_Dump_v1_0_S_AXI is either unconnected or has no load
+WARNING: [Synth 8-7129] Port S_AXI_WDATA[24] in module CoreSight_Dump_v1_0_S_AXI is either unconnected or has no load
+WARNING: [Synth 8-7129] Port S_AXI_WDATA[23] in module CoreSight_Dump_v1_0_S_AXI is either unconnected or has no load
+WARNING: [Synth 8-7129] Port S_AXI_WDATA[22] in module CoreSight_Dump_v1_0_S_AXI is either unconnected or has no load
+WARNING: [Synth 8-7129] Port S_AXI_WDATA[21] in module CoreSight_Dump_v1_0_S_AXI is either unconnected or has no load
+WARNING: [Synth 8-7129] Port S_AXI_WDATA[20] in module CoreSight_Dump_v1_0_S_AXI is either unconnected or has no load
+WARNING: [Synth 8-7129] Port S_AXI_WDATA[19] in module CoreSight_Dump_v1_0_S_AXI is either unconnected or has no load
+WARNING: [Synth 8-7129] Port S_AXI_WDATA[18] in module CoreSight_Dump_v1_0_S_AXI is either unconnected or has no load
+WARNING: [Synth 8-7129] Port S_AXI_WDATA[17] in module CoreSight_Dump_v1_0_S_AXI is either unconnected or has no load
+WARNING: [Synth 8-7129] Port S_AXI_WDATA[16] in module CoreSight_Dump_v1_0_S_AXI is either unconnected or has no load
+WARNING: [Synth 8-7129] Port S_AXI_WDATA[15] in module CoreSight_Dump_v1_0_S_AXI is either unconnected or has no load
+WARNING: [Synth 8-7129] Port S_AXI_WDATA[14] in module CoreSight_Dump_v1_0_S_AXI is either unconnected or has no load
+WARNING: [Synth 8-7129] Port S_AXI_WDATA[13] in module CoreSight_Dump_v1_0_S_AXI is either unconnected or has no load
+WARNING: [Synth 8-7129] Port S_AXI_WDATA[12] in module CoreSight_Dump_v1_0_S_AXI is either unconnected or has no load
+WARNING: [Synth 8-7129] Port S_AXI_WDATA[11] in module CoreSight_Dump_v1_0_S_AXI is either unconnected or has no load
+WARNING: [Synth 8-7129] Port S_AXI_WDATA[10] in module CoreSight_Dump_v1_0_S_AXI is either unconnected or has no load
+WARNING: [Synth 8-7129] Port S_AXI_WDATA[9] in module CoreSight_Dump_v1_0_S_AXI is either unconnected or has no load
+WARNING: [Synth 8-7129] Port S_AXI_WDATA[8] in module CoreSight_Dump_v1_0_S_AXI is either unconnected or has no load
+WARNING: [Synth 8-7129] Port S_AXI_WDATA[7] in module CoreSight_Dump_v1_0_S_AXI is either unconnected or has no load
+WARNING: [Synth 8-7129] Port S_AXI_WDATA[6] in module CoreSight_Dump_v1_0_S_AXI is either unconnected or has no load
+WARNING: [Synth 8-7129] Port S_AXI_WDATA[5] in module CoreSight_Dump_v1_0_S_AXI is either unconnected or has no load
+WARNING: [Synth 8-7129] Port S_AXI_WDATA[4] in module CoreSight_Dump_v1_0_S_AXI is either unconnected or has no load
+WARNING: [Synth 8-7129] Port S_AXI_WDATA[3] in module CoreSight_Dump_v1_0_S_AXI is either unconnected or has no load
+WARNING: [Synth 8-7129] Port S_AXI_WDATA[2] in module CoreSight_Dump_v1_0_S_AXI is either unconnected or has no load
+WARNING: [Synth 8-7129] Port S_AXI_WDATA[1] in module CoreSight_Dump_v1_0_S_AXI is either unconnected or has no load
+WARNING: [Synth 8-7129] Port S_AXI_WDATA[0] in module CoreSight_Dump_v1_0_S_AXI is either unconnected or has no load
+WARNING: [Synth 8-7129] Port S_AXI_WSTRB[3] in module CoreSight_Dump_v1_0_S_AXI is either unconnected or has no load
+WARNING: [Synth 8-7129] Port S_AXI_WSTRB[2] in module CoreSight_Dump_v1_0_S_AXI is either unconnected or has no load
+WARNING: [Synth 8-7129] Port S_AXI_WSTRB[1] in module CoreSight_Dump_v1_0_S_AXI is either unconnected or has no load
+WARNING: [Synth 8-7129] Port S_AXI_WSTRB[0] in module CoreSight_Dump_v1_0_S_AXI is either unconnected or has no load
+WARNING: [Synth 8-7129] Port S_AXI_ARPROT[2] in module CoreSight_Dump_v1_0_S_AXI is either unconnected or has no load
+WARNING: [Synth 8-7129] Port S_AXI_ARPROT[1] in module CoreSight_Dump_v1_0_S_AXI is either unconnected or has no load
+WARNING: [Synth 8-7129] Port S_AXI_ARPROT[0] in module CoreSight_Dump_v1_0_S_AXI is either unconnected or has no load
+---------------------------------------------------------------------------------
+Finished RTL Elaboration : Time (s): cpu = 00:00:05 ; elapsed = 00:00:15 . Memory (MB): peak = 3083.887 ; gain = 207.730 ; free physical = 3186 ; free virtual = 4859
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:05 ; elapsed = 00:00:16 . Memory (MB): peak = 3101.699 ; gain = 225.543 ; free physical = 3249 ; free virtual = 4924
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:05 ; elapsed = 00:00:16 . Memory (MB): peak = 3101.699 ; gain = 225.543 ; free physical = 3249 ; free virtual = 4924
+---------------------------------------------------------------------------------
+Netlist sorting complete. Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00.01 . Memory (MB): peak = 3101.699 ; gain = 0.000 ; free physical = 3225 ; free virtual = 4901
+INFO: [Project 1-570] Preparing netlist for logic optimization
+
+Processing XDC Constraints
+Initializing timing engine
+Completed Processing XDC Constraints
+
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.01 . Memory (MB): peak = 3255.574 ; gain = 0.000 ; free physical = 2900 ; free virtual = 4593
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+Constraint Validation Runtime : Time (s): cpu = 00:00:00.08 ; elapsed = 00:00:00.16 . Memory (MB): peak = 3279.387 ; gain = 23.812 ; free physical = 2893 ; free virtual = 4587
+---------------------------------------------------------------------------------
+Finished Constraint Validation : Time (s): cpu = 00:00:09 ; elapsed = 00:00:21 . Memory (MB): peak = 3279.387 ; gain = 403.230 ; free physical = 3000 ; free virtual = 4696
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Loading Part and Timing Information
+---------------------------------------------------------------------------------
+Loading part: xczu9eg-ffvb1156-2-e
+INFO: [Synth 8-6742] Reading net delay rules and data
+---------------------------------------------------------------------------------
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:09 ; elapsed = 00:00:21 . Memory (MB): peak = 3279.387 ; gain = 403.230 ; free physical = 3000 ; free virtual = 4696
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying 'set_property' XDC Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:09 ; elapsed = 00:00:21 . Memory (MB): peak = 3279.387 ; gain = 403.230 ; free physical = 3000 ; free virtual = 4696
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:10 ; elapsed = 00:00:21 . Memory (MB): peak = 3279.387 ; gain = 403.230 ; free physical = 2982 ; free virtual = 4683
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start RTL Component Statistics 
+---------------------------------------------------------------------------------
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input   32 Bit       Adders := 1     
+	   2 Input    5 Bit       Adders := 1     
++---Registers : 
+	               32 Bit    Registers := 66    
+	                8 Bit    Registers := 1     
+	                5 Bit    Registers := 1     
+	                2 Bit    Registers := 2     
+	                1 Bit    Registers := 9     
++---Muxes : 
+	   2 Input   32 Bit        Muxes := 1     
+	   2 Input    1 Bit        Muxes := 72    
+---------------------------------------------------------------------------------
+Finished RTL Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Part Resource Summary
+---------------------------------------------------------------------------------
+Part Resources:
+DSPs: 2520 (col length:168)
+BRAMs: 1824 (col length: RAMB18 168 RAMB36 84)
+---------------------------------------------------------------------------------
+Finished Part Resource Summary
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Cross Boundary and Area Optimization
+---------------------------------------------------------------------------------
+WARNING: [Synth 8-7080] Parallel synthesis criteria is not met
+WARNING: [Synth 8-7129] Port S_AXI_AWADDR[7] in module CoreSight_Dump_v1_0_S_AXI is either unconnected or has no load
+WARNING: [Synth 8-7129] Port S_AXI_AWADDR[6] in module CoreSight_Dump_v1_0_S_AXI is either unconnected or has no load
+WARNING: [Synth 8-7129] Port S_AXI_AWADDR[5] in module CoreSight_Dump_v1_0_S_AXI is either unconnected or has no load
+WARNING: [Synth 8-7129] Port S_AXI_AWADDR[4] in module CoreSight_Dump_v1_0_S_AXI is either unconnected or has no load
+WARNING: [Synth 8-7129] Port S_AXI_AWADDR[3] in module CoreSight_Dump_v1_0_S_AXI is either unconnected or has no load
+WARNING: [Synth 8-7129] Port S_AXI_AWADDR[2] in module CoreSight_Dump_v1_0_S_AXI is either unconnected or has no load
+WARNING: [Synth 8-7129] Port S_AXI_AWADDR[1] in module CoreSight_Dump_v1_0_S_AXI is either unconnected or has no load
+WARNING: [Synth 8-7129] Port S_AXI_AWADDR[0] in module CoreSight_Dump_v1_0_S_AXI is either unconnected or has no load
+WARNING: [Synth 8-7129] Port S_AXI_AWPROT[2] in module CoreSight_Dump_v1_0_S_AXI is either unconnected or has no load
+WARNING: [Synth 8-7129] Port S_AXI_AWPROT[1] in module CoreSight_Dump_v1_0_S_AXI is either unconnected or has no load
+WARNING: [Synth 8-7129] Port S_AXI_AWPROT[0] in module CoreSight_Dump_v1_0_S_AXI is either unconnected or has no load
+WARNING: [Synth 8-7129] Port S_AXI_WDATA[31] in module CoreSight_Dump_v1_0_S_AXI is either unconnected or has no load
+WARNING: [Synth 8-7129] Port S_AXI_WDATA[30] in module CoreSight_Dump_v1_0_S_AXI is either unconnected or has no load
+WARNING: [Synth 8-7129] Port S_AXI_WDATA[29] in module CoreSight_Dump_v1_0_S_AXI is either unconnected or has no load
+WARNING: [Synth 8-7129] Port S_AXI_WDATA[28] in module CoreSight_Dump_v1_0_S_AXI is either unconnected or has no load
+WARNING: [Synth 8-7129] Port S_AXI_WDATA[27] in module CoreSight_Dump_v1_0_S_AXI is either unconnected or has no load
+WARNING: [Synth 8-7129] Port S_AXI_WDATA[26] in module CoreSight_Dump_v1_0_S_AXI is either unconnected or has no load
+WARNING: [Synth 8-7129] Port S_AXI_WDATA[25] in module CoreSight_Dump_v1_0_S_AXI is either unconnected or has no load
+WARNING: [Synth 8-7129] Port S_AXI_WDATA[24] in module CoreSight_Dump_v1_0_S_AXI is either unconnected or has no load
+WARNING: [Synth 8-7129] Port S_AXI_WDATA[23] in module CoreSight_Dump_v1_0_S_AXI is either unconnected or has no load
+WARNING: [Synth 8-7129] Port S_AXI_WDATA[22] in module CoreSight_Dump_v1_0_S_AXI is either unconnected or has no load
+WARNING: [Synth 8-7129] Port S_AXI_WDATA[21] in module CoreSight_Dump_v1_0_S_AXI is either unconnected or has no load
+WARNING: [Synth 8-7129] Port S_AXI_WDATA[20] in module CoreSight_Dump_v1_0_S_AXI is either unconnected or has no load
+WARNING: [Synth 8-7129] Port S_AXI_WDATA[19] in module CoreSight_Dump_v1_0_S_AXI is either unconnected or has no load
+WARNING: [Synth 8-7129] Port S_AXI_WDATA[18] in module CoreSight_Dump_v1_0_S_AXI is either unconnected or has no load
+WARNING: [Synth 8-7129] Port S_AXI_WDATA[17] in module CoreSight_Dump_v1_0_S_AXI is either unconnected or has no load
+WARNING: [Synth 8-7129] Port S_AXI_WDATA[16] in module CoreSight_Dump_v1_0_S_AXI is either unconnected or has no load
+WARNING: [Synth 8-7129] Port S_AXI_WDATA[15] in module CoreSight_Dump_v1_0_S_AXI is either unconnected or has no load
+WARNING: [Synth 8-7129] Port S_AXI_WDATA[14] in module CoreSight_Dump_v1_0_S_AXI is either unconnected or has no load
+WARNING: [Synth 8-7129] Port S_AXI_WDATA[13] in module CoreSight_Dump_v1_0_S_AXI is either unconnected or has no load
+WARNING: [Synth 8-7129] Port S_AXI_WDATA[12] in module CoreSight_Dump_v1_0_S_AXI is either unconnected or has no load
+WARNING: [Synth 8-7129] Port S_AXI_WDATA[11] in module CoreSight_Dump_v1_0_S_AXI is either unconnected or has no load
+WARNING: [Synth 8-7129] Port S_AXI_WDATA[10] in module CoreSight_Dump_v1_0_S_AXI is either unconnected or has no load
+WARNING: [Synth 8-7129] Port S_AXI_WDATA[9] in module CoreSight_Dump_v1_0_S_AXI is either unconnected or has no load
+WARNING: [Synth 8-7129] Port S_AXI_WDATA[8] in module CoreSight_Dump_v1_0_S_AXI is either unconnected or has no load
+WARNING: [Synth 8-7129] Port S_AXI_WDATA[7] in module CoreSight_Dump_v1_0_S_AXI is either unconnected or has no load
+WARNING: [Synth 8-7129] Port S_AXI_WDATA[6] in module CoreSight_Dump_v1_0_S_AXI is either unconnected or has no load
+WARNING: [Synth 8-7129] Port S_AXI_WDATA[5] in module CoreSight_Dump_v1_0_S_AXI is either unconnected or has no load
+WARNING: [Synth 8-7129] Port S_AXI_WDATA[4] in module CoreSight_Dump_v1_0_S_AXI is either unconnected or has no load
+WARNING: [Synth 8-7129] Port S_AXI_WDATA[3] in module CoreSight_Dump_v1_0_S_AXI is either unconnected or has no load
+WARNING: [Synth 8-7129] Port S_AXI_WDATA[2] in module CoreSight_Dump_v1_0_S_AXI is either unconnected or has no load
+WARNING: [Synth 8-7129] Port S_AXI_WDATA[1] in module CoreSight_Dump_v1_0_S_AXI is either unconnected or has no load
+WARNING: [Synth 8-7129] Port S_AXI_WDATA[0] in module CoreSight_Dump_v1_0_S_AXI is either unconnected or has no load
+WARNING: [Synth 8-7129] Port S_AXI_WSTRB[3] in module CoreSight_Dump_v1_0_S_AXI is either unconnected or has no load
+WARNING: [Synth 8-7129] Port S_AXI_WSTRB[2] in module CoreSight_Dump_v1_0_S_AXI is either unconnected or has no load
+WARNING: [Synth 8-7129] Port S_AXI_WSTRB[1] in module CoreSight_Dump_v1_0_S_AXI is either unconnected or has no load
+WARNING: [Synth 8-7129] Port S_AXI_WSTRB[0] in module CoreSight_Dump_v1_0_S_AXI is either unconnected or has no load
+WARNING: [Synth 8-7129] Port S_AXI_ARPROT[2] in module CoreSight_Dump_v1_0_S_AXI is either unconnected or has no load
+WARNING: [Synth 8-7129] Port S_AXI_ARPROT[1] in module CoreSight_Dump_v1_0_S_AXI is either unconnected or has no load
+WARNING: [Synth 8-7129] Port S_AXI_ARPROT[0] in module CoreSight_Dump_v1_0_S_AXI is either unconnected or has no load
+INFO: [Common 17-14] Message 'Synth 8-7129' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
+---------------------------------------------------------------------------------
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:13 ; elapsed = 00:00:25 . Memory (MB): peak = 3279.387 ; gain = 403.230 ; free physical = 3060 ; free virtual = 4803
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying XDC Timing Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:19 ; elapsed = 00:00:34 . Memory (MB): peak = 3629.941 ; gain = 753.785 ; free physical = 805 ; free virtual = 2579
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Timing Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Timing Optimization : Time (s): cpu = 00:00:20 ; elapsed = 00:00:34 . Memory (MB): peak = 3630.941 ; gain = 754.785 ; free physical = 739 ; free virtual = 2514
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Technology Mapping
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Technology Mapping : Time (s): cpu = 00:00:20 ; elapsed = 00:00:35 . Memory (MB): peak = 3659.988 ; gain = 783.832 ; free physical = 139 ; free virtual = 1825
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished IO Insertion : Time (s): cpu = 00:00:24 ; elapsed = 00:00:38 . Memory (MB): peak = 3659.988 ; gain = 783.832 ; free physical = 212 ; free virtual = 1476
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Instances
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:24 ; elapsed = 00:00:38 . Memory (MB): peak = 3659.988 ; gain = 783.832 ; free physical = 212 ; free virtual = 1476
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Rebuilding User Hierarchy
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:24 ; elapsed = 00:00:38 . Memory (MB): peak = 3659.988 ; gain = 783.832 ; free physical = 210 ; free virtual = 1474
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Ports
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:24 ; elapsed = 00:00:38 . Memory (MB): peak = 3659.988 ; gain = 783.832 ; free physical = 210 ; free virtual = 1474
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:24 ; elapsed = 00:00:38 . Memory (MB): peak = 3659.988 ; gain = 783.832 ; free physical = 209 ; free virtual = 1474
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Nets
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:24 ; elapsed = 00:00:38 . Memory (MB): peak = 3659.988 ; gain = 783.832 ; free physical = 209 ; free virtual = 1474
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Writing Synthesis Report
+---------------------------------------------------------------------------------
+
+Report BlackBoxes: 
++-+--------------+----------+
+| |BlackBox name |Instances |
++-+--------------+----------+
++-+--------------+----------+
+
+Report Cell Usage: 
++------+-------+------+
+|      |Cell   |Count |
++------+-------+------+
+|1     |CARRY8 |     4|
+|2     |LUT1   |     2|
+|3     |LUT2   |     2|
+|4     |LUT3   |     5|
+|5     |LUT4   |    12|
+|6     |LUT5   |    62|
+|7     |LUT6   |   525|
+|8     |MUXF7  |   256|
+|9     |MUXF8  |   128|
+|10    |FDRE   |  2114|
+|11    |FDSE   |     1|
++------+-------+------+
+---------------------------------------------------------------------------------
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:24 ; elapsed = 00:00:38 . Memory (MB): peak = 3659.988 ; gain = 783.832 ; free physical = 209 ; free virtual = 1474
+---------------------------------------------------------------------------------
+Synthesis finished with 0 errors, 0 critical warnings and 51 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:22 ; elapsed = 00:00:36 . Memory (MB): peak = 3659.988 ; gain = 606.145 ; free physical = 247 ; free virtual = 1511
+Synthesis Optimization Complete : Time (s): cpu = 00:00:24 ; elapsed = 00:00:38 . Memory (MB): peak = 3659.996 ; gain = 783.832 ; free physical = 238 ; free virtual = 1502
+INFO: [Project 1-571] Translating synthesized netlist
+Netlist sorting complete. Time (s): cpu = 00:00:00.02 ; elapsed = 00:00:00.01 . Memory (MB): peak = 3673.926 ; gain = 0.000 ; free physical = 218 ; free virtual = 1486
+INFO: [Netlist 29-17] Analyzing 388 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+WARNING: [Netlist 29-101] Netlist 'CoreSight_Decode_CoreSight_Dump_0_2' is not ideal for floorplanning, since the cellview 'CoreSight_Dump_v1_0_S_AXI' contains a large number of primitives.  Please consider enabling hierarchy in synthesis if you want to do floorplanning.
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 3734.691 ; gain = 0.000 ; free physical = 162 ; free virtual = 1235
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+Synth Design complete, checksum: 5c8d4ce1
+INFO: [Common 17-83] Releasing license: Synthesis
+27 Infos, 167 Warnings, 0 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:00:30 ; elapsed = 00:00:55 . Memory (MB): peak = 3734.691 ; gain = 949.543 ; free physical = 2019 ; free virtual = 3098
+report_design_analysis: Time (s): cpu = 00:00:00.31 ; elapsed = 00:00:07 . Memory (MB): peak = 3766.707 ; gain = 0.000 ; free physical = 1918 ; free virtual = 3085
+INFO: [Common 17-1381] The checkpoint '/home/marvin/VivadoPrj/CoreSight_Decoder/CoreSight_Decoder.runs/CoreSight_Decode_CoreSight_Dump_0_2_synth_1/CoreSight_Decode_CoreSight_Dump_0_2.dcp' has been generated.
+write_checkpoint: Time (s): cpu = 00:00:00.67 ; elapsed = 00:00:08 . Memory (MB): peak = 3766.707 ; gain = 32.016 ; free physical = 1921 ; free virtual = 3086
+INFO: [Coretcl 2-1648] Added synthesis output to IP cache for IP CoreSight_Decode_CoreSight_Dump_0_2, cache-ID = 419e56488f0fcda8
+INFO: [Coretcl 2-1174] Renamed 2 cell refs.
+INFO: [Common 17-1381] The checkpoint '/home/marvin/VivadoPrj/CoreSight_Decoder/CoreSight_Decoder.runs/CoreSight_Decode_CoreSight_Dump_0_2_synth_1/CoreSight_Decode_CoreSight_Dump_0_2.dcp' has been generated.
+INFO: [runtcl-4] Executing : report_utilization -file CoreSight_Decode_CoreSight_Dump_0_2_utilization_synth.rpt -pb CoreSight_Decode_CoreSight_Dump_0_2_utilization_synth.pb
+INFO: [Common 17-206] Exiting Vivado at Wed Jun  8 10:50:43 2022...

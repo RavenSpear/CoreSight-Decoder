@@ -70,8 +70,6 @@ proc create_report { reportName command } {
   }
 }
 OPTRACE "synth_1" START { ROLLUP_AUTO }
-set_param chipscope.maxJobs 3
-set_msg_config -id {HDL-1065} -limit 10000
 OPTRACE "Creating in-memory project" START { }
 create_project -in_memory -part xczu9eg-ffvb1156-2-e
 
@@ -81,9 +79,12 @@ set_param synth.vivado.isSynthRun true
 set_msg_config -source 4 -id {IP_Flow 19-2162} -severity warning -new_severity info
 set_property webtalk.parent_dir /home/marvin/VivadoPrj/CoreSight_Decoder/CoreSight_Decoder.cache/wt [current_project]
 set_property parent.project_path /home/marvin/VivadoPrj/CoreSight_Decoder/CoreSight_Decoder.xpr [current_project]
+set_property XPM_LIBRARIES {XPM_CDC XPM_MEMORY} [current_project]
 set_property default_lib xil_defaultlib [current_project]
 set_property target_language Verilog [current_project]
 set_property board_part xilinx.com:zcu102:part0:3.4 [current_project]
+set_property ip_repo_paths /home/marvin/VivadoPrj/ip_repo [current_project]
+update_ip_catalog
 set_property ip_output_repo /home/marvin/VivadoPrj/CoreSight_Decoder/CoreSight_Decoder.cache/ip [current_project]
 set_property ip_cache_permissions {read write} [current_project]
 OPTRACE "Creating in-memory project" END { }
@@ -92,6 +93,13 @@ read_verilog -library xil_defaultlib /home/marvin/VivadoPrj/CoreSight_Decoder/Co
 add_files /home/marvin/VivadoPrj/CoreSight_Decoder/CoreSight_Decoder.srcs/sources_1/bd/CoreSight_Decode/CoreSight_Decode.bd
 set_property used_in_implementation false [get_files -all /home/marvin/VivadoPrj/CoreSight_Decoder/CoreSight_Decoder.gen/sources_1/bd/CoreSight_Decode/ip/CoreSight_Decode_zynq_ultra_ps_e_0_0/CoreSight_Decode_zynq_ultra_ps_e_0_0_ooc.xdc]
 set_property used_in_implementation false [get_files -all /home/marvin/VivadoPrj/CoreSight_Decoder/CoreSight_Decoder.gen/sources_1/bd/CoreSight_Decode/ip/CoreSight_Decode_zynq_ultra_ps_e_0_0/CoreSight_Decode_zynq_ultra_ps_e_0_0.xdc]
+set_property used_in_synthesis false [get_files -all /home/marvin/VivadoPrj/CoreSight_Decoder/CoreSight_Decoder.gen/sources_1/bd/CoreSight_Decode/ip/CoreSight_Decode_auto_ds_0/CoreSight_Decode_auto_ds_0_clocks.xdc]
+set_property used_in_implementation false [get_files -all /home/marvin/VivadoPrj/CoreSight_Decoder/CoreSight_Decoder.gen/sources_1/bd/CoreSight_Decode/ip/CoreSight_Decode_auto_ds_0/CoreSight_Decode_auto_ds_0_clocks.xdc]
+set_property used_in_implementation false [get_files -all /home/marvin/VivadoPrj/CoreSight_Decoder/CoreSight_Decoder.gen/sources_1/bd/CoreSight_Decode/ip/CoreSight_Decode_auto_ds_0/CoreSight_Decode_auto_ds_0_ooc.xdc]
+set_property used_in_implementation false [get_files -all /home/marvin/VivadoPrj/CoreSight_Decoder/CoreSight_Decoder.gen/sources_1/bd/CoreSight_Decode/ip/CoreSight_Decode_auto_pc_0/CoreSight_Decode_auto_pc_0_ooc.xdc]
+set_property used_in_implementation false [get_files -all /home/marvin/VivadoPrj/CoreSight_Decoder/CoreSight_Decoder.gen/sources_1/bd/CoreSight_Decode/ip/CoreSight_Decode_rst_ps8_0_99M_2/CoreSight_Decode_rst_ps8_0_99M_2_board.xdc]
+set_property used_in_implementation false [get_files -all /home/marvin/VivadoPrj/CoreSight_Decoder/CoreSight_Decoder.gen/sources_1/bd/CoreSight_Decode/ip/CoreSight_Decode_rst_ps8_0_99M_2/CoreSight_Decode_rst_ps8_0_99M_2.xdc]
+set_property used_in_implementation false [get_files -all /home/marvin/VivadoPrj/CoreSight_Decoder/CoreSight_Decoder.gen/sources_1/bd/CoreSight_Decode/ip/CoreSight_Decode_rst_ps8_0_99M_2/CoreSight_Decode_rst_ps8_0_99M_2_ooc.xdc]
 set_property used_in_implementation false [get_files -all /home/marvin/VivadoPrj/CoreSight_Decoder/CoreSight_Decoder.gen/sources_1/bd/CoreSight_Decode/CoreSight_Decode_ooc.xdc]
 
 OPTRACE "Adding files" END { }

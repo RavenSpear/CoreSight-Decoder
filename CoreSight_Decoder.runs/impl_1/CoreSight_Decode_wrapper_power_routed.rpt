@@ -1,7 +1,7 @@
 Copyright 1986-2021 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version     : Vivado v.2021.2 (lin64) Build 3367213 Tue Oct 19 02:47:39 MDT 2021
-| Date             : Wed Jun  1 17:00:02 2022
+| Date             : Wed Jun  8 10:55:28 2022
 | Host             : marvin running 64-bit Ubuntu 18.04.6 LTS
 | Command          : report_power -file CoreSight_Decode_wrapper_power_routed.rpt -pb CoreSight_Decode_wrapper_power_summary_routed.pb -rpx CoreSight_Decode_wrapper_power_routed.rpx
 | Design           : CoreSight_Decode_wrapper
@@ -30,10 +30,10 @@ Table of Contents
 ----------
 
 +--------------------------+--------------+
-| Total On-Chip Power (W)  | 3.495        |
+| Total On-Chip Power (W)  | 3.502        |
 | Design Power Budget (W)  | Unspecified* |
 | Power Budget Margin (W)  | NA           |
-| Dynamic (W)              | 2.746        |
+| Dynamic (W)              | 2.753        |
 | Device Static (W)        | 0.749        |
 | Effective TJA (C/W)      | 1.0          |
 | Max Ambient (C)          | 96.6         |
@@ -49,23 +49,27 @@ Table of Contents
 1.1 On-Chip Components
 ----------------------
 
-+----------------+-----------+----------+-----------+-----------------+
-| On-Chip        | Power (W) | Used     | Available | Utilization (%) |
-+----------------+-----------+----------+-----------+-----------------+
-| Clocks         |     0.002 |        3 |       --- |             --- |
-| CLB Logic      |    <0.001 |      527 |       --- |             --- |
-|   LUT as Logic |    <0.001 |      117 |    274080 |            0.04 |
-|   Register     |    <0.001 |      371 |    548160 |            0.07 |
-|   CARRY8       |    <0.001 |        4 |     34260 |            0.01 |
-|   Others       |     0.000 |        7 |       --- |             --- |
-| Signals        |    <0.001 |      530 |       --- |             --- |
-| I/O            |     0.011 |        8 |       328 |            2.44 |
-| PS8            |     2.732 |        1 |       --- |             --- |
-| Static Power   |     0.749 |          |           |                 |
-|   PS Static    |     0.098 |          |           |                 |
-|   PL Static    |     0.652 |          |           |                 |
-| Total          |     3.495 |          |           |                 |
-+----------------+-----------+----------+-----------+-----------------+
++--------------------------+-----------+----------+-----------+-----------------+
+| On-Chip                  | Power (W) | Used     | Available | Utilization (%) |
++--------------------------+-----------+----------+-----------+-----------------+
+| Clocks                   |     0.009 |        3 |       --- |             --- |
+| CLB Logic                |     0.004 |     5883 |       --- |             --- |
+|   LUT as Logic           |     0.003 |     1539 |    274080 |            0.56 |
+|   LUT as Shift Register  |    <0.001 |       42 |    144000 |            0.03 |
+|   Register               |    <0.001 |     3470 |    548160 |            0.63 |
+|   LUT as Distributed RAM |    <0.001 |       44 |    144000 |            0.03 |
+|   CARRY8                 |    <0.001 |        4 |     34260 |            0.01 |
+|   BUFG                   |    <0.001 |        1 |        32 |            3.13 |
+|   Others                 |     0.000 |       85 |       --- |             --- |
+|   F7/F8 Muxes            |     0.000 |      385 |    274080 |            0.14 |
+| Signals                  |     0.006 |     4597 |       --- |             --- |
+| I/O                      |     0.001 |        8 |       328 |            2.44 |
+| PS8                      |     2.734 |        1 |       --- |             --- |
+| Static Power             |     0.749 |          |           |                 |
+|   PS Static              |     0.098 |          |           |                 |
+|   PL Static              |     0.652 |          |           |                 |
+| Total                    |     3.502 |          |           |                 |
++--------------------------+-----------+----------+-----------+-----------------+
 
 
 1.2 Power Supply Summary
@@ -74,12 +78,12 @@ Table of Contents
 +-----------------+-------------+-----------+-------------+------------+-------------+-------------+------------+
 | Source          | Voltage (V) | Total (A) | Dynamic (A) | Static (A) | Powerup (A) | Budget (A)  | Margin (A) |
 +-----------------+-------------+-----------+-------------+------------+-------------+-------------+------------+
-| Vccint          |       0.850 |     0.203 |       0.003 |      0.199 |       NA    | Unspecified | NA         |
+| Vccint          |       0.850 |     0.220 |       0.021 |      0.199 |       NA    | Unspecified | NA         |
 | Vccint_io       |       0.850 |     0.036 |       0.000 |      0.036 |       NA    | Unspecified | NA         |
 | Vccbram         |       0.850 |     0.003 |       0.000 |      0.003 |       NA    | Unspecified | NA         |
 | Vccaux          |       1.800 |     0.193 |       0.000 |      0.193 |       NA    | Unspecified | NA         |
-| Vccaux_io       |       1.800 |     0.034 |       0.001 |      0.033 |       NA    | Unspecified | NA         |
-| Vcco33          |       3.300 |     0.011 |       0.003 |      0.009 |       NA    | Unspecified | NA         |
+| Vccaux_io       |       1.800 |     0.033 |       0.000 |      0.033 |       NA    | Unspecified | NA         |
+| Vcco33          |       3.300 |     0.009 |       0.000 |      0.009 |       NA    | Unspecified | NA         |
 | Vcco25          |       2.500 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
 | Vcco18          |       1.800 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
 | Vcco15          |       1.500 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
@@ -87,7 +91,7 @@ Table of Contents
 | Vcco12          |       1.200 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
 | Vcco10          |       1.000 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
 | Vccadc          |       1.800 |     0.008 |       0.000 |      0.008 |       NA    | Unspecified | NA         |
-| VCC_PSINTFP     |       0.850 |     1.087 |       1.052 |      0.035 |       NA    | Unspecified | NA         |
+| VCC_PSINTFP     |       0.850 |     1.089 |       1.055 |      0.035 |       NA    | Unspecified | NA         |
 | VCC_PSINTLP     |       0.850 |     0.249 |       0.242 |      0.007 |       NA    | Unspecified | NA         |
 | VPS_MGTRAVCC    |       0.850 |     0.190 |       0.189 |      0.001 |       NA    | Unspecified | NA         |
 | VCC_PSINTFP_DDR |       0.850 |     0.730 |       0.725 |      0.004 |       NA    | Unspecified | NA         |
@@ -158,13 +162,19 @@ Table of Contents
 3.1 By Hierarchy
 ----------------
 
-+--------------------------+-----------+
-| Name                     | Power (W) |
-+--------------------------+-----------+
-| CoreSight_Decode_wrapper |     2.746 |
-|   CoreSight_Decode_i     |     2.735 |
-|     zynq_ultra_ps_e_0    |     2.734 |
-|       inst               |     2.734 |
-+--------------------------+-----------+
++----------------------------+-----------+
+| Name                       | Power (W) |
++----------------------------+-----------+
+| CoreSight_Decode_wrapper   |     2.753 |
+|   CoreSight_Decode_i       |     2.751 |
+|     CoreSight_Dump_0       |     0.008 |
+|       inst                 |     0.008 |
+|     CoreSight_L0_Decoder_0 |     0.001 |
+|       inst                 |     0.001 |
+|     ps8_0_axi_periph       |     0.005 |
+|       s00_couplers         |     0.005 |
+|     zynq_ultra_ps_e_0      |     2.737 |
+|       inst                 |     2.737 |
++----------------------------+-----------+
 
 

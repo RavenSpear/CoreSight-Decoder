@@ -1,20 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GenRun Id="synth_1" LaunchPart="xczu9eg-ffvb1156-2-e" LaunchTime="1654073877" LaunchIncrCheckpoint="$PSRCDIR/utils_1/imports/synth_1/CoreSight_Decode_wrapper.dcp">
+<GenRun Id="synth_1" LaunchPart="xczu9eg-ffvb1156-2-e" LaunchTime="1654656565" LaunchIncrCheckpoint="$PSRCDIR/utils_1/imports/synth_1/CoreSight_Decode_wrapper.dcp">
+  <File Type="VDS-TIMINGSUMMARY" Name="CoreSight_Decode_wrapper_timing_summary_synth.rpt"/>
   <File Type="RDS-DCP" Name="CoreSight_Decode_wrapper.dcp"/>
   <File Type="RDS-UTIL-PB" Name="CoreSight_Decode_wrapper_utilization_synth.pb"/>
-  <File Type="PA-TCL" Name="CoreSight_Decode_wrapper.tcl"/>
   <File Type="RDS-UTIL" Name="CoreSight_Decode_wrapper_utilization_synth.rpt"/>
-  <File Type="REPORTS-TCL" Name="CoreSight_Decode_wrapper_reports.tcl"/>
+  <File Type="RDS-PROPCONSTRS" Name="CoreSight_Decode_wrapper_drc_synth.rpt"/>
   <File Type="RDS-RDS" Name="CoreSight_Decode_wrapper.vds"/>
+  <File Type="REPORTS-TCL" Name="CoreSight_Decode_wrapper_reports.tcl"/>
+  <File Type="VDS-TIMING-PB" Name="CoreSight_Decode_wrapper_timing_summary_synth.pb"/>
+  <File Type="PA-TCL" Name="CoreSight_Decode_wrapper.tcl"/>
   <FileSet Name="sources" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1" RelGenDir="$PGENDIR/sources_1">
     <Filter Type="Srcs"/>
-    <File Path="$PSRCDIR/sources_1/new/Decoder_Debugger.v">
-      <FileInfo>
-        <Attr Name="UsedIn" Val="synthesis"/>
-        <Attr Name="UsedIn" Val="implementation"/>
-        <Attr Name="UsedIn" Val="simulation"/>
-      </FileInfo>
-    </File>
     <File Path="$PSRCDIR/sources_1/new/CoreSight_L0_Decoder.v">
       <FileInfo>
         <Attr Name="UsedIn" Val="synthesis"/>
@@ -31,6 +27,14 @@
     </File>
     <File Path="$PGENDIR/sources_1/bd/CoreSight_Decode/hdl/CoreSight_Decode_wrapper.v">
       <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/Decoder_Debugger.v">
+      <FileInfo>
+        <Attr Name="AutoDisabled" Val="1"/>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="implementation"/>
         <Attr Name="UsedIn" Val="simulation"/>
@@ -73,6 +77,10 @@
     <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2021"/>
     <Step Id="synth_design"/>
   </Strategy>
+  <BlockFileSet Type="BlockSrcs" Name="CoreSight_Decode_auto_ds_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="CoreSight_Decode_CoreSight_L0_Decoder_0_1"/>
+  <BlockFileSet Type="BlockSrcs" Name="CoreSight_Decode_auto_pc_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="CoreSight_Decode_rst_ps8_0_99M_2"/>
+  <BlockFileSet Type="BlockSrcs" Name="CoreSight_Decode_CoreSight_Dump_0_2"/>
   <BlockFileSet Type="BlockSrcs" Name="CoreSight_Decode_zynq_ultra_ps_e_0_0"/>
-  <BlockFileSet Type="BlockSrcs" Name="CoreSight_Decode_CoreSight_L0_Decoder_0_0"/>
 </GenRun>

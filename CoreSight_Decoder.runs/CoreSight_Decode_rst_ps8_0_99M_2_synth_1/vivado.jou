@@ -1,0 +1,13 @@
+#-----------------------------------------------------------
+# Vivado v2021.2 (64-bit)
+# SW Build 3367213 on Tue Oct 19 02:47:39 MDT 2021
+# IP Build 3369179 on Thu Oct 21 08:25:16 MDT 2021
+# Start of session at: Wed Jun  8 10:49:28 2022
+# Process ID: 12552
+# Current directory: /home/marvin/VivadoPrj/CoreSight_Decoder/CoreSight_Decoder.runs/CoreSight_Decode_rst_ps8_0_99M_2_synth_1
+# Command line: vivado -log CoreSight_Decode_rst_ps8_0_99M_2.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source CoreSight_Decode_rst_ps8_0_99M_2.tcl
+# Log file: /home/marvin/VivadoPrj/CoreSight_Decoder/CoreSight_Decoder.runs/CoreSight_Decode_rst_ps8_0_99M_2_synth_1/CoreSight_Decode_rst_ps8_0_99M_2.vds
+# Journal file: /home/marvin/VivadoPrj/CoreSight_Decoder/CoreSight_Decoder.runs/CoreSight_Decode_rst_ps8_0_99M_2_synth_1/vivado.jou
+# Running On: marvin, OS: Linux, CPU Frequency: 4299.251 MHz, CPU Physical cores: 6, Host memory: 16555 MB
+#-----------------------------------------------------------
+source CoreSight_Decode_rst_ps8_0_99M_2.tcl -notrace
