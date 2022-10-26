@@ -1,7 +1,7 @@
 //Copyright 1986-2021 Xilinx, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2021.2 (lin64) Build 3367213 Tue Oct 19 02:47:39 MDT 2021
-//Date        : Wed Jun  8 10:28:29 2022
+//Date        : Tue Jul 19 21:01:34 2022
 //Host        : marvin running 64-bit Ubuntu 18.04.6 LTS
 //Command     : generate_target CoreSight_Decode.bd
 //Design      : CoreSight_Decode
@@ -16,9 +16,9 @@ module CoreSight_Decode
 
   wire CoreSight_Dump_0_intr;
   wire [7:0]CoreSight_Dump_0_leds;
-  wire [7:0]CoreSight_L0_Decoder_0_bug_type;
-  wire CoreSight_L0_Decoder_0_dbg_intr;
-  wire [127:0]CoreSight_L0_Decoder_0_frame_out;
+  wire [7:0]CoreSight_L0_Decoder_1_bug_type;
+  wire [127:0]CoreSight_L0_Decoder_1_frame_out;
+  wire CoreSight_L0_Decoder_1_frame_valid;
   wire [39:0]ps8_0_axi_periph_M00_AXI_ARADDR;
   wire [2:0]ps8_0_axi_periph_M00_AXI_ARPROT;
   wire ps8_0_axi_periph_M00_AXI_ARREADY;
@@ -82,9 +82,9 @@ module CoreSight_Decode
 
   assign led_0[7:0] = CoreSight_Dump_0_leds;
   CoreSight_Decode_CoreSight_Dump_0_2 CoreSight_Dump_0
-       (.bug_type(CoreSight_L0_Decoder_0_bug_type),
-        .capture_start(CoreSight_L0_Decoder_0_dbg_intr),
-        .frame(CoreSight_L0_Decoder_0_frame_out),
+       (.bug_type(CoreSight_L0_Decoder_1_bug_type),
+        .capture_start(CoreSight_L0_Decoder_1_frame_valid),
+        .frame(CoreSight_L0_Decoder_1_frame_out),
         .intr(CoreSight_Dump_0_intr),
         .leds(CoreSight_Dump_0_leds),
         .s_axi_aclk(zynq_ultra_ps_e_0_pl_clk0),
@@ -109,10 +109,10 @@ module CoreSight_Decode
         .s_axi_wstrb(ps8_0_axi_periph_M00_AXI_WSTRB),
         .s_axi_wvalid(ps8_0_axi_periph_M00_AXI_WVALID),
         .trace_in(zynq_ultra_ps_e_0_ps_pl_tracedata));
-  CoreSight_Decode_CoreSight_L0_Decoder_0_1 CoreSight_L0_Decoder_0
-       (.bug_type(CoreSight_L0_Decoder_0_bug_type),
-        .dbg_intr(CoreSight_L0_Decoder_0_dbg_intr),
-        .frame_out(CoreSight_L0_Decoder_0_frame_out),
+  CoreSight_Decode_CoreSight_L0_Decoder_1_0 CoreSight_L0_Decoder_1
+       (.bug_type(CoreSight_L0_Decoder_1_bug_type),
+        .frame_out(CoreSight_L0_Decoder_1_frame_out),
+        .frame_valid(CoreSight_L0_Decoder_1_frame_valid),
         .trace_clk(zynq_ultra_ps_e_0_pl_clk0),
         .trace_data(zynq_ultra_ps_e_0_ps_pl_tracedata));
   CoreSight_Decode_ps8_0_axi_periph_2 ps8_0_axi_periph

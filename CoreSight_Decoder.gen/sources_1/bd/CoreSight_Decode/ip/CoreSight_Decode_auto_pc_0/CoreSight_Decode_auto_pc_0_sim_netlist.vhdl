@@ -3,8 +3,8 @@
 -- Tool Version: Vivado v.2021.2 (lin64) Build 3367213 Tue Oct 19 02:47:39 MDT 2021
 -- Date        : Wed Jun  8 10:52:29 2022
 -- Host        : marvin running 64-bit Ubuntu 18.04.6 LTS
--- Command     : write_vhdl -force -mode funcsim
---               /home/marvin/VivadoPrj/CoreSight_Decoder/CoreSight_Decoder.gen/sources_1/bd/CoreSight_Decode/ip/CoreSight_Decode_auto_pc_0/CoreSight_Decode_auto_pc_0_sim_netlist.vhdl
+-- Command     : write_vhdl -force -mode funcsim -rename_top CoreSight_Decode_auto_pc_0 -prefix
+--               CoreSight_Decode_auto_pc_0_ CoreSight_Decode_auto_pc_0_sim_netlist.vhdl
 -- Design      : CoreSight_Decode_auto_pc_0
 -- Purpose     : This VHDL netlist is a functional simulation representation of the design and should not be modified or
 --               synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -49,8 +49,6 @@ entity CoreSight_Decode_auto_pc_0_axi_protocol_converter_v2_1_25_b2s_incr_cmd is
     \axlen_cnt_reg[6]_1\ : in STD_LOGIC_VECTOR ( 2 downto 0 );
     \axaddr_incr_reg[11]_1\ : in STD_LOGIC_VECTOR ( 7 downto 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of CoreSight_Decode_auto_pc_0_axi_protocol_converter_v2_1_25_b2s_incr_cmd : entity is "axi_protocol_converter_v2_1_25_b2s_incr_cmd";
 end CoreSight_Decode_auto_pc_0_axi_protocol_converter_v2_1_25_b2s_incr_cmd;
 
 architecture STRUCTURE of CoreSight_Decode_auto_pc_0_axi_protocol_converter_v2_1_25_b2s_incr_cmd is
@@ -1236,8 +1234,6 @@ entity CoreSight_Decode_auto_pc_0_axi_protocol_converter_v2_1_25_b2s_rd_cmd_fsm 
     m_valid_i_reg_1 : in STD_LOGIC;
     aclk : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of CoreSight_Decode_auto_pc_0_axi_protocol_converter_v2_1_25_b2s_rd_cmd_fsm : entity is "axi_protocol_converter_v2_1_25_b2s_rd_cmd_fsm";
 end CoreSight_Decode_auto_pc_0_axi_protocol_converter_v2_1_25_b2s_rd_cmd_fsm;
 
 architecture STRUCTURE of CoreSight_Decode_auto_pc_0_axi_protocol_converter_v2_1_25_b2s_rd_cmd_fsm is
@@ -1575,8 +1571,6 @@ entity CoreSight_Decode_auto_pc_0_axi_protocol_converter_v2_1_25_b2s_simple_fifo
     \in\ : in STD_LOGIC_VECTOR ( 7 downto 0 );
     aclk : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of CoreSight_Decode_auto_pc_0_axi_protocol_converter_v2_1_25_b2s_simple_fifo : entity is "axi_protocol_converter_v2_1_25_b2s_simple_fifo";
 end CoreSight_Decode_auto_pc_0_axi_protocol_converter_v2_1_25_b2s_simple_fifo;
 
 architecture STRUCTURE of CoreSight_Decode_auto_pc_0_axi_protocol_converter_v2_1_25_b2s_simple_fifo is
@@ -3110,8 +3104,6 @@ entity CoreSight_Decode_auto_pc_0_axi_protocol_converter_v2_1_25_b2s_wr_cmd_fsm 
     \FSM_sequential_state_reg[0]_1\ : in STD_LOGIC_VECTOR ( 1 downto 0 );
     aclk : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of CoreSight_Decode_auto_pc_0_axi_protocol_converter_v2_1_25_b2s_wr_cmd_fsm : entity is "axi_protocol_converter_v2_1_25_b2s_wr_cmd_fsm";
 end CoreSight_Decode_auto_pc_0_axi_protocol_converter_v2_1_25_b2s_wr_cmd_fsm;
 
 architecture STRUCTURE of CoreSight_Decode_auto_pc_0_axi_protocol_converter_v2_1_25_b2s_wr_cmd_fsm is
@@ -3475,8 +3467,6 @@ entity CoreSight_Decode_auto_pc_0_axi_protocol_converter_v2_1_25_b2s_wrap_cmd is
     \wrap_cnt_r_reg[3]_0\ : in STD_LOGIC_VECTOR ( 2 downto 0 );
     \wrap_boundary_axaddr_r_reg[6]_0\ : in STD_LOGIC_VECTOR ( 6 downto 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of CoreSight_Decode_auto_pc_0_axi_protocol_converter_v2_1_25_b2s_wrap_cmd : entity is "axi_protocol_converter_v2_1_25_b2s_wrap_cmd";
 end CoreSight_Decode_auto_pc_0_axi_protocol_converter_v2_1_25_b2s_wrap_cmd;
 
 architecture STRUCTURE of CoreSight_Decode_auto_pc_0_axi_protocol_converter_v2_1_25_b2s_wrap_cmd is
@@ -5514,8 +5504,6 @@ entity CoreSight_Decode_auto_pc_0_axi_register_slice_v2_1_25_axic_register_slice
     aresetn : in STD_LOGIC;
     \m_payload_i_reg[0]_0\ : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of CoreSight_Decode_auto_pc_0_axi_register_slice_v2_1_25_axic_register_slice : entity is "axi_register_slice_v2_1_25_axic_register_slice";
 end CoreSight_Decode_auto_pc_0_axi_register_slice_v2_1_25_axic_register_slice;
 
 architecture STRUCTURE of CoreSight_Decode_auto_pc_0_axi_register_slice_v2_1_25_axic_register_slice is
@@ -11343,8 +11331,6 @@ entity CoreSight_Decode_auto_pc_0_axi_protocol_converter_v2_1_25_b2s_b_channel i
     m_axi_bvalid : in STD_LOGIC;
     \in\ : in STD_LOGIC_VECTOR ( 7 downto 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of CoreSight_Decode_auto_pc_0_axi_protocol_converter_v2_1_25_b2s_b_channel : entity is "axi_protocol_converter_v2_1_25_b2s_b_channel";
 end CoreSight_Decode_auto_pc_0_axi_protocol_converter_v2_1_25_b2s_b_channel;
 
 architecture STRUCTURE of CoreSight_Decode_auto_pc_0_axi_protocol_converter_v2_1_25_b2s_b_channel is
@@ -11689,8 +11675,6 @@ entity CoreSight_Decode_auto_pc_0_axi_protocol_converter_v2_1_25_b2s_cmd_transla
     \wrap_boundary_axaddr_r_reg[6]\ : in STD_LOGIC_VECTOR ( 6 downto 0 );
     \axaddr_incr_reg[11]_0\ : in STD_LOGIC_VECTOR ( 7 downto 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of CoreSight_Decode_auto_pc_0_axi_protocol_converter_v2_1_25_b2s_cmd_translator : entity is "axi_protocol_converter_v2_1_25_b2s_cmd_translator";
 end CoreSight_Decode_auto_pc_0_axi_protocol_converter_v2_1_25_b2s_cmd_translator;
 
 architecture STRUCTURE of CoreSight_Decode_auto_pc_0_axi_protocol_converter_v2_1_25_b2s_cmd_translator is
@@ -12064,8 +12048,6 @@ entity CoreSight_Decode_auto_pc_0_axi_protocol_converter_v2_1_25_b2s_r_channel i
     \in\ : in STD_LOGIC_VECTOR ( 33 downto 0 );
     areset_d1 : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of CoreSight_Decode_auto_pc_0_axi_protocol_converter_v2_1_25_b2s_r_channel : entity is "axi_protocol_converter_v2_1_25_b2s_r_channel";
 end CoreSight_Decode_auto_pc_0_axi_protocol_converter_v2_1_25_b2s_r_channel;
 
 architecture STRUCTURE of CoreSight_Decode_auto_pc_0_axi_protocol_converter_v2_1_25_b2s_r_channel is
@@ -12240,8 +12222,6 @@ entity CoreSight_Decode_auto_pc_0_axi_register_slice_v2_1_25_axi_register_slice 
     E : in STD_LOGIC_VECTOR ( 0 to 0 );
     \m_payload_i_reg[0]\ : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of CoreSight_Decode_auto_pc_0_axi_register_slice_v2_1_25_axi_register_slice : entity is "axi_register_slice_v2_1_25_axi_register_slice";
 end CoreSight_Decode_auto_pc_0_axi_register_slice_v2_1_25_axi_register_slice;
 
 architecture STRUCTURE of CoreSight_Decode_auto_pc_0_axi_register_slice_v2_1_25_axi_register_slice is
@@ -12458,8 +12438,6 @@ entity CoreSight_Decode_auto_pc_0_axi_protocol_converter_v2_1_25_b2s_ar_channel 
     \wrap_boundary_axaddr_r_reg[6]\ : in STD_LOGIC_VECTOR ( 6 downto 0 );
     \axaddr_incr_reg[9]_0\ : in STD_LOGIC_VECTOR ( 3 downto 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of CoreSight_Decode_auto_pc_0_axi_protocol_converter_v2_1_25_b2s_ar_channel : entity is "axi_protocol_converter_v2_1_25_b2s_ar_channel";
 end CoreSight_Decode_auto_pc_0_axi_protocol_converter_v2_1_25_b2s_ar_channel;
 
 architecture STRUCTURE of CoreSight_Decode_auto_pc_0_axi_protocol_converter_v2_1_25_b2s_ar_channel is
@@ -12683,8 +12661,6 @@ entity CoreSight_Decode_auto_pc_0_axi_protocol_converter_v2_1_25_b2s_aw_channel 
     \wrap_cnt_r_reg[1]\ : in STD_LOGIC;
     \wrap_boundary_axaddr_r_reg[6]\ : in STD_LOGIC_VECTOR ( 6 downto 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of CoreSight_Decode_auto_pc_0_axi_protocol_converter_v2_1_25_b2s_aw_channel : entity is "axi_protocol_converter_v2_1_25_b2s_aw_channel";
 end CoreSight_Decode_auto_pc_0_axi_protocol_converter_v2_1_25_b2s_aw_channel;
 
 architecture STRUCTURE of CoreSight_Decode_auto_pc_0_axi_protocol_converter_v2_1_25_b2s_aw_channel is
@@ -12945,8 +12921,6 @@ entity CoreSight_Decode_auto_pc_0_axi_protocol_converter_v2_1_25_b2s is
     s_axi_arvalid : in STD_LOGIC;
     aresetn : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of CoreSight_Decode_auto_pc_0_axi_protocol_converter_v2_1_25_b2s : entity is "axi_protocol_converter_v2_1_25_b2s";
 end CoreSight_Decode_auto_pc_0_axi_protocol_converter_v2_1_25_b2s;
 
 architecture STRUCTURE of CoreSight_Decode_auto_pc_0_axi_protocol_converter_v2_1_25_b2s is
@@ -13586,8 +13560,6 @@ entity CoreSight_Decode_auto_pc_0_axi_protocol_converter_v2_1_25_axi_protocol_co
   attribute C_TRANSLATION_MODE of CoreSight_Decode_auto_pc_0_axi_protocol_converter_v2_1_25_axi_protocol_converter : entity is 2;
   attribute DowngradeIPIdentifiedWarnings : string;
   attribute DowngradeIPIdentifiedWarnings of CoreSight_Decode_auto_pc_0_axi_protocol_converter_v2_1_25_axi_protocol_converter : entity is "yes";
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of CoreSight_Decode_auto_pc_0_axi_protocol_converter_v2_1_25_axi_protocol_converter : entity is "axi_protocol_converter_v2_1_25_axi_protocol_converter";
   attribute P_AXI3 : integer;
   attribute P_AXI3 of CoreSight_Decode_auto_pc_0_axi_protocol_converter_v2_1_25_axi_protocol_converter : entity is 1;
   attribute P_AXI4 : integer;

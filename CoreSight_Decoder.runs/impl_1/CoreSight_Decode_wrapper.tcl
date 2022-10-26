@@ -123,11 +123,7 @@ start_step write_bitstream
 set ACTIVE_STEP write_bitstream
 set rc [catch {
   create_msg_db write_bitstream.pb
-  set_param power.enableLutRouteBelPower 1
-  set_param power.enableCarry8RouteBelPower 1
-  set_param power.enableUnconnectedCarry8PinPower 1
   set_param chipscope.maxJobs 3
-  set_param power.BramSDPPropagationFix 1
   open_checkpoint CoreSight_Decode_wrapper_routed.dcp
   set_property webtalk.parent_dir /home/marvin/VivadoPrj/CoreSight_Decoder/CoreSight_Decoder.cache/wt [current_project]
 set_property TOP CoreSight_Decode_wrapper [current_fileset]

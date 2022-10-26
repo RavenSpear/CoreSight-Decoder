@@ -3,8 +3,8 @@
 // Tool Version: Vivado v.2021.2 (lin64) Build 3367213 Tue Oct 19 02:47:39 MDT 2021
 // Date        : Wed Jun  8 10:52:29 2022
 // Host        : marvin running 64-bit Ubuntu 18.04.6 LTS
-// Command     : write_verilog -force -mode funcsim
-//               /home/marvin/VivadoPrj/CoreSight_Decoder/CoreSight_Decoder.gen/sources_1/bd/CoreSight_Decode/ip/CoreSight_Decode_auto_pc_0/CoreSight_Decode_auto_pc_0_sim_netlist.v
+// Command     : write_verilog -force -mode funcsim -rename_top CoreSight_Decode_auto_pc_0 -prefix
+//               CoreSight_Decode_auto_pc_0_ CoreSight_Decode_auto_pc_0_sim_netlist.v
 // Design      : CoreSight_Decode_auto_pc_0
 // Purpose     : This verilog netlist is a functional simulation representation of the design and should not be modified
 //               or synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -327,10 +327,10 @@ endmodule
 (* C_AXI_RUSER_WIDTH = "1" *) (* C_AXI_SUPPORTS_READ = "1" *) (* C_AXI_SUPPORTS_USER_SIGNALS = "0" *) 
 (* C_AXI_SUPPORTS_WRITE = "1" *) (* C_AXI_WUSER_WIDTH = "1" *) (* C_FAMILY = "zynquplus" *) 
 (* C_IGNORE_ID = "1" *) (* C_M_AXI_PROTOCOL = "2" *) (* C_S_AXI_PROTOCOL = "0" *) 
-(* C_TRANSLATION_MODE = "2" *) (* DowngradeIPIdentifiedWarnings = "yes" *) (* ORIG_REF_NAME = "axi_protocol_converter_v2_1_25_axi_protocol_converter" *) 
-(* P_AXI3 = "1" *) (* P_AXI4 = "0" *) (* P_AXILITE = "2" *) 
-(* P_AXILITE_SIZE = "3'b010" *) (* P_CONVERSION = "2" *) (* P_DECERR = "2'b11" *) 
-(* P_INCR = "2'b01" *) (* P_PROTECTION = "1" *) (* P_SLVERR = "2'b10" *) 
+(* C_TRANSLATION_MODE = "2" *) (* DowngradeIPIdentifiedWarnings = "yes" *) (* P_AXI3 = "1" *) 
+(* P_AXI4 = "0" *) (* P_AXILITE = "2" *) (* P_AXILITE_SIZE = "3'b010" *) 
+(* P_CONVERSION = "2" *) (* P_DECERR = "2'b11" *) (* P_INCR = "2'b01" *) 
+(* P_PROTECTION = "1" *) (* P_SLVERR = "2'b10" *) 
 module CoreSight_Decode_auto_pc_0_axi_protocol_converter_v2_1_25_axi_protocol_converter
    (aclk,
     aresetn,
@@ -670,7 +670,6 @@ module CoreSight_Decode_auto_pc_0_axi_protocol_converter_v2_1_25_axi_protocol_co
         .s_axi_rvalid(s_axi_rvalid));
 endmodule
 
-(* ORIG_REF_NAME = "axi_protocol_converter_v2_1_25_b2s" *) 
 module CoreSight_Decode_auto_pc_0_axi_protocol_converter_v2_1_25_b2s
    (s_axi_rvalid,
     s_axi_awready,
@@ -1182,7 +1181,6 @@ module CoreSight_Decode_auto_pc_0_axi_protocol_converter_v2_1_25_b2s
         .R(1'b0));
 endmodule
 
-(* ORIG_REF_NAME = "axi_protocol_converter_v2_1_25_b2s_ar_channel" *) 
 module CoreSight_Decode_auto_pc_0_axi_protocol_converter_v2_1_25_b2s_ar_channel
    (incr_next_pending,
     sel_first_i,
@@ -1461,7 +1459,6 @@ module CoreSight_Decode_auto_pc_0_axi_protocol_converter_v2_1_25_b2s_ar_channel
         .\wrap_second_len_r_reg[3]_0 ({D,\wrap_second_len_r_reg[1] ,\wrap_cmd_0/wrap_second_len }));
 endmodule
 
-(* ORIG_REF_NAME = "axi_protocol_converter_v2_1_25_b2s_aw_channel" *) 
 module CoreSight_Decode_auto_pc_0_axi_protocol_converter_v2_1_25_b2s_aw_channel
    (incr_next_pending,
     sel_first_i,
@@ -1787,7 +1784,6 @@ module CoreSight_Decode_auto_pc_0_axi_protocol_converter_v2_1_25_b2s_aw_channel
         .R(1'b0));
 endmodule
 
-(* ORIG_REF_NAME = "axi_protocol_converter_v2_1_25_b2s_b_channel" *) 
 module CoreSight_Decode_auto_pc_0_axi_protocol_converter_v2_1_25_b2s_b_channel
    (si_rs_bvalid,
     Q,
@@ -2047,7 +2043,6 @@ module CoreSight_Decode_auto_pc_0_axi_protocol_converter_v2_1_25_b2s_b_channel
         .R(areset_d1));
 endmodule
 
-(* ORIG_REF_NAME = "axi_protocol_converter_v2_1_25_b2s_cmd_translator" *) 
 module CoreSight_Decode_auto_pc_0_axi_protocol_converter_v2_1_25_b2s_cmd_translator
    (next_pending_r,
     sel_first_reg_0,
@@ -2575,7 +2570,6 @@ module CoreSight_Decode_auto_pc_0_axi_protocol_converter_v2_1_25_b2s_cmd_transla
         .\wrap_second_len_r_reg[3]_1 (\wrap_second_len_r_reg[3]_0 ));
 endmodule
 
-(* ORIG_REF_NAME = "axi_protocol_converter_v2_1_25_b2s_incr_cmd" *) 
 module CoreSight_Decode_auto_pc_0_axi_protocol_converter_v2_1_25_b2s_incr_cmd
    (next_pending_r,
     sel_first_reg_0,
@@ -3581,7 +3575,6 @@ module CoreSight_Decode_auto_pc_0_axi_protocol_converter_v2_1_25_b2s_incr_cmd_2
         .R(1'b0));
 endmodule
 
-(* ORIG_REF_NAME = "axi_protocol_converter_v2_1_25_b2s_r_channel" *) 
 module CoreSight_Decode_auto_pc_0_axi_protocol_converter_v2_1_25_b2s_r_channel
    (si_rs_rlast,
     \cnt_read_reg[3] ,
@@ -3660,7 +3653,6 @@ module CoreSight_Decode_auto_pc_0_axi_protocol_converter_v2_1_25_b2s_r_channel
         .trans_in(trans_in));
 endmodule
 
-(* ORIG_REF_NAME = "axi_protocol_converter_v2_1_25_b2s_rd_cmd_fsm" *) 
 module CoreSight_Decode_auto_pc_0_axi_protocol_converter_v2_1_25_b2s_rd_cmd_fsm
    (\FSM_sequential_state_reg[0]_0 ,
     Q,
@@ -4012,7 +4004,6 @@ module CoreSight_Decode_auto_pc_0_axi_protocol_converter_v2_1_25_b2s_rd_cmd_fsm
         .O(D[1]));
 endmodule
 
-(* ORIG_REF_NAME = "axi_protocol_converter_v2_1_25_b2s_simple_fifo" *) 
 module CoreSight_Decode_auto_pc_0_axi_protocol_converter_v2_1_25_b2s_simple_fifo
    (Q,
     \cnt_read_reg[1]_0 ,
@@ -5268,7 +5259,6 @@ module CoreSight_Decode_auto_pc_0_axi_protocol_converter_v2_1_25_b2s_simple_fifo
         .Q31(\NLW_memory_reg[31][0]_srl32_Q31_UNCONNECTED ));
 endmodule
 
-(* ORIG_REF_NAME = "axi_protocol_converter_v2_1_25_b2s_wr_cmd_fsm" *) 
 module CoreSight_Decode_auto_pc_0_axi_protocol_converter_v2_1_25_b2s_wr_cmd_fsm
    (Q,
     incr_next_pending,
@@ -5633,7 +5623,6 @@ module CoreSight_Decode_auto_pc_0_axi_protocol_converter_v2_1_25_b2s_wr_cmd_fsm
         .O(D[1]));
 endmodule
 
-(* ORIG_REF_NAME = "axi_protocol_converter_v2_1_25_b2s_wrap_cmd" *) 
 module CoreSight_Decode_auto_pc_0_axi_protocol_converter_v2_1_25_b2s_wrap_cmd
    (sel_first_reg_0,
     Q,
@@ -7284,7 +7273,6 @@ module CoreSight_Decode_auto_pc_0_axi_protocol_converter_v2_1_25_b2s_wrap_cmd_3
         .R(1'b0));
 endmodule
 
-(* ORIG_REF_NAME = "axi_register_slice_v2_1_25_axi_register_slice" *) 
 module CoreSight_Decode_auto_pc_0_axi_register_slice_v2_1_25_axi_register_slice
    (s_ready_i_reg,
     s_ready_i_reg_0,
@@ -7783,7 +7771,6 @@ module CoreSight_Decode_auto_pc_0_axi_register_slice_v2_1_25_axi_register_slice
         .\skid_buffer_reg[33]_0 (\skid_buffer_reg[33] ));
 endmodule
 
-(* ORIG_REF_NAME = "axi_register_slice_v2_1_25_axic_register_slice" *) 
 module CoreSight_Decode_auto_pc_0_axi_register_slice_v2_1_25_axic_register_slice
    (s_ready_i_reg_0,
     m_valid_i_reg_0,

@@ -1,10 +1,10 @@
 -- Copyright 1986-2021 Xilinx, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2021.2 (lin64) Build 3367213 Tue Oct 19 02:47:39 MDT 2021
--- Date        : Wed Jun  8 10:52:37 2022
+-- Date        : Wed Jun  8 10:52:36 2022
 -- Host        : marvin running 64-bit Ubuntu 18.04.6 LTS
--- Command     : write_vhdl -force -mode synth_stub
---               /home/marvin/VivadoPrj/CoreSight_Decoder/CoreSight_Decoder.gen/sources_1/bd/CoreSight_Decode/ip/CoreSight_Decode_auto_ds_0/CoreSight_Decode_auto_ds_0_stub.vhdl
+-- Command     : write_vhdl -force -mode synth_stub -rename_top CoreSight_Decode_auto_ds_0 -prefix
+--               CoreSight_Decode_auto_ds_0_ CoreSight_Decode_auto_ds_0_stub.vhdl
 -- Design      : CoreSight_Decode_auto_ds_0
 -- Purpose     : Stub declaration of top-level module interface
 -- Device      : xczu9eg-ffvb1156-2-e

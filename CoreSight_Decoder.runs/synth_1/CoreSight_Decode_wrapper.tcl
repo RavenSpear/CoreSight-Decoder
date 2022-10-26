@@ -93,13 +93,13 @@ read_verilog -library xil_defaultlib /home/marvin/VivadoPrj/CoreSight_Decoder/Co
 add_files /home/marvin/VivadoPrj/CoreSight_Decoder/CoreSight_Decoder.srcs/sources_1/bd/CoreSight_Decode/CoreSight_Decode.bd
 set_property used_in_implementation false [get_files -all /home/marvin/VivadoPrj/CoreSight_Decoder/CoreSight_Decoder.gen/sources_1/bd/CoreSight_Decode/ip/CoreSight_Decode_zynq_ultra_ps_e_0_0/CoreSight_Decode_zynq_ultra_ps_e_0_0_ooc.xdc]
 set_property used_in_implementation false [get_files -all /home/marvin/VivadoPrj/CoreSight_Decoder/CoreSight_Decoder.gen/sources_1/bd/CoreSight_Decode/ip/CoreSight_Decode_zynq_ultra_ps_e_0_0/CoreSight_Decode_zynq_ultra_ps_e_0_0.xdc]
+set_property used_in_implementation false [get_files -all /home/marvin/VivadoPrj/CoreSight_Decoder/CoreSight_Decoder.gen/sources_1/bd/CoreSight_Decode/ip/CoreSight_Decode_rst_ps8_0_99M_2/CoreSight_Decode_rst_ps8_0_99M_2_board.xdc]
+set_property used_in_implementation false [get_files -all /home/marvin/VivadoPrj/CoreSight_Decoder/CoreSight_Decoder.gen/sources_1/bd/CoreSight_Decode/ip/CoreSight_Decode_rst_ps8_0_99M_2/CoreSight_Decode_rst_ps8_0_99M_2.xdc]
+set_property used_in_implementation false [get_files -all /home/marvin/VivadoPrj/CoreSight_Decoder/CoreSight_Decoder.gen/sources_1/bd/CoreSight_Decode/ip/CoreSight_Decode_rst_ps8_0_99M_2/CoreSight_Decode_rst_ps8_0_99M_2_ooc.xdc]
 set_property used_in_synthesis false [get_files -all /home/marvin/VivadoPrj/CoreSight_Decoder/CoreSight_Decoder.gen/sources_1/bd/CoreSight_Decode/ip/CoreSight_Decode_auto_ds_0/CoreSight_Decode_auto_ds_0_clocks.xdc]
 set_property used_in_implementation false [get_files -all /home/marvin/VivadoPrj/CoreSight_Decoder/CoreSight_Decoder.gen/sources_1/bd/CoreSight_Decode/ip/CoreSight_Decode_auto_ds_0/CoreSight_Decode_auto_ds_0_clocks.xdc]
 set_property used_in_implementation false [get_files -all /home/marvin/VivadoPrj/CoreSight_Decoder/CoreSight_Decoder.gen/sources_1/bd/CoreSight_Decode/ip/CoreSight_Decode_auto_ds_0/CoreSight_Decode_auto_ds_0_ooc.xdc]
 set_property used_in_implementation false [get_files -all /home/marvin/VivadoPrj/CoreSight_Decoder/CoreSight_Decoder.gen/sources_1/bd/CoreSight_Decode/ip/CoreSight_Decode_auto_pc_0/CoreSight_Decode_auto_pc_0_ooc.xdc]
-set_property used_in_implementation false [get_files -all /home/marvin/VivadoPrj/CoreSight_Decoder/CoreSight_Decoder.gen/sources_1/bd/CoreSight_Decode/ip/CoreSight_Decode_rst_ps8_0_99M_2/CoreSight_Decode_rst_ps8_0_99M_2_board.xdc]
-set_property used_in_implementation false [get_files -all /home/marvin/VivadoPrj/CoreSight_Decoder/CoreSight_Decoder.gen/sources_1/bd/CoreSight_Decode/ip/CoreSight_Decode_rst_ps8_0_99M_2/CoreSight_Decode_rst_ps8_0_99M_2.xdc]
-set_property used_in_implementation false [get_files -all /home/marvin/VivadoPrj/CoreSight_Decoder/CoreSight_Decoder.gen/sources_1/bd/CoreSight_Decode/ip/CoreSight_Decode_rst_ps8_0_99M_2/CoreSight_Decode_rst_ps8_0_99M_2_ooc.xdc]
 set_property used_in_implementation false [get_files -all /home/marvin/VivadoPrj/CoreSight_Decoder/CoreSight_Decoder.gen/sources_1/bd/CoreSight_Decode/CoreSight_Decode_ooc.xdc]
 
 OPTRACE "Adding files" END { }

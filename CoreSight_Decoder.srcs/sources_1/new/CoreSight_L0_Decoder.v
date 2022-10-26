@@ -45,7 +45,7 @@ module CoreSight_L0_Decoder(
             STOP:begin
                 if(trace_data[31:0]==32'h1||trace_data[31:0]==32'h0||trace_data[31:0]==32'hFFFFFFFF);//STOP循环，包含三种报文
                 else if(trace_data[31:0]==32'h7FFF7FFF) state <= IDLE;//STOP->IDLE
-                else if(trace_data[31:0]==16'hFFFF7FFF) begin//严格判定，进入16位对齐模式，保存高位的16位内容，STOP-> IDLE
+                else if(trace_data[31:0]==32'hFFFF7FFF) begin//严格判定，进入16位对齐模式，保存高位的16位内容，STOP-> IDLE
                     state<=IDLE;
                     align16<=1'b1;
                     highhalf<=trace_data[31:16];
@@ -99,20 +99,20 @@ module CoreSight_L0_Decoder(
                         highhalf<=trace_data[31:16];
                     end
                     else begin//32位下IDLE异常
-                        bug <= 1'b1;//异常，IDLE32位下异常数据，0x5
-                        bug_num <= 8'h5;
+                        //bug <= 1'b1;//异常，IDLE32位下异常数据，0x5
+                        //bug_num <= processcount;
                     end
                 end
             end
             PROCESS:begin
                 align16 <= 1'b0;//PROCESS只会在32位模式下工作
                 
-                if(trace_data[31:16]==16'hFFFF||trace_data[15:0]==16'hFFFF) begin
+                /*if(trace_data[31:16]==16'hFFFF||trace_data[15:0]==16'hFFFF) begin
                      bug <= 1'b1;//异常，PROCESS过程中出现7FFFFFFF报文，0x6
-                     bug_num <= 8'h6;
+                     bug_num <= processcount;
                 end
                 
-                else if(trace_data[31:0]==32'h7FFF7FFF);
+                else */if(trace_data[31:0]==32'h7FFF7FFF);
                 else if(trace_data[15:0]==16'h7FFF)begin
                     case(processcount)
                         3'h0:frame[15:0]<= trace_data[31:16];    
@@ -150,7 +150,11 @@ module CoreSight_L0_Decoder(
                 else begin
                     case(processcount)
                         3'h0:frame[31:0]<= trace_data[31:0];
-                        3'h1:frame[47:16]<= trace_data[31:0];
+                        3'h1:begin
+                            frame[47:16]<= trace_data[31:0];
+                            bug <= 1'b1;//异常，0x7
+                            bug_num <= 8'h8;
+                        end
                         3'h2:frame[63:32]<= trace_data[31:0];
                         3'h3:frame[79:48]<= trace_data[31:0];
                         3'h4:frame[95:64]<= trace_data[31:0];

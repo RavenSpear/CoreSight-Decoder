@@ -23,11 +23,13 @@
 module CoreSight_L0_Decoder_sim;
     reg trace_clk;
     reg [31:0] trace_data;
+    wire [127:0] frame_out;
     parameter CYCLE = 1;
     always # (CYCLE) trace_clk=~trace_clk;
     CoreSight_L0_Decoder CoreSight_L0_Decoder_i(
         .trace_clk(trace_clk),
-        .trace_data(trace_data)
+        .trace_data(trace_data),
+        .frame_out(frame_out)
     );
 initial begin
     trace_clk = 1;

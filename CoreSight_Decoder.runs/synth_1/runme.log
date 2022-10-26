@@ -9,6 +9,7 @@
     ** Copyright 1986-2021 Xilinx, Inc. All Rights Reserved.
 
 source CoreSight_Decode_wrapper.tcl -notrace
+create_project: Time (s): cpu = 00:00:03 ; elapsed = 00:00:06 . Memory (MB): peak = 2538.684 ; gain = 2.016 ; free physical = 707 ; free virtual = 8090
 INFO: [IP_Flow 19-234] Refreshing IP repositories
 INFO: [IP_Flow 19-1700] Loaded user IP repository '/home/marvin/VivadoPrj/ip_repo'.
 INFO: [IP_Flow 19-2313] Loaded Vivado IP repository '/home/marvin/Xilinx/Vivado/2021.2/data/ip'.
@@ -19,38 +20,39 @@ Command: synth_design -top CoreSight_Decode_wrapper -part xczu9eg-ffvb1156-2-e
 Starting synth_design
 Attempting to get a license for feature 'Synthesis' and/or device 'xczu9eg'
 INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xczu9eg'
+WARNING: [Vivado_Tcl 4-1101] Global synthesis options have changed for the design, incremental synthesis will not be run
 INFO: [Device 21-403] Loading part xczu9eg-ffvb1156-2-e
-WARNING: [Designutils 20-4072] Reference run did not run incremental synthesis because the design is too small; reverting to default synthesis
-INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
 INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 4 processes.
 INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
-INFO: [Synth 8-7075] Helper process launched with PID 16218
+INFO: [Synth 8-7075] Helper process launched with PID 27136
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:02 ; elapsed = 00:00:03 . Memory (MB): peak = 3067.965 ; gain = 151.762 ; free physical = 6857 ; free virtual = 8715
+Starting RTL Elaboration : Time (s): cpu = 00:00:03 ; elapsed = 00:00:05 . Memory (MB): peak = 3068.699 ; gain = 151.762 ; free physical = 158 ; free virtual = 6166
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-6157] synthesizing module 'CoreSight_Decode_wrapper' [/home/marvin/VivadoPrj/CoreSight_Decoder/CoreSight_Decoder.gen/sources_1/bd/CoreSight_Decode/hdl/CoreSight_Decode_wrapper.v:12]
 INFO: [Synth 8-6157] synthesizing module 'CoreSight_Decode' [/home/marvin/VivadoPrj/CoreSight_Decoder/CoreSight_Decoder.gen/sources_1/bd/CoreSight_Decode/synth/CoreSight_Decode.v:13]
-INFO: [Synth 8-6157] synthesizing module 'CoreSight_Decode_CoreSight_Dump_0_2' [/home/marvin/VivadoPrj/CoreSight_Decoder/CoreSight_Decoder.runs/synth_1/.Xil/Vivado-15967-marvin/realtime/CoreSight_Decode_CoreSight_Dump_0_2_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'CoreSight_Decode_CoreSight_Dump_0_2' (1#1) [/home/marvin/VivadoPrj/CoreSight_Decoder/CoreSight_Decoder.runs/synth_1/.Xil/Vivado-15967-marvin/realtime/CoreSight_Decode_CoreSight_Dump_0_2_stub.v:6]
-INFO: [Synth 8-6157] synthesizing module 'CoreSight_Decode_CoreSight_L0_Decoder_0_1' [/home/marvin/VivadoPrj/CoreSight_Decoder/CoreSight_Decoder.runs/synth_1/.Xil/Vivado-15967-marvin/realtime/CoreSight_Decode_CoreSight_L0_Decoder_0_1_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'CoreSight_Decode_CoreSight_L0_Decoder_0_1' (2#1) [/home/marvin/VivadoPrj/CoreSight_Decoder/CoreSight_Decoder.runs/synth_1/.Xil/Vivado-15967-marvin/realtime/CoreSight_Decode_CoreSight_L0_Decoder_0_1_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'CoreSight_Decode_CoreSight_Dump_0_2' [/home/marvin/VivadoPrj/CoreSight_Decoder/CoreSight_Decoder.runs/synth_1/.Xil/Vivado-26488-marvin/realtime/CoreSight_Decode_CoreSight_Dump_0_2_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'CoreSight_Decode_CoreSight_Dump_0_2' (1#1) [/home/marvin/VivadoPrj/CoreSight_Decoder/CoreSight_Decoder.runs/synth_1/.Xil/Vivado-26488-marvin/realtime/CoreSight_Decode_CoreSight_Dump_0_2_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'CoreSight_Decode_CoreSight_L0_Decoder_1_0' [/home/marvin/VivadoPrj/CoreSight_Decoder/CoreSight_Decoder.runs/synth_1/.Xil/Vivado-26488-marvin/realtime/CoreSight_Decode_CoreSight_L0_Decoder_1_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'CoreSight_Decode_CoreSight_L0_Decoder_1_0' (2#1) [/home/marvin/VivadoPrj/CoreSight_Decoder/CoreSight_Decoder.runs/synth_1/.Xil/Vivado-26488-marvin/realtime/CoreSight_Decode_CoreSight_L0_Decoder_1_0_stub.v:6]
+WARNING: [Synth 8-7071] port 'dbg_intr' of module 'CoreSight_Decode_CoreSight_L0_Decoder_1_0' is unconnected for instance 'CoreSight_L0_Decoder_1' [/home/marvin/VivadoPrj/CoreSight_Decoder/CoreSight_Decoder.gen/sources_1/bd/CoreSight_Decode/synth/CoreSight_Decode.v:112]
+WARNING: [Synth 8-7023] instance 'CoreSight_L0_Decoder_1' of module 'CoreSight_Decode_CoreSight_L0_Decoder_1_0' has 6 connections declared, but only 5 given [/home/marvin/VivadoPrj/CoreSight_Decoder/CoreSight_Decoder.gen/sources_1/bd/CoreSight_Decode/synth/CoreSight_Decode.v:112]
 INFO: [Synth 8-6157] synthesizing module 'CoreSight_Decode_ps8_0_axi_periph_2' [/home/marvin/VivadoPrj/CoreSight_Decoder/CoreSight_Decoder.gen/sources_1/bd/CoreSight_Decode/synth/CoreSight_Decode.v:234]
 INFO: [Synth 8-6157] synthesizing module 's00_couplers_imp_1JYZAU0' [/home/marvin/VivadoPrj/CoreSight_Decoder/CoreSight_Decoder.gen/sources_1/bd/CoreSight_Decode/synth/CoreSight_Decode.v:544]
-INFO: [Synth 8-6157] synthesizing module 'CoreSight_Decode_auto_ds_0' [/home/marvin/VivadoPrj/CoreSight_Decoder/CoreSight_Decoder.runs/synth_1/.Xil/Vivado-15967-marvin/realtime/CoreSight_Decode_auto_ds_0_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'CoreSight_Decode_auto_ds_0' (3#1) [/home/marvin/VivadoPrj/CoreSight_Decoder/CoreSight_Decoder.runs/synth_1/.Xil/Vivado-15967-marvin/realtime/CoreSight_Decode_auto_ds_0_stub.v:6]
-INFO: [Synth 8-6157] synthesizing module 'CoreSight_Decode_auto_pc_0' [/home/marvin/VivadoPrj/CoreSight_Decoder/CoreSight_Decoder.runs/synth_1/.Xil/Vivado-15967-marvin/realtime/CoreSight_Decode_auto_pc_0_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'CoreSight_Decode_auto_pc_0' (4#1) [/home/marvin/VivadoPrj/CoreSight_Decoder/CoreSight_Decoder.runs/synth_1/.Xil/Vivado-15967-marvin/realtime/CoreSight_Decode_auto_pc_0_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'CoreSight_Decode_auto_ds_0' [/home/marvin/VivadoPrj/CoreSight_Decoder/CoreSight_Decoder.runs/synth_1/.Xil/Vivado-26488-marvin/realtime/CoreSight_Decode_auto_ds_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'CoreSight_Decode_auto_ds_0' (3#1) [/home/marvin/VivadoPrj/CoreSight_Decoder/CoreSight_Decoder.runs/synth_1/.Xil/Vivado-26488-marvin/realtime/CoreSight_Decode_auto_ds_0_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'CoreSight_Decode_auto_pc_0' [/home/marvin/VivadoPrj/CoreSight_Decoder/CoreSight_Decoder.runs/synth_1/.Xil/Vivado-26488-marvin/realtime/CoreSight_Decode_auto_pc_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'CoreSight_Decode_auto_pc_0' (4#1) [/home/marvin/VivadoPrj/CoreSight_Decoder/CoreSight_Decoder.runs/synth_1/.Xil/Vivado-26488-marvin/realtime/CoreSight_Decode_auto_pc_0_stub.v:6]
 INFO: [Synth 8-6155] done synthesizing module 's00_couplers_imp_1JYZAU0' (5#1) [/home/marvin/VivadoPrj/CoreSight_Decoder/CoreSight_Decoder.gen/sources_1/bd/CoreSight_Decode/synth/CoreSight_Decode.v:544]
 INFO: [Synth 8-6155] done synthesizing module 'CoreSight_Decode_ps8_0_axi_periph_2' (6#1) [/home/marvin/VivadoPrj/CoreSight_Decoder/CoreSight_Decoder.gen/sources_1/bd/CoreSight_Decode/synth/CoreSight_Decode.v:234]
-INFO: [Synth 8-6157] synthesizing module 'CoreSight_Decode_rst_ps8_0_99M_2' [/home/marvin/VivadoPrj/CoreSight_Decoder/CoreSight_Decoder.runs/synth_1/.Xil/Vivado-15967-marvin/realtime/CoreSight_Decode_rst_ps8_0_99M_2_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'CoreSight_Decode_rst_ps8_0_99M_2' (7#1) [/home/marvin/VivadoPrj/CoreSight_Decoder/CoreSight_Decoder.runs/synth_1/.Xil/Vivado-15967-marvin/realtime/CoreSight_Decode_rst_ps8_0_99M_2_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'CoreSight_Decode_rst_ps8_0_99M_2' [/home/marvin/VivadoPrj/CoreSight_Decoder/CoreSight_Decoder.runs/synth_1/.Xil/Vivado-26488-marvin/realtime/CoreSight_Decode_rst_ps8_0_99M_2_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'CoreSight_Decode_rst_ps8_0_99M_2' (7#1) [/home/marvin/VivadoPrj/CoreSight_Decoder/CoreSight_Decoder.runs/synth_1/.Xil/Vivado-26488-marvin/realtime/CoreSight_Decode_rst_ps8_0_99M_2_stub.v:6]
 WARNING: [Synth 8-7071] port 'mb_reset' of module 'CoreSight_Decode_rst_ps8_0_99M_2' is unconnected for instance 'rst_ps8_0_99M' [/home/marvin/VivadoPrj/CoreSight_Decoder/CoreSight_Decoder.gen/sources_1/bd/CoreSight_Decode/synth/CoreSight_Decode.v:181]
 WARNING: [Synth 8-7071] port 'bus_struct_reset' of module 'CoreSight_Decode_rst_ps8_0_99M_2' is unconnected for instance 'rst_ps8_0_99M' [/home/marvin/VivadoPrj/CoreSight_Decoder/CoreSight_Decoder.gen/sources_1/bd/CoreSight_Decode/synth/CoreSight_Decode.v:181]
 WARNING: [Synth 8-7071] port 'peripheral_reset' of module 'CoreSight_Decode_rst_ps8_0_99M_2' is unconnected for instance 'rst_ps8_0_99M' [/home/marvin/VivadoPrj/CoreSight_Decoder/CoreSight_Decoder.gen/sources_1/bd/CoreSight_Decode/synth/CoreSight_Decode.v:181]
 WARNING: [Synth 8-7071] port 'interconnect_aresetn' of module 'CoreSight_Decode_rst_ps8_0_99M_2' is unconnected for instance 'rst_ps8_0_99M' [/home/marvin/VivadoPrj/CoreSight_Decoder/CoreSight_Decoder.gen/sources_1/bd/CoreSight_Decode/synth/CoreSight_Decode.v:181]
 WARNING: [Synth 8-7023] instance 'rst_ps8_0_99M' of module 'CoreSight_Decode_rst_ps8_0_99M_2' has 10 connections declared, but only 6 given [/home/marvin/VivadoPrj/CoreSight_Decoder/CoreSight_Decoder.gen/sources_1/bd/CoreSight_Decode/synth/CoreSight_Decode.v:181]
-INFO: [Synth 8-6157] synthesizing module 'CoreSight_Decode_zynq_ultra_ps_e_0_0' [/home/marvin/VivadoPrj/CoreSight_Decoder/CoreSight_Decoder.runs/synth_1/.Xil/Vivado-15967-marvin/realtime/CoreSight_Decode_zynq_ultra_ps_e_0_0_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'CoreSight_Decode_zynq_ultra_ps_e_0_0' (8#1) [/home/marvin/VivadoPrj/CoreSight_Decoder/CoreSight_Decoder.runs/synth_1/.Xil/Vivado-15967-marvin/realtime/CoreSight_Decode_zynq_ultra_ps_e_0_0_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'CoreSight_Decode_zynq_ultra_ps_e_0_0' [/home/marvin/VivadoPrj/CoreSight_Decoder/CoreSight_Decoder.runs/synth_1/.Xil/Vivado-26488-marvin/realtime/CoreSight_Decode_zynq_ultra_ps_e_0_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'CoreSight_Decode_zynq_ultra_ps_e_0_0' (8#1) [/home/marvin/VivadoPrj/CoreSight_Decoder/CoreSight_Decoder.runs/synth_1/.Xil/Vivado-26488-marvin/realtime/CoreSight_Decode_zynq_ultra_ps_e_0_0_stub.v:6]
 WARNING: [Synth 8-7071] port 'maxigp0_awuser' of module 'CoreSight_Decode_zynq_ultra_ps_e_0_0' is unconnected for instance 'zynq_ultra_ps_e_0' [/home/marvin/VivadoPrj/CoreSight_Decoder/CoreSight_Decoder.gen/sources_1/bd/CoreSight_Decode/synth/CoreSight_Decode.v:188]
 WARNING: [Synth 8-7071] port 'maxigp0_aruser' of module 'CoreSight_Decode_zynq_ultra_ps_e_0_0' is unconnected for instance 'zynq_ultra_ps_e_0' [/home/marvin/VivadoPrj/CoreSight_Decoder/CoreSight_Decoder.gen/sources_1/bd/CoreSight_Decode/synth/CoreSight_Decode.v:188]
 WARNING: [Synth 8-7071] port 'ps_pl_tracectl' of module 'CoreSight_Decode_zynq_ultra_ps_e_0_0' is unconnected for instance 'zynq_ultra_ps_e_0' [/home/marvin/VivadoPrj/CoreSight_Decoder/CoreSight_Decoder.gen/sources_1/bd/CoreSight_Decode/synth/CoreSight_Decode.v:188]
@@ -63,18 +65,18 @@ WARNING: [Synth 8-7129] Port M_ARESETN in module s00_couplers_imp_1JYZAU0 is eit
 WARNING: [Synth 8-7129] Port ACLK in module CoreSight_Decode_ps8_0_axi_periph_2 is either unconnected or has no load
 WARNING: [Synth 8-7129] Port ARESETN in module CoreSight_Decode_ps8_0_axi_periph_2 is either unconnected or has no load
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:00:03 ; elapsed = 00:00:03 . Memory (MB): peak = 3114.902 ; gain = 198.699 ; free physical = 6771 ; free virtual = 8629
+Finished RTL Elaboration : Time (s): cpu = 00:00:03 ; elapsed = 00:00:06 . Memory (MB): peak = 3115.668 ; gain = 198.730 ; free physical = 1137 ; free virtual = 7147
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 3132.715 ; gain = 216.512 ; free physical = 7684 ; free virtual = 9542
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:04 ; elapsed = 00:00:06 . Memory (MB): peak = 3133.480 ; gain = 216.543 ; free physical = 1129 ; free virtual = 7140
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 3132.715 ; gain = 216.512 ; free physical = 7683 ; free virtual = 9541
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:04 ; elapsed = 00:00:06 . Memory (MB): peak = 3133.480 ; gain = 216.543 ; free physical = 1129 ; free virtual = 7140
 ---------------------------------------------------------------------------------
-Netlist sorting complete. Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00 . Memory (MB): peak = 3132.715 ; gain = 0.000 ; free physical = 7628 ; free virtual = 9486
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 3133.480 ; gain = 0.000 ; free physical = 1125 ; free virtual = 7135
 INFO: [Project 1-570] Preparing netlist for logic optimization
 
 Processing XDC Constraints
@@ -89,8 +91,8 @@ Parsing XDC File [/home/marvin/VivadoPrj/CoreSight_Decoder/CoreSight_Decoder.gen
 Finished Parsing XDC File [/home/marvin/VivadoPrj/CoreSight_Decoder/CoreSight_Decoder.gen/sources_1/bd/CoreSight_Decode/ip/CoreSight_Decode_auto_pc_0/CoreSight_Decode_auto_pc_0/CoreSight_Decode_auto_pc_0_in_context.xdc] for cell 'CoreSight_Decode_i/ps8_0_axi_periph/s00_couplers/auto_pc'
 Parsing XDC File [/home/marvin/VivadoPrj/CoreSight_Decoder/CoreSight_Decoder.gen/sources_1/bd/CoreSight_Decode/ip/CoreSight_Decode_rst_ps8_0_99M_2/CoreSight_Decode_rst_ps8_0_99M_2/CoreSight_Decode_rst_ps8_0_99M_2_in_context.xdc] for cell 'CoreSight_Decode_i/rst_ps8_0_99M'
 Finished Parsing XDC File [/home/marvin/VivadoPrj/CoreSight_Decoder/CoreSight_Decoder.gen/sources_1/bd/CoreSight_Decode/ip/CoreSight_Decode_rst_ps8_0_99M_2/CoreSight_Decode_rst_ps8_0_99M_2/CoreSight_Decode_rst_ps8_0_99M_2_in_context.xdc] for cell 'CoreSight_Decode_i/rst_ps8_0_99M'
-Parsing XDC File [/home/marvin/VivadoPrj/CoreSight_Decoder/CoreSight_Decoder.gen/sources_1/bd/CoreSight_Decode/ip/CoreSight_Decode_CoreSight_L0_Decoder_0_1/CoreSight_Decode_CoreSight_L0_Decoder_0_1/CoreSight_Decode_CoreSight_L0_Decoder_0_1_in_context.xdc] for cell 'CoreSight_Decode_i/CoreSight_L0_Decoder_0'
-Finished Parsing XDC File [/home/marvin/VivadoPrj/CoreSight_Decoder/CoreSight_Decoder.gen/sources_1/bd/CoreSight_Decode/ip/CoreSight_Decode_CoreSight_L0_Decoder_0_1/CoreSight_Decode_CoreSight_L0_Decoder_0_1/CoreSight_Decode_CoreSight_L0_Decoder_0_1_in_context.xdc] for cell 'CoreSight_Decode_i/CoreSight_L0_Decoder_0'
+Parsing XDC File [/home/marvin/VivadoPrj/CoreSight_Decoder/CoreSight_Decoder.gen/sources_1/bd/CoreSight_Decode/ip/CoreSight_Decode_CoreSight_L0_Decoder_1_0/CoreSight_Decode_CoreSight_L0_Decoder_1_0/CoreSight_Decode_CoreSight_L0_Decoder_1_0_in_context.xdc] for cell 'CoreSight_Decode_i/CoreSight_L0_Decoder_1'
+Finished Parsing XDC File [/home/marvin/VivadoPrj/CoreSight_Decoder/CoreSight_Decoder.gen/sources_1/bd/CoreSight_Decode/ip/CoreSight_Decode_CoreSight_L0_Decoder_1_0/CoreSight_Decode_CoreSight_L0_Decoder_1_0/CoreSight_Decode_CoreSight_L0_Decoder_1_0_in_context.xdc] for cell 'CoreSight_Decode_i/CoreSight_L0_Decoder_1'
 Parsing XDC File [/home/marvin/VivadoPrj/CoreSight_Decoder/CoreSight_Decoder.srcs/constrs_1/new/leds.xdc]
 Finished Parsing XDC File [/home/marvin/VivadoPrj/CoreSight_Decoder/CoreSight_Decoder.srcs/constrs_1/new/leds.xdc]
 INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [/home/marvin/VivadoPrj/CoreSight_Decoder/CoreSight_Decoder.srcs/constrs_1/new/leds.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/CoreSight_Decode_wrapper_propImpl.xdc].
@@ -99,15 +101,13 @@ Parsing XDC File [/home/marvin/VivadoPrj/CoreSight_Decoder/CoreSight_Decoder.run
 Finished Parsing XDC File [/home/marvin/VivadoPrj/CoreSight_Decoder/CoreSight_Decoder.runs/synth_1/dont_touch.xdc]
 Completed Processing XDC Constraints
 
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 3199.484 ; gain = 0.000 ; free physical = 7612 ; free virtual = 9471
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 3197.281 ; gain = 0.000 ; free physical = 1014 ; free virtual = 7037
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
-Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 3199.484 ; gain = 0.000 ; free physical = 7612 ; free virtual = 9471
-WARNING: [Designutils 20-4072] Reference run did not run incremental synthesis because the design is too small; reverting to default synthesis
-INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
+Constraint Validation Runtime : Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00.01 . Memory (MB): peak = 3197.281 ; gain = 0.000 ; free physical = 1014 ; free virtual = 7037
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:10 ; elapsed = 00:00:11 . Memory (MB): peak = 3199.484 ; gain = 283.281 ; free physical = 7696 ; free virtual = 9555
+Finished Constraint Validation : Time (s): cpu = 00:00:11 ; elapsed = 00:00:14 . Memory (MB): peak = 3197.281 ; gain = 280.344 ; free physical = 1094 ; free virtual = 7118
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
@@ -115,7 +115,7 @@ Start Loading Part and Timing Information
 Loading part: xczu9eg-ffvb1156-2-e
 INFO: [Synth 8-6742] Reading net delay rules and data
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:10 ; elapsed = 00:00:11 . Memory (MB): peak = 3199.484 ; gain = 283.281 ; free physical = 7696 ; free virtual = 9555
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:11 ; elapsed = 00:00:14 . Memory (MB): peak = 3197.281 ; gain = 280.344 ; free physical = 1094 ; free virtual = 7118
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
@@ -127,13 +127,32 @@ Applied set_property KEEP_HIERARCHY = SOFT for CoreSight_Decode_i/ps8_0_axi_peri
 Applied set_property KEEP_HIERARCHY = SOFT for CoreSight_Decode_i/ps8_0_axi_periph/s00_couplers/auto_pc. (constraint file  auto generated constraint).
 Applied set_property KEEP_HIERARCHY = SOFT for CoreSight_Decode_i/ps8_0_axi_periph. (constraint file  auto generated constraint).
 Applied set_property KEEP_HIERARCHY = SOFT for CoreSight_Decode_i/rst_ps8_0_99M. (constraint file  auto generated constraint).
-Applied set_property KEEP_HIERARCHY = SOFT for CoreSight_Decode_i/CoreSight_L0_Decoder_0. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for CoreSight_Decode_i/CoreSight_L0_Decoder_1. (constraint file  auto generated constraint).
 ---------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:10 ; elapsed = 00:00:11 . Memory (MB): peak = 3199.484 ; gain = 283.281 ; free physical = 7696 ; free virtual = 9555
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:11 ; elapsed = 00:00:14 . Memory (MB): peak = 3197.281 ; gain = 280.344 ; free physical = 1094 ; free virtual = 7118
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:10 ; elapsed = 00:00:11 . Memory (MB): peak = 3199.484 ; gain = 283.281 ; free physical = 7695 ; free virtual = 9555
+Start Preparing Guide Design
 ---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Doing Graph Differ : Time (s): cpu = 00:00:11 ; elapsed = 00:00:14 . Memory (MB): peak = 3197.281 ; gain = 280.344 ; free physical = 1093 ; free virtual = 7117
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Preparing Guide Design : Time (s): cpu = 00:00:11 ; elapsed = 00:00:14 . Memory (MB): peak = 3197.281 ; gain = 280.344 ; free physical = 1093 ; free virtual = 7117
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:11 ; elapsed = 00:00:14 . Memory (MB): peak = 3197.281 ; gain = 280.344 ; free physical = 1093 ; free virtual = 7117
+---------------------------------------------------------------------------------
+
+
+Incremental Synthesis Report Summary:
+
+1. Incremental synthesis run: no
+
+   Reason for not running incremental synthesis : Global synthesis options have changed
+
+
+INFO: [Synth 8-7130] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
 ---------------------------------------------------------------------------------
 Start RTL Component Statistics 
 ---------------------------------------------------------------------------------
@@ -159,25 +178,25 @@ WARNING: [Synth 8-7129] Port ARESETN in module CoreSight_Decode_ps8_0_axi_periph
 WARNING: [Synth 8-7129] Port M00_ACLK in module CoreSight_Decode_ps8_0_axi_periph_2 is either unconnected or has no load
 WARNING: [Synth 8-7129] Port M00_ARESETN in module CoreSight_Decode_ps8_0_axi_periph_2 is either unconnected or has no load
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:11 ; elapsed = 00:00:12 . Memory (MB): peak = 3199.484 ; gain = 283.281 ; free physical = 7681 ; free virtual = 9545
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:12 ; elapsed = 00:00:16 . Memory (MB): peak = 3197.281 ; gain = 280.344 ; free physical = 1079 ; free virtual = 7109
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying XDC Timing Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:18 ; elapsed = 00:00:20 . Memory (MB): peak = 3634.109 ; gain = 717.906 ; free physical = 7112 ; free virtual = 8977
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:18 ; elapsed = 00:00:27 . Memory (MB): peak = 3634.906 ; gain = 717.969 ; free physical = 472 ; free virtual = 6528
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Timing Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:00:18 ; elapsed = 00:00:20 . Memory (MB): peak = 3634.109 ; gain = 717.906 ; free physical = 7112 ; free virtual = 8977
+Finished Timing Optimization : Time (s): cpu = 00:00:18 ; elapsed = 00:00:27 . Memory (MB): peak = 3635.906 ; gain = 718.969 ; free physical = 472 ; free virtual = 6528
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Technology Mapping
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:00:18 ; elapsed = 00:00:20 . Memory (MB): peak = 3653.141 ; gain = 736.938 ; free physical = 7111 ; free virtual = 8975
+Finished Technology Mapping : Time (s): cpu = 00:00:18 ; elapsed = 00:00:27 . Memory (MB): peak = 3654.938 ; gain = 738.000 ; free physical = 470 ; free virtual = 6526
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start IO Insertion
@@ -195,37 +214,37 @@ Start Final Netlist Cleanup
 Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:00:21 ; elapsed = 00:00:23 . Memory (MB): peak = 3659.078 ; gain = 742.875 ; free physical = 7107 ; free virtual = 8971
+Finished IO Insertion : Time (s): cpu = 00:00:21 ; elapsed = 00:00:30 . Memory (MB): peak = 3660.875 ; gain = 743.938 ; free physical = 468 ; free virtual = 6525
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:00:21 ; elapsed = 00:00:23 . Memory (MB): peak = 3659.078 ; gain = 742.875 ; free physical = 7107 ; free virtual = 8971
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:21 ; elapsed = 00:00:30 . Memory (MB): peak = 3660.875 ; gain = 743.938 ; free physical = 468 ; free virtual = 6525
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:21 ; elapsed = 00:00:23 . Memory (MB): peak = 3659.078 ; gain = 742.875 ; free physical = 7107 ; free virtual = 8971
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:21 ; elapsed = 00:00:30 . Memory (MB): peak = 3660.875 ; gain = 743.938 ; free physical = 468 ; free virtual = 6525
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:00:21 ; elapsed = 00:00:23 . Memory (MB): peak = 3659.078 ; gain = 742.875 ; free physical = 7107 ; free virtual = 8971
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:21 ; elapsed = 00:00:30 . Memory (MB): peak = 3660.875 ; gain = 743.938 ; free physical = 468 ; free virtual = 6525
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:21 ; elapsed = 00:00:23 . Memory (MB): peak = 3659.078 ; gain = 742.875 ; free physical = 7107 ; free virtual = 8971
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:21 ; elapsed = 00:00:30 . Memory (MB): peak = 3660.875 ; gain = 743.938 ; free physical = 468 ; free virtual = 6525
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:00:21 ; elapsed = 00:00:23 . Memory (MB): peak = 3659.078 ; gain = 742.875 ; free physical = 7107 ; free virtual = 8971
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:21 ; elapsed = 00:00:30 . Memory (MB): peak = 3660.875 ; gain = 743.938 ; free physical = 468 ; free virtual = 6525
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Writing Synthesis Report
@@ -238,7 +257,7 @@ Report BlackBoxes:
 |1     |CoreSight_Decode_auto_ds_0                |         1|
 |2     |CoreSight_Decode_auto_pc_0                |         1|
 |3     |CoreSight_Decode_CoreSight_Dump_0_2       |         1|
-|4     |CoreSight_Decode_CoreSight_L0_Decoder_0_1 |         1|
+|4     |CoreSight_Decode_CoreSight_L0_Decoder_1_0 |         1|
 |5     |CoreSight_Decode_rst_ps8_0_99M_2          |         1|
 |6     |CoreSight_Decode_zynq_ultra_ps_e_0_0      |         1|
 +------+------------------------------------------+----------+
@@ -248,7 +267,7 @@ Report Cell Usage:
 |      |Cell                                    |Count |
 +------+----------------------------------------+------+
 |1     |CoreSight_Decode_CoreSight_Dump_0       |     1|
-|2     |CoreSight_Decode_CoreSight_L0_Decoder_0 |     1|
+|2     |CoreSight_Decode_CoreSight_L0_Decoder_1 |     1|
 |3     |CoreSight_Decode_auto_ds                |     1|
 |4     |CoreSight_Decode_auto_pc                |     1|
 |5     |CoreSight_Decode_rst_ps8_0_99M          |     1|
@@ -256,24 +275,24 @@ Report Cell Usage:
 |7     |OBUF                                    |     8|
 +------+----------------------------------------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:00:21 ; elapsed = 00:00:23 . Memory (MB): peak = 3659.078 ; gain = 742.875 ; free physical = 7107 ; free virtual = 8971
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:21 ; elapsed = 00:00:30 . Memory (MB): peak = 3660.875 ; gain = 743.938 ; free physical = 468 ; free virtual = 6525
 ---------------------------------------------------------------------------------
 Synthesis finished with 0 errors, 0 critical warnings and 5 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:00:17 ; elapsed = 00:00:18 . Memory (MB): peak = 3659.078 ; gain = 676.105 ; free physical = 7144 ; free virtual = 9008
-Synthesis Optimization Complete : Time (s): cpu = 00:00:21 ; elapsed = 00:00:23 . Memory (MB): peak = 3659.086 ; gain = 742.875 ; free physical = 7144 ; free virtual = 9008
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:17 ; elapsed = 00:00:25 . Memory (MB): peak = 3660.875 ; gain = 680.137 ; free physical = 504 ; free virtual = 6561
+Synthesis Optimization Complete : Time (s): cpu = 00:00:21 ; elapsed = 00:00:30 . Memory (MB): peak = 3660.883 ; gain = 743.938 ; free physical = 504 ; free virtual = 6561
 INFO: [Project 1-571] Translating synthesized netlist
-Netlist sorting complete. Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00 . Memory (MB): peak = 3673.016 ; gain = 0.000 ; free physical = 7232 ; free virtual = 9096
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.01 . Memory (MB): peak = 3674.812 ; gain = 0.000 ; free physical = 498 ; free virtual = 6555
 INFO: [Project 1-570] Preparing netlist for logic optimization
 INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 3701.766 ; gain = 0.000 ; free physical = 7159 ; free virtual = 9023
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 3703.562 ; gain = 0.000 ; free physical = 520 ; free virtual = 6578
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
-Synth Design complete, checksum: 6df5ece6
+Synth Design complete, checksum: fd31d0b0
 INFO: [Common 17-83] Releasing license: Synthesis
-41 Infos, 21 Warnings, 0 Critical Warnings and 0 Errors encountered.
+40 Infos, 22 Warnings, 0 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:00:29 ; elapsed = 00:00:27 . Memory (MB): peak = 3701.766 ; gain = 805.527 ; free physical = 7353 ; free virtual = 9217
+synth_design: Time (s): cpu = 00:00:30 ; elapsed = 00:00:39 . Memory (MB): peak = 3703.562 ; gain = 1052.824 ; free physical = 713 ; free virtual = 6771
 INFO: [Common 17-1381] The checkpoint '/home/marvin/VivadoPrj/CoreSight_Decoder/CoreSight_Decoder.runs/synth_1/CoreSight_Decode_wrapper.dcp' has been generated.
 INFO: [runtcl-4] Executing : report_utilization -file CoreSight_Decode_wrapper_utilization_synth.rpt -pb CoreSight_Decode_wrapper_utilization_synth.pb
-INFO: [Common 17-206] Exiting Vivado at Wed Jun  8 10:53:24 2022...
+INFO: [Common 17-206] Exiting Vivado at Tue Jul 19 21:03:13 2022...

@@ -20,7 +20,7 @@
         }
       },
       "rst_ps8_0_99M": "",
-      "CoreSight_L0_Decoder_0": ""
+      "CoreSight_L0_Decoder_1": ""
     },
     "ports": {
       "led_0": {
@@ -1462,14 +1462,14 @@
         "xci_path": "ip/CoreSight_Decode_rst_ps8_0_99M_2/CoreSight_Decode_rst_ps8_0_99M_2.xci",
         "inst_hier_path": "rst_ps8_0_99M"
       },
-      "CoreSight_L0_Decoder_0": {
-        "vlnv": "xilinx.com:module_ref:CoreSight_L0_Decoder:1.0",
-        "xci_name": "CoreSight_Decode_CoreSight_L0_Decoder_0_1",
-        "xci_path": "ip/CoreSight_Decode_CoreSight_L0_Decoder_0_1/CoreSight_Decode_CoreSight_L0_Decoder_0_1.xci",
-        "inst_hier_path": "CoreSight_L0_Decoder_0",
+      "CoreSight_L0_Decoder_1": {
+        "vlnv": "xilinx.com:module_ref:CoreSight_L0_Decoder_simp:1.0",
+        "xci_name": "CoreSight_Decode_CoreSight_L0_Decoder_1_0",
+        "xci_path": "ip/CoreSight_Decode_CoreSight_L0_Decoder_1_0/CoreSight_Decode_CoreSight_L0_Decoder_1_0.xci",
+        "inst_hier_path": "CoreSight_L0_Decoder_1",
         "reference_info": {
           "ref_type": "hdl",
-          "ref_name": "CoreSight_L0_Decoder",
+          "ref_name": "CoreSight_L0_Decoder_simp",
           "boundary_crc": "0x0"
         },
         "ports": {
@@ -1515,6 +1515,9 @@
             "direction": "O",
             "left": "7",
             "right": "0"
+          },
+          "frame_valid": {
+            "direction": "O"
           }
         }
       }
@@ -1546,22 +1549,22 @@
           "led_0"
         ]
       },
-      "CoreSight_L0_Decoder_0_bug_type": {
+      "CoreSight_L0_Decoder_1_bug_type": {
         "ports": [
-          "CoreSight_L0_Decoder_0/bug_type",
+          "CoreSight_L0_Decoder_1/bug_type",
           "CoreSight_Dump_0/bug_type"
         ]
       },
-      "CoreSight_L0_Decoder_0_dbg_intr": {
+      "CoreSight_L0_Decoder_1_frame_out": {
         "ports": [
-          "CoreSight_L0_Decoder_0/dbg_intr",
-          "CoreSight_Dump_0/capture_start"
+          "CoreSight_L0_Decoder_1/frame_out",
+          "CoreSight_Dump_0/frame"
         ]
       },
-      "CoreSight_L0_Decoder_0_frame_out": {
+      "CoreSight_L0_Decoder_1_frame_valid": {
         "ports": [
-          "CoreSight_L0_Decoder_0/frame_out",
-          "CoreSight_Dump_0/frame"
+          "CoreSight_L0_Decoder_1/frame_valid",
+          "CoreSight_Dump_0/capture_start"
         ]
       },
       "rst_ps8_0_99M_peripheral_aresetn": {
@@ -1583,7 +1586,7 @@
           "ps8_0_axi_periph/M00_ACLK",
           "ps8_0_axi_periph/ACLK",
           "zynq_ultra_ps_e_0/pl_ps_trace_clk",
-          "CoreSight_L0_Decoder_0/trace_clk"
+          "CoreSight_L0_Decoder_1/trace_clk"
         ]
       },
       "zynq_ultra_ps_e_0_pl_resetn0": {
@@ -1596,7 +1599,7 @@
         "ports": [
           "zynq_ultra_ps_e_0/ps_pl_tracedata",
           "CoreSight_Dump_0/trace_in",
-          "CoreSight_L0_Decoder_0/trace_data"
+          "CoreSight_L0_Decoder_1/trace_data"
         ]
       }
     },
