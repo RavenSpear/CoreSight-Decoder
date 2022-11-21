@@ -1,4 +1,4 @@
-Running: xsim.dir/CoreSight_L2_Deocde_lee_sim_behav/xsimk -simmode gui -wdb CoreSight_L2_Deocde_lee_sim_behav.wdb -simrunnum 0 -socket 38173
+Running: xsim.dir/CoreSight_L2_Deocde_lee_sim_behav/xsimk -simmode gui -wdb CoreSight_L2_Deocde_lee_sim_behav.wdb -simrunnum 0 -socket 50681
 Design successfully loaded
-Design Loading Memory Usage: 43972 KB (Peak: 44028 KB)
+Design Loading Memory Usage: 43988 KB (Peak: 44044 KB)
 Design Loading CPU Usage: 20 ms

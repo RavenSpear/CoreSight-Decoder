@@ -36,4 +36,4 @@ EAStep()
      fi
 }
 
-EAStep vivado -log CoreSight_Decode_wrapper.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source CoreSight_Decode_wrapper.tcl
+EAStep vivado -log CoreSight_L2_Decoder_lee.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source CoreSight_L2_Decoder_lee.tcl

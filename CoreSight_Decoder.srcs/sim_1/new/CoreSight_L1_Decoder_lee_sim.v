@@ -28,7 +28,7 @@ module CoreSight_L1_Decoder_lee_sim;
     wire [239:0] out_data;
     wire out_valid;
     wire [7:0] o_last_ID;
-    wire test_valid_data;
+   // wire test_valid_data;
     reg [7:0] test_last_id;
     reg [119:0] test_id;
     
@@ -44,8 +44,8 @@ module CoreSight_L1_Decoder_lee_sim;
         .i_last_ID(i_last_ID),
         .out_data(out_data),
         .out_valid(out_valid),
-        .o_last_ID(o_last_ID),
-        .test_valid_data(test_valid_data)
+        .o_last_ID(o_last_ID)
+        //.test_valid_data(test_valid_data)
     );
     
 

@@ -1,0 +1,380 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="CoreSight_L2_Deocde_lee_sim_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="CoreSight_L2_Deocde_lee_sim" />
+            <top_module name="glbl" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="0.000 ns"></ZoomStartTime>
+      <ZoomEndTime time="113.401 ns"></ZoomEndTime>
+      <Cursor1Time time="32.200 ns"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="295"></NameColumnWidth>
+      <ValueColumnWidth column_width="140"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="10" />
+   <wvobject type="logic" fp_name="/CoreSight_L2_Deocde_lee_sim/CoreSight_L2_Decoder_lee_i/C1/trace_clk">
+      <obj_property name="ElementShortName">trace_clk</obj_property>
+      <obj_property name="ObjectShortName">trace_clk</obj_property>
+   </wvobject>
+   <wvobject type="group" fp_name="group296">
+      <obj_property name="label">Collection_input</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject type="array" fp_name="/CoreSight_L2_Deocde_lee_sim/CoreSight_L2_Decoder_lee_i/C1/in_valid_cnt">
+         <obj_property name="ElementShortName">in_valid_cnt[3:0]</obj_property>
+         <obj_property name="ObjectShortName">in_valid_cnt[3:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/CoreSight_L2_Deocde_lee_sim/CoreSight_L2_Decoder_lee_i/C1/valid">
+         <obj_property name="ElementShortName">valid</obj_property>
+         <obj_property name="ObjectShortName">valid</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/CoreSight_L2_Deocde_lee_sim/CoreSight_L2_Decoder_lee_i/C1/C_i_data">
+         <obj_property name="ElementShortName">C_i_data[119:0]</obj_property>
+         <obj_property name="ObjectShortName">C_i_data[119:0]</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject type="group" fp_name="group297">
+      <obj_property name="label">Collection_output</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject type="logic" fp_name="/CoreSight_L2_Deocde_lee_sim/CoreSight_L2_Decoder_lee_i/C1/o_fifo_write">
+         <obj_property name="ElementShortName">o_fifo_write</obj_property>
+         <obj_property name="ObjectShortName">o_fifo_write</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/CoreSight_L2_Deocde_lee_sim/CoreSight_L2_Decoder_lee_i/C1/C_o_data">
+         <obj_property name="ElementShortName">C_o_data[127:0]</obj_property>
+         <obj_property name="ObjectShortName">C_o_data[127:0]</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject type="group" fp_name="group330">
+      <obj_property name="label">Collection_inner</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject type="array" fp_name="/CoreSight_L2_Deocde_lee_sim/CoreSight_L2_Decoder_lee_i/C1/index">
+         <obj_property name="ElementShortName">index[31:0]</obj_property>
+         <obj_property name="ObjectShortName">index[31:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/CoreSight_L2_Deocde_lee_sim/CoreSight_L2_Decoder_lee_i/C1/valid_count">
+         <obj_property name="ElementShortName">valid_count[31:0]</obj_property>
+         <obj_property name="ObjectShortName">valid_count[31:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/CoreSight_L2_Deocde_lee_sim/CoreSight_L2_Decoder_lee_i/C1/n">
+         <obj_property name="ElementShortName">n[31:0]</obj_property>
+         <obj_property name="ObjectShortName">n[31:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/CoreSight_L2_Deocde_lee_sim/CoreSight_L2_Decoder_lee_i/C1/cf">
+         <obj_property name="ElementShortName">cf[31:0]</obj_property>
+         <obj_property name="ObjectShortName">cf[31:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/CoreSight_L2_Deocde_lee_sim/CoreSight_L2_Decoder_lee_i/C1/write_en">
+         <obj_property name="ElementShortName">write_en[31:0]</obj_property>
+         <obj_property name="ObjectShortName">write_en[31:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/CoreSight_L2_Deocde_lee_sim/CoreSight_L2_Decoder_lee_i/C1/tmp_data">
+         <obj_property name="ElementShortName">tmp_data[31:0][7:0]</obj_property>
+         <obj_property name="ObjectShortName">tmp_data[31:0][7:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/CoreSight_L2_Deocde_lee_sim/CoreSight_L2_Decoder_lee_i/C1/in_tmp_data">
+         <obj_property name="ElementShortName">in_tmp_data[119:0]</obj_property>
+         <obj_property name="ObjectShortName">in_tmp_data[119:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/CoreSight_L2_Deocde_lee_sim/CoreSight_L2_Decoder_lee_i/C1/out_tmp_data">
+         <obj_property name="ElementShortName">out_tmp_data[127:0]</obj_property>
+         <obj_property name="ObjectShortName">out_tmp_data[127:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/CoreSight_L2_Deocde_lee_sim/CoreSight_L2_Decoder_lee_i/C1/count">
+         <obj_property name="ElementShortName">count[31:0]</obj_property>
+         <obj_property name="ObjectShortName">count[31:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/CoreSight_L2_Deocde_lee_sim/CoreSight_L2_Decoder_lee_i/C1/data_valid">
+         <obj_property name="ElementShortName">data_valid</obj_property>
+         <obj_property name="ObjectShortName">data_valid</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/CoreSight_L2_Deocde_lee_sim/CoreSight_L2_Decoder_lee_i/C1/state">
+         <obj_property name="ElementShortName">state</obj_property>
+         <obj_property name="ObjectShortName">state</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject type="group" fp_name="group344">
+      <obj_property name="label">FIFO_input</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject type="logic" fp_name="/CoreSight_L2_Deocde_lee_sim/CoreSight_L2_Decoder_lee_i/F1/clk">
+         <obj_property name="ElementShortName">clk</obj_property>
+         <obj_property name="ObjectShortName">clk</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/CoreSight_L2_Deocde_lee_sim/CoreSight_L2_Decoder_lee_i/F1/F_i_data">
+         <obj_property name="ElementShortName">F_i_data[127:0]</obj_property>
+         <obj_property name="ObjectShortName">F_i_data[127:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/CoreSight_L2_Deocde_lee_sim/CoreSight_L2_Decoder_lee_i/F1/write_enable">
+         <obj_property name="ElementShortName">write_enable</obj_property>
+         <obj_property name="ObjectShortName">write_enable</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/CoreSight_L2_Deocde_lee_sim/CoreSight_L2_Decoder_lee_i/F1/read_enable">
+         <obj_property name="ElementShortName">read_enable</obj_property>
+         <obj_property name="ObjectShortName">read_enable</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject type="group" fp_name="group345">
+      <obj_property name="label">FIFO_output</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject type="logic" fp_name="/CoreSight_L2_Deocde_lee_sim/CoreSight_L2_Decoder_lee_i/F1/out_valid">
+         <obj_property name="ElementShortName">out_valid</obj_property>
+         <obj_property name="ObjectShortName">out_valid</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/CoreSight_L2_Deocde_lee_sim/CoreSight_L2_Decoder_lee_i/F1/F_o_data">
+         <obj_property name="ElementShortName">F_o_data[127:0]</obj_property>
+         <obj_property name="ObjectShortName">F_o_data[127:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/CoreSight_L2_Deocde_lee_sim/CoreSight_L2_Decoder_lee_i/F1/empty">
+         <obj_property name="ElementShortName">empty</obj_property>
+         <obj_property name="ObjectShortName">empty</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject type="group" fp_name="group346">
+      <obj_property name="label">FIFO_inner</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject type="array" fp_name="/CoreSight_L2_Deocde_lee_sim/CoreSight_L2_Decoder_lee_i/F1/group_index">
+         <obj_property name="ElementShortName">group_index[31:0]</obj_property>
+         <obj_property name="ObjectShortName">group_index[31:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/CoreSight_L2_Deocde_lee_sim/CoreSight_L2_Decoder_lee_i/F1/mem">
+         <obj_property name="ElementShortName">mem[8:0][127:0]</obj_property>
+         <obj_property name="ObjectShortName">mem[8:0][127:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/CoreSight_L2_Deocde_lee_sim/CoreSight_L2_Decoder_lee_i/F1/i">
+         <obj_property name="ElementShortName">i[31:0]</obj_property>
+         <obj_property name="ObjectShortName">i[31:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/CoreSight_L2_Deocde_lee_sim/CoreSight_L2_Decoder_lee_i/F1/tmp_data">
+         <obj_property name="ElementShortName">tmp_data[127:0]</obj_property>
+         <obj_property name="ObjectShortName">tmp_data[127:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/CoreSight_L2_Deocde_lee_sim/CoreSight_L2_Decoder_lee_i/F1/out_tmp_valid">
+         <obj_property name="ElementShortName">out_tmp_valid</obj_property>
+         <obj_property name="ObjectShortName">out_tmp_valid</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject type="group" fp_name="group436">
+      <obj_property name="label">CC_input</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+      <wvobject type="logic" fp_name="/CoreSight_L2_Deocde_lee_sim/CoreSight_L2_Decoder_lee_i/CC1/clk">
+         <obj_property name="ElementShortName">clk</obj_property>
+         <obj_property name="ObjectShortName">clk</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/CoreSight_L2_Deocde_lee_sim/CoreSight_L2_Decoder_lee_i/CC1/Core_i_data">
+         <obj_property name="ElementShortName">Core_i_data[127:0]</obj_property>
+         <obj_property name="ObjectShortName">Core_i_data[127:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/CoreSight_L2_Deocde_lee_sim/CoreSight_L2_Decoder_lee_i/CC1/in_valid">
+         <obj_property name="ElementShortName">in_valid</obj_property>
+         <obj_property name="ObjectShortName">in_valid</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/CoreSight_L2_Deocde_lee_sim/CoreSight_L2_Decoder_lee_i/CC1/fifo_empty">
+         <obj_property name="ElementShortName">fifo_empty</obj_property>
+         <obj_property name="ObjectShortName">fifo_empty</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject type="group" fp_name="group437">
+      <obj_property name="label">CC_output</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject type="array" fp_name="/CoreSight_L2_Deocde_lee_sim/CoreSight_L2_Decoder_lee_i/CC1/addr1">
+         <obj_property name="ElementShortName">addr1[63:0]</obj_property>
+         <obj_property name="ObjectShortName">addr1[63:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/CoreSight_L2_Deocde_lee_sim/CoreSight_L2_Decoder_lee_i/CC1/addr2">
+         <obj_property name="ElementShortName">addr2[63:0]</obj_property>
+         <obj_property name="ObjectShortName">addr2[63:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/CoreSight_L2_Deocde_lee_sim/CoreSight_L2_Decoder_lee_i/CC1/addr3">
+         <obj_property name="ElementShortName">addr3[63:0]</obj_property>
+         <obj_property name="ObjectShortName">addr3[63:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/CoreSight_L2_Deocde_lee_sim/CoreSight_L2_Decoder_lee_i/CC1/buf_atom">
+         <obj_property name="ElementShortName">buf_atom[128:0]</obj_property>
+         <obj_property name="ObjectShortName">buf_atom[128:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/CoreSight_L2_Deocde_lee_sim/CoreSight_L2_Decoder_lee_i/CC1/read_enable">
+         <obj_property name="ElementShortName">read_enable</obj_property>
+         <obj_property name="ObjectShortName">read_enable</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject type="group" fp_name="group443">
+      <obj_property name="label">CC_inner</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+      <wvobject type="group" fp_name="group439">
+         <obj_property name="label">CC_Trace_info_data</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <wvobject type="array" fp_name="/CoreSight_L2_Deocde_lee_sim/CoreSight_L2_Decoder_lee_i/CC1/trace_info_state">
+            <obj_property name="ElementShortName">trace_info_state[2:0]</obj_property>
+            <obj_property name="ObjectShortName">trace_info_state[2:0]</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/CoreSight_L2_Deocde_lee_sim/CoreSight_L2_Decoder_lee_i/CC1/trace_info_sec">
+            <obj_property name="ElementShortName">trace_info_sec[3:0]</obj_property>
+            <obj_property name="ObjectShortName">trace_info_sec[3:0]</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/CoreSight_L2_Deocde_lee_sim/CoreSight_L2_Decoder_lee_i/CC1/cc_enable">
+            <obj_property name="ElementShortName">cc_enable</obj_property>
+            <obj_property name="ObjectShortName">cc_enable</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/CoreSight_L2_Deocde_lee_sim/CoreSight_L2_Decoder_lee_i/CC1/cc_threshold">
+            <obj_property name="ElementShortName">cc_threshold[11:0]</obj_property>
+            <obj_property name="ObjectShortName">cc_threshold[11:0]</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/CoreSight_L2_Deocde_lee_sim/CoreSight_L2_Decoder_lee_i/CC1/cond_enabled">
+            <obj_property name="ElementShortName">cond_enabled[2:0]</obj_property>
+            <obj_property name="ObjectShortName">cond_enabled[2:0]</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/CoreSight_L2_Deocde_lee_sim/CoreSight_L2_Decoder_lee_i/CC1/p0_load">
+            <obj_property name="ElementShortName">p0_load</obj_property>
+            <obj_property name="ObjectShortName">p0_load</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/CoreSight_L2_Deocde_lee_sim/CoreSight_L2_Decoder_lee_i/CC1/p0_store">
+            <obj_property name="ElementShortName">p0_store</obj_property>
+            <obj_property name="ObjectShortName">p0_store</obj_property>
+         </wvobject>
+      </wvobject>
+      <wvobject type="group" fp_name="group440">
+         <obj_property name="label">CC_ETM_data</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="isExpanded"></obj_property>
+         <wvobject type="array" fp_name="/CoreSight_L2_Deocde_lee_sim/CoreSight_L2_Decoder_lee_i/CC1/address_reg">
+            <obj_property name="ElementShortName">address_reg[2:0][63:0]</obj_property>
+            <obj_property name="ObjectShortName">address_reg[2:0][63:0]</obj_property>
+            <obj_property name="isExpanded"></obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/CoreSight_L2_Deocde_lee_sim/CoreSight_L2_Decoder_lee_i/CC1/atom_buff">
+            <obj_property name="ElementShortName">atom_buff[128:0]</obj_property>
+            <obj_property name="ObjectShortName">atom_buff[128:0]</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/CoreSight_L2_Deocde_lee_sim/CoreSight_L2_Decoder_lee_i/CC1/ex_level">
+            <obj_property name="ElementShortName">ex_level[1:0]</obj_property>
+            <obj_property name="ObjectShortName">ex_level[1:0]</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/CoreSight_L2_Deocde_lee_sim/CoreSight_L2_Decoder_lee_i/CC1/vmid">
+            <obj_property name="ElementShortName">vmid[7:0]</obj_property>
+            <obj_property name="ObjectShortName">vmid[7:0]</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/CoreSight_L2_Deocde_lee_sim/CoreSight_L2_Decoder_lee_i/CC1/context_id">
+            <obj_property name="ElementShortName">context_id[31:0]</obj_property>
+            <obj_property name="ObjectShortName">context_id[31:0]</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/CoreSight_L2_Deocde_lee_sim/CoreSight_L2_Decoder_lee_i/CC1/security">
+            <obj_property name="ElementShortName">security</obj_property>
+            <obj_property name="ObjectShortName">security</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/CoreSight_L2_Deocde_lee_sim/CoreSight_L2_Decoder_lee_i/CC1/sixty_four_bit">
+            <obj_property name="ElementShortName">sixty_four_bit</obj_property>
+            <obj_property name="ObjectShortName">sixty_four_bit</obj_property>
+         </wvobject>
+      </wvobject>
+      <wvobject type="group" fp_name="group441">
+         <obj_property name="label">CC_Addr_with_cntxt_data</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <wvobject type="array" fp_name="/CoreSight_L2_Deocde_lee_sim/CoreSight_L2_Decoder_lee_i/CC1/addr_ctxt_state">
+            <obj_property name="ElementShortName">addr_ctxt_state[1:0]</obj_property>
+            <obj_property name="ObjectShortName">addr_ctxt_state[1:0]</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/CoreSight_L2_Deocde_lee_sim/CoreSight_L2_Decoder_lee_i/CC1/ctxt_info_sec">
+            <obj_property name="ElementShortName">ctxt_info_sec[1:0]</obj_property>
+            <obj_property name="ObjectShortName">ctxt_info_sec[1:0]</obj_property>
+         </wvobject>
+      </wvobject>
+      <wvobject type="group" fp_name="group442">
+         <obj_property name="label">CC_Exception_data</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <wvobject type="array" fp_name="/CoreSight_L2_Deocde_lee_sim/CoreSight_L2_Decoder_lee_i/CC1/exception_type">
+            <obj_property name="ElementShortName">exception_type[9:0]</obj_property>
+            <obj_property name="ObjectShortName">exception_type[9:0]</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/CoreSight_L2_Deocde_lee_sim/CoreSight_L2_Decoder_lee_i/CC1/EE">
+            <obj_property name="ElementShortName">EE[1:0]</obj_property>
+            <obj_property name="ObjectShortName">EE[1:0]</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/CoreSight_L2_Deocde_lee_sim/CoreSight_L2_Decoder_lee_i/CC1/P">
+            <obj_property name="ElementShortName">P</obj_property>
+            <obj_property name="ObjectShortName">P</obj_property>
+         </wvobject>
+      </wvobject>
+      <wvobject type="logic" fp_name="/CoreSight_L2_Deocde_lee_sim/CoreSight_L2_Decoder_lee_i/CC1/dynamic_parse_done">
+         <obj_property name="ElementShortName">dynamic_parse_done</obj_property>
+         <obj_property name="ObjectShortName">dynamic_parse_done</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/CoreSight_L2_Deocde_lee_sim/CoreSight_L2_Decoder_lee_i/CC1/parsed_length">
+         <obj_property name="ElementShortName">parsed_length[31:0]</obj_property>
+         <obj_property name="ObjectShortName">parsed_length[31:0]</obj_property>
+         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/CoreSight_L2_Deocde_lee_sim/CoreSight_L2_Decoder_lee_i/CC1/payload_length_wire">
+         <obj_property name="ElementShortName">payload_length_wire[31:0]</obj_property>
+         <obj_property name="ObjectShortName">payload_length_wire[31:0]</obj_property>
+         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/CoreSight_L2_Deocde_lee_sim/CoreSight_L2_Decoder_lee_i/CC1/FIFO_group_count">
+         <obj_property name="ElementShortName">FIFO_group_count[31:0]</obj_property>
+         <obj_property name="ObjectShortName">FIFO_group_count[31:0]</obj_property>
+         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/CoreSight_L2_Deocde_lee_sim/CoreSight_L2_Decoder_lee_i/CC1/index">
+         <obj_property name="ElementShortName">index[31:0]</obj_property>
+         <obj_property name="ObjectShortName">index[31:0]</obj_property>
+         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/CoreSight_L2_Deocde_lee_sim/CoreSight_L2_Decoder_lee_i/CC1/bytes_remain">
+         <obj_property name="ElementShortName">bytes_remain[31:0]</obj_property>
+         <obj_property name="ObjectShortName">bytes_remain[31:0]</obj_property>
+         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/CoreSight_L2_Deocde_lee_sim/CoreSight_L2_Decoder_lee_i/CC1/state">
+         <obj_property name="ElementShortName">state[1:0]</obj_property>
+         <obj_property name="ObjectShortName">state[1:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/CoreSight_L2_Deocde_lee_sim/CoreSight_L2_Decoder_lee_i/CC1/buf_data_valid">
+         <obj_property name="ElementShortName">buf_data_valid</obj_property>
+         <obj_property name="ObjectShortName">buf_data_valid</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/CoreSight_L2_Deocde_lee_sim/CoreSight_L2_Decoder_lee_i/CC1/buf_data">
+         <obj_property name="ElementShortName">buf_data[255:0]</obj_property>
+         <obj_property name="ObjectShortName">buf_data[255:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/CoreSight_L2_Deocde_lee_sim/CoreSight_L2_Decoder_lee_i/CC1/send_read_data">
+         <obj_property name="ElementShortName">send_read_data</obj_property>
+         <obj_property name="ObjectShortName">send_read_data</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/CoreSight_L2_Deocde_lee_sim/CoreSight_L2_Decoder_lee_i/CC1/header">
+         <obj_property name="ElementShortName">header[7:0]</obj_property>
+         <obj_property name="ObjectShortName">header[7:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/CoreSight_L2_Deocde_lee_sim/CoreSight_L2_Decoder_lee_i/CC1/header_payload_wire">
+         <obj_property name="ElementShortName">header_payload_wire</obj_property>
+         <obj_property name="ObjectShortName">header_payload_wire</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/CoreSight_L2_Deocde_lee_sim/CoreSight_L2_Decoder_lee_i/CC1/header_payload">
+         <obj_property name="ElementShortName">header_payload</obj_property>
+         <obj_property name="ObjectShortName">header_payload</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/CoreSight_L2_Deocde_lee_sim/CoreSight_L2_Decoder_lee_i/CC1/payload_fix_wire">
+         <obj_property name="ElementShortName">payload_fix_wire</obj_property>
+         <obj_property name="ObjectShortName">payload_fix_wire</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/CoreSight_L2_Deocde_lee_sim/CoreSight_L2_Decoder_lee_i/CC1/payload_fix">
+         <obj_property name="ElementShortName">payload_fix</obj_property>
+         <obj_property name="ObjectShortName">payload_fix</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/CoreSight_L2_Deocde_lee_sim/CoreSight_L2_Decoder_lee_i/CC1/switch_enable">
+         <obj_property name="ElementShortName">switch_enable</obj_property>
+         <obj_property name="ObjectShortName">switch_enable</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/CoreSight_L2_Deocde_lee_sim/CoreSight_L2_Decoder_lee_i/CC1/Switch_out_valid_wire">
+         <obj_property name="ElementShortName">Switch_out_valid_wire</obj_property>
+         <obj_property name="ObjectShortName">Switch_out_valid_wire</obj_property>
+      </wvobject>
+   </wvobject>
+</wave_config>

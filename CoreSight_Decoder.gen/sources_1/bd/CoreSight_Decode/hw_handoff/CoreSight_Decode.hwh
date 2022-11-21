@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
-<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Tue Jul 19 21:01:36 2022" VIVADOVERSION="2021.2">
+<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Thu Nov 17 15:58:10 2022" VIVADOVERSION="2021.2">
 
   <SYSTEMINFO ARCH="zynquplus" BOARD="xilinx.com:zcu102:part0:3.4" DEVICE="xczu9eg" NAME="CoreSight_Decode" PACKAGE="ffvb1156" SPEEDGRADE="-2"/>
 
@@ -1008,9 +1008,9 @@
         <PORT DIR="O" LEFT="0" NAME="peripheral_aresetn" POLARITY="ACTIVE_LOW" RIGHT="0" SIGIS="rst" SIGNAME="rst_ps8_0_99M_peripheral_aresetn">
           <CONNECTIONS>
             <CONNECTION INSTANCE="ps8_0_axi_periph" PORT="S00_ARESETN"/>
-            <CONNECTION INSTANCE="CoreSight_Dump_0" PORT="s_axi_aresetn"/>
             <CONNECTION INSTANCE="ps8_0_axi_periph" PORT="M00_ARESETN"/>
             <CONNECTION INSTANCE="ps8_0_axi_periph" PORT="ARESETN"/>
+            <CONNECTION INSTANCE="CoreSight_Dump_0" PORT="s_axi_aresetn"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>
@@ -2939,8 +2939,8 @@
         <PORT DIR="O" NAME="ps_pl_tracectl" SIGIS="undef"/>
         <PORT DIR="O" LEFT="31" NAME="ps_pl_tracedata" RIGHT="0" SIGIS="undef" SIGNAME="zynq_ultra_ps_e_0_ps_pl_tracedata">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="CoreSight_Dump_0" PORT="trace_in"/>
             <CONNECTION INSTANCE="CoreSight_L0_Decoder_1" PORT="trace_data"/>
+            <CONNECTION INSTANCE="CoreSight_Dump_0" PORT="trace_in"/>
           </CONNECTIONS>
         </PORT>
         <PORT CLKFREQUENCY="50000000" DIR="O" NAME="trace_clk_out" SIGIS="clk"/>
@@ -2959,11 +2959,11 @@
             <CONNECTION INSTANCE="zynq_ultra_ps_e_0" PORT="maxihpm0_fpd_aclk"/>
             <CONNECTION INSTANCE="ps8_0_axi_periph" PORT="S00_ACLK"/>
             <CONNECTION INSTANCE="rst_ps8_0_99M" PORT="slowest_sync_clk"/>
-            <CONNECTION INSTANCE="CoreSight_Dump_0" PORT="s_axi_aclk"/>
             <CONNECTION INSTANCE="ps8_0_axi_periph" PORT="M00_ACLK"/>
             <CONNECTION INSTANCE="ps8_0_axi_periph" PORT="ACLK"/>
             <CONNECTION INSTANCE="zynq_ultra_ps_e_0" PORT="pl_ps_trace_clk"/>
             <CONNECTION INSTANCE="CoreSight_L0_Decoder_1" PORT="trace_clk"/>
+            <CONNECTION INSTANCE="CoreSight_Dump_0" PORT="s_axi_aclk"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>

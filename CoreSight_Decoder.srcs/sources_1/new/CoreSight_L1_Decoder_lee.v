@@ -27,9 +27,9 @@ module CoreSight_L1_Decoder_lee(
         input [7:0] i_last_ID,
         output [239:0] out_data,
         output out_valid,
-        output reg [7:0] o_last_ID,
+        output reg [7:0] o_last_ID
         //for debug 
-        output test_valid_data
+        //output test_valid_data
        
 //        output bug_intr,
 //        output[7:0] bug_type, //more than 16
@@ -52,14 +52,14 @@ module CoreSight_L1_Decoder_lee(
     reg [7:0] IoD[7:0] ;
     
     //trace_data valid flag
-    integer valid_data = 0 ;
+    reg valid_data = 1'b0 ;
     
     //input variable
     reg [7:0] last_id ;
     
     //output data
     reg [239:0] odata ;
-    integer ovalid = 0 ;
+    reg ovalid = 1'b0 ;
     
     integer i;
     
@@ -76,19 +76,22 @@ module CoreSight_L1_Decoder_lee(
     MUX M7 (F[7], aux[7], l6, IoD[7], tmp_id[14], tmp_id[15], l7);
  
     //Step 0 
-    always @ (posedge trace_clk) begin
-        if(in_valid) begin 
-            //save input data
-            trace_data <= in_data ;
-            valid_data <= 1 ;  
-            ovalid <= 0 ;          
-        end
-    end
+//    always @ (posedge trace_clk) begin
+        //if(in_valid) begin
+
+//    end
     
     //Step1234 
     
     reg [3:0] cnt = 4'd0;
     always @ (posedge trace_clk) begin 
+        //if(ovalid) ovalid <= 1'b0;
+        if(in_valid) begin 
+            //save input data
+            trace_data <= in_data ;
+            valid_data <= 1'b1 ;
+            ovalid <= 1'b0 ;          
+        end
         if(valid_data) begin     
             case(state)
                 S_getFA: begin 
@@ -134,8 +137,8 @@ module CoreSight_L1_Decoder_lee(
                     end 
                     //change state 
                     // try to reduce .start
-                    valid_data <= 0 ; 
-                    ovalid <= 1;
+                    valid_data <= 1'b0; 
+                    ovalid <= 1'b1;
                     state <= S_getFA ;
                     // try to reduce .end
                 end  
@@ -146,7 +149,7 @@ module CoreSight_L1_Decoder_lee(
     assign out_valid = ovalid ;
     assign out_data = odata ; 
     //for debug
-    assign test_valid_data = valid_data ;
+    //assign test_valid_data = valid_data ;
 endmodule
 
 module MUX(

@@ -26,11 +26,12 @@ module CoreSight_L2_Decoder_lee(
     input in_data_valid,
     input [7:0] in_ID,
     
-    output [3:0] out_cnt,
-    output [127:0] out_data,
-    output out_data_valid,
+    //output [3:0] out_cnt,
+    //output [127:0] out_data,
+    //output out_data_valid,
 
-    input in_read_fifo
+    //input in_read_fifo
+    output[191:0] addr
     );
     
     //PreProcess
@@ -43,6 +44,7 @@ module CoreSight_L2_Decoder_lee(
     wire fifo_empty;
     wire FIFO_valid;
     wire read_fifo;
+    wire [127:0] out_data;
 
     //ControlCore
     wire [63:0] addr1;
@@ -57,7 +59,8 @@ module CoreSight_L2_Decoder_lee(
     Collection C1(trace_clk, R, Val, PP_valid, RS, out_data_valid);
     FIFO F1(trace_clk, RS, out_data_valid, read_fifo, FIFO_valid, out_data, fifo_empty);
     ControlCore CC1(trace_clk, out_data, FIFO_valid, fifo_empty, addr1, addr2, addr3, buf_atom ,read_fifo);
-    assign out_cnt = Val;
+    
+    assign addr = {addr1, addr2, addr3};
 endmodule
 
 
@@ -151,7 +154,7 @@ module ControlCore(
     /*
         Trace Info Data
     */
-    reg[2:0] trace_info_state = 3'b0;
+    reg[2:0] trace_info_state = TRACE_INFO_SEC_PLCTL;
     reg[3:0] trace_info_sec = 4'b0;
     reg cc_enable = 1'b0;
     reg[11:0] cc_threshold = 12'b0;
@@ -407,7 +410,7 @@ module ControlCore(
                                     default:;
                                 endcase
                             // finish <= 1'b1;
-                        end else begin 
+                        end else if(!dynamic_parse_done) begin 
                             /*
                                 handle fixed packet payload
                             */
@@ -725,22 +728,12 @@ endmodule
 
 module FIFO(
     input clk,
-
-    //data from Collection
     input [127:0] F_i_data,
-
-    //valid from Collection
     input write_enable,
-
-    //
     input read_enable,
     
-    //fifo is ready for read
     output out_valid,
-    //data output to ControlCore
     output [127:0] F_o_data,
-
-    //notify ControlCore that fifo is empty
     output empty
     );
     
@@ -766,9 +759,52 @@ module FIFO(
             if(group_index != 0 )begin 
                 tmp_data <= mem[0];
                 out_tmp_valid <= 1'b1;
-                for(i=1; i<group_index; i=i+1) begin 
-                    mem[i-1] <= mem[i];
-                end 
+                
+                case(group_index)
+                    0:begin
+                        //nothing to do
+                    end
+                    1:begin
+                        for(i=0; i<1; i=i+1) begin 
+                            mem[i] <= mem[i+1];
+                        end
+                    end
+                    2:begin
+                        for(i=0; i<2; i=i+1) begin 
+                            mem[i] <= mem[i+1];
+                        end
+                    end
+                    3:begin
+                        for(i=0; i<3; i=i+1) begin 
+                            mem[i] <= mem[i+1];
+                        end
+                    end
+                    4:begin
+                        for(i=0; i<4; i=i+1) begin 
+                            mem[i] <= mem[i+1];
+                        end
+                    end
+                    5:begin
+                        for(i=0; i<5; i=i+1) begin 
+                            mem[i] <= mem[i+1];
+                        end
+                    end
+                    6:begin
+                        for(i=0; i<6; i=i+1) begin 
+                            mem[i] <= mem[i+1];
+                        end
+                    end
+                    7:begin
+                        for(i=0; i<7; i=i+1) begin 
+                            mem[i] <= mem[i+1];
+                        end
+                    end
+                endcase
+                mem[group_index] <= 128'bX;
+                
+//                for(i=1; i<group_index; i=i+1) begin 
+//                    mem[i-1] <= mem[i];
+//                end 
                 group_index <= group_index - 1;
                 
             end else begin 
@@ -786,16 +822,11 @@ endmodule
 
 module Collection(
     input trace_clk,
-    //input 8x15 data
     input [119:0] C_i_data,
-    //count for valid data, at most 15
     input [3:0] in_valid_cnt,
-    //input data is valid
     input valid,
     
-    //16x8 output data
     output [127:0] C_o_data,
-    //output if C_o_data is full
     output o_fifo_write
     );
 
@@ -820,19 +851,193 @@ module Collection(
             valid_count <= 0;    
     
        if(data_valid) begin 
-            for(n=0; n<valid_count; n=n+1) begin 
-                tmp_data[count+n] = in_tmp_data[n*8+7 -: 8];     
-            end 
+            case(valid_count)
+                0:begin
+                    //nothing to do
+                end
+                1:begin
+                    for(n=0; n<1; n=n+1) begin 
+                        tmp_data[count+n] = in_tmp_data[n*8+7 -: 8];     
+                    end
+                end
+                2:begin
+                    for(n=0; n<3; n=n+1) begin 
+                        tmp_data[count+n] = in_tmp_data[n*8+7 -: 8];     
+                    end
+                end
+                4:begin
+                    for(n=0; n<4; n=n+1) begin 
+                        tmp_data[count+n] = in_tmp_data[n*8+7 -: 8];     
+                    end
+                end
+                5:begin
+                    for(n=0; n<5; n=n+1) begin 
+                        tmp_data[count+n] = in_tmp_data[n*8+7 -: 8];     
+                    end
+                end
+                6:begin
+                    for(n=0; n<6; n=n+1) begin 
+                        tmp_data[count+n] = in_tmp_data[n*8+7 -: 8];     
+                    end
+                end
+                7:begin
+                    for(n=0; n<7; n=n+1) begin 
+                        tmp_data[count+n] = in_tmp_data[n*8+7 -: 8];     
+                    end
+                end
+                8:begin
+                    for(n=0; n<8; n=n+1) begin 
+                        tmp_data[count+n] = in_tmp_data[n*8+7 -: 8];     
+                    end 
+                end
+                9:begin
+                    for(n=0; n<9; n=n+1) begin 
+                        tmp_data[count+n] = in_tmp_data[n*8+7 -: 8];     
+                    end
+                end
+                10:begin
+                    for(n=0; n<10; n=n+1) begin 
+                        tmp_data[count+n] = in_tmp_data[n*8+7 -: 8];     
+                    end
+                end
+                11:begin
+                    for(n=0; n<11; n=n+1) begin 
+                        tmp_data[count+n] = in_tmp_data[n*8+7 -: 8];     
+                    end
+                end
+                12:begin
+                    for(n=0; n<12; n=n+1) begin 
+                        tmp_data[count+n] = in_tmp_data[n*8+7 -: 8];     
+                    end
+                end
+                13:begin
+                    for(n=0; n<13; n=n+1) begin 
+                        tmp_data[count+n] = in_tmp_data[n*8+7 -: 8];     
+                    end
+                end
+                14:begin
+                    for(n=0; n<14; n=n+1) begin 
+                        tmp_data[count+n] = in_tmp_data[n*8+7 -: 8];     
+                    end
+                end
+                15:begin
+                    for(n=0; n<15; n=n+1) begin 
+                        tmp_data[count+n] = in_tmp_data[n*8+7 -: 8];     
+                    end
+                end
+            endcase
+       
+       
+//            for(n=0; n<valid_count; n=n+1) begin 
+//                tmp_data[count+n] = in_tmp_data[n*8+7 -: 8];     
+//            end 
             cf = (count + valid_count) / 16; 
             index = (count + valid_count) % 16;   
                 
                       
-            // judge RS over 16
+            // judege RS over 16
             if(cf == 1 ) begin 
                 for(n=0;n<16;n=n+1) begin 
                     out_tmp_data[n*8+7 -: 8] <= tmp_data[n];  
                 end 
-                for(n=0; n<index; n=n+1) begin 
+                
+//                case(index)
+//                    0:begin
+//                        //nothing to do  
+//                    end
+//                    1:begin
+//                        for(n=0; n<1; n=n+1) begin 
+//                            tmp_data[n] <= tmp_data[n+16];
+//                            tmp_data[16+n] <= 8'bX;   
+//                        end   
+//                    end
+//                    2:begin
+//                        for(n=0; n<2; n=n+1) begin 
+//                            tmp_data[n] <= tmp_data[n+16];
+//                            tmp_data[16+n] <= 8'bX;   
+//                        end
+//                    end
+//                    3:begin
+//                        for(n=0; n<3; n=n+1) begin 
+//                            tmp_data[n] <= tmp_data[n+16];
+//                            tmp_data[16+n] <= 8'bX;   
+//                        end
+//                    end
+//                    4:begin
+//                        for(n=0; n<4; n=n+1) begin 
+//                            tmp_data[n] <= tmp_data[n+16];
+//                            tmp_data[16+n] <= 8'bX;   
+//                        end
+//                    end
+//                    5:begin
+//                        for(n=0; n<5; n=n+1) begin 
+//                            tmp_data[n] <= tmp_data[n+16];
+//                            tmp_data[16+n] <= 8'bX;   
+//                        end
+//                    end
+//                    6:begin
+//                        for(n=0; n<6; n=n+1) begin 
+//                            tmp_data[n] <= tmp_data[n+16];
+//                            tmp_data[16+n] <= 8'bX;   
+//                        end
+//                    end
+//                    7:begin
+//                        for(n=0; n<7; n=n+1) begin 
+//                            tmp_data[n] <= tmp_data[n+16];
+//                            tmp_data[16+n] <= 8'bX;   
+//                        end
+//                    end
+//                    8:begin
+//                        for(n=0; n<8; n=n+1) begin 
+//                            tmp_data[n] <= tmp_data[n+16];
+//                            tmp_data[16+n] <= 8'bX;   
+//                        end
+//                    end
+//                    9:begin
+//                        for(n=0; n<9; n=n+1) begin 
+//                            tmp_data[n] <= tmp_data[n+16];
+//                            tmp_data[16+n] <= 8'bX;   
+//                        end
+//                    end
+//                    10:begin
+//                        for(n=0; n<10; n=n+1) begin 
+//                            tmp_data[n] <= tmp_data[n+16];
+//                            tmp_data[16+n] <= 8'bX;   
+//                        end
+//                    end
+//                    11:begin
+//                        for(n=0; n<11; n=n+1) begin 
+//                            tmp_data[n] <= tmp_data[n+16];
+//                            tmp_data[16+n] <= 8'bX;   
+//                        end
+//                    end
+//                    12:begin
+//                        for(n=0; n<12; n=n+1) begin 
+//                            tmp_data[n] <= tmp_data[n+16];
+//                            tmp_data[16+n] <= 8'bX;   
+//                        end
+//                    end
+//                    13:begin
+//                        for(n=0; n<13; n=n+1) begin 
+//                            tmp_data[n] <= tmp_data[n+16];
+//                            tmp_data[16+n] <= 8'bX;   
+//                        end
+//                    end
+//                    14:begin
+//                        for(n=0; n<14; n=n+1) begin 
+//                            tmp_data[n] <= tmp_data[n+16];
+//                            tmp_data[16+n] <= 8'bX;   
+//                        end
+//                    end
+//                    15:begin
+//                        for(n=0; n<15; n=n+1) begin 
+//                            tmp_data[n] <= tmp_data[n+16];
+//                            tmp_data[16+n] <= 8'bX;   
+//                        end
+//                    end
+//                endcase
+                
+                for(n=0; n<16; n=n+1) begin 
                     tmp_data[n] <= tmp_data[n+16];
                     tmp_data[16+n] <= 8'bX;   
                 end 
@@ -858,22 +1063,12 @@ endmodule
 
 module PreProcess(
     input trace_clk,
-    /*
-    15*16
-    data[15:8]-id[7:0]
-    e.g. 00000001 00001110
-    */
     input [239:0] in_data,
-    //input data valid
     input in_data_valid,
-    //PE ID that this L2 Decoder belongs to
     input [7:0] in_ID,
     
-    //count for [7:0]data that collected for Collection
     output [3:0] out_cnt,
-    //8x15 data that output to Collection
     output [119:0] out_R,
-    //output data valid
     output PP_out_valid
     );
     

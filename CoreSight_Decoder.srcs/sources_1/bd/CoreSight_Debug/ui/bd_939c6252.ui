@@ -1,0 +1,22 @@
+{
+   "ActiveEmotionalView":"Default View",
+   "Default View_ScaleFactor":"0.7985",
+   "Default View_TopLeft":"1,-422",
+   "ExpandedHierarchyInLayout":"",
+   "guistr":"# # String gsaved with Nlview 7.0r4  2019-12-20 bk=1.5203 VDI=41 GEI=36 GUI=JA:10.0 TLS
+#  -string -flagsOSRD
+preplace inst zynq_ultra_ps_e_0 -pg 1 -lvl 1 -x 330 -y 100 -defaultsOSRD
+preplace inst CoreSight_L0_Decoder_0 -pg 1 -lvl 2 -x 810 -y 90 -defaultsOSRD
+preplace inst CoreSight_L1_Decoder_0 -pg 1 -lvl 3 -x 1160 -y 110 -defaultsOSRD
+preplace netloc zynq_ultra_ps_e_0_pl_clk0 1 0 3 20 200 640 180 990
+preplace netloc zynq_ultra_ps_e_0_ps_pl_tracedata 1 1 1 N 100
+preplace netloc CoreSight_L0_Decoder_0_frame_out 1 2 1 980 60n
+preplace netloc CoreSight_L0_Decoder_0_frame_valid 1 2 1 N 120
+preplace netloc CoreSight_L1_Decoder_0_o_last_ID 1 2 2 1000 20 1320
+levelinfo -pg 1 0 330 810 1160 1510 1830 2000
+pagesize -pg 1 -db -bbox -sgen 0 0 2000 320
+"
+}
+{
+   "da_zynq_ultra_ps_e_cnt":"1"
+}
