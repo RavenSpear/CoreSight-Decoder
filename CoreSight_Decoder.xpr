@@ -293,7 +293,7 @@
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
-      <File Path="$PPRDIR/CoreSight_L2_Decoder_lee_sim_behav.wcfg">
+      <File Path="$PPRDIR/CoreSight_Decoder.wcfg/CoreSight_L2_Decoder_lee_sim_behav.wcfg">
         <FileInfo>
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
