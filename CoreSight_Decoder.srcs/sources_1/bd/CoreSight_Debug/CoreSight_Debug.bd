@@ -7,12 +7,21 @@
       "name": "CoreSight_Debug",
       "rev_ctrl_bd_flag": "RevCtrlBdOff",
       "synth_flow_mode": "Hierarchical",
-      "tool_version": "2021.2"
+      "tool_version": "2021.2",
+      "validated": "true"
     },
     "design_tree": {
       "zynq_ultra_ps_e_0": "",
+      "CoreSight_L1_Decoder_0": "",
       "CoreSight_L0_Decoder_0": "",
-      "CoreSight_L1_Decoder_0": ""
+      "L1_ID_led_dump_0": ""
+    },
+    "ports": {
+      "led_0": {
+        "direction": "O",
+        "left": "7",
+        "right": "0"
+      }
     },
     "components": {
       "zynq_ultra_ps_e_0": {
@@ -1091,6 +1100,59 @@
           }
         }
       },
+      "CoreSight_L1_Decoder_0": {
+        "vlnv": "xilinx.com:module_ref:CoreSight_L1_Decoder_lee:1.0",
+        "xci_name": "CoreSight_Debug_CoreSight_L1_Decoder_0_0",
+        "xci_path": "ip/CoreSight_Debug_CoreSight_L1_Decoder_0_0/CoreSight_Debug_CoreSight_L1_Decoder_0_0.xci",
+        "inst_hier_path": "CoreSight_L1_Decoder_0",
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "CoreSight_L1_Decoder_lee",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "trace_clk": {
+            "type": "clk",
+            "direction": "I",
+            "parameters": {
+              "FREQ_HZ": {
+                "value": "99990005",
+                "value_src": "user_prop"
+              },
+              "CLK_DOMAIN": {
+                "value": "CoreSight_Debug_zynq_ultra_ps_e_0_0_pl_clk0",
+                "value_src": "default_prop"
+              }
+            }
+          },
+          "in_data": {
+            "direction": "I",
+            "left": "127",
+            "right": "0"
+          },
+          "in_valid": {
+            "direction": "I"
+          },
+          "i_last_ID": {
+            "direction": "I",
+            "left": "7",
+            "right": "0"
+          },
+          "out_data": {
+            "direction": "O",
+            "left": "239",
+            "right": "0"
+          },
+          "out_valid": {
+            "direction": "O"
+          },
+          "o_last_ID": {
+            "direction": "O",
+            "left": "7",
+            "right": "0"
+          }
+        }
+      },
       "CoreSight_L0_Decoder_0": {
         "vlnv": "xilinx.com:module_ref:CoreSight_L0_Decoder_simp:1.0",
         "xci_name": "CoreSight_Debug_CoreSight_L0_Decoder_0_0",
@@ -1146,14 +1208,14 @@
           }
         }
       },
-      "CoreSight_L1_Decoder_0": {
-        "vlnv": "xilinx.com:module_ref:CoreSight_L1_Decoder_lee:1.0",
-        "xci_name": "CoreSight_Debug_CoreSight_L1_Decoder_0_0",
-        "xci_path": "ip/CoreSight_Debug_CoreSight_L1_Decoder_0_0/CoreSight_Debug_CoreSight_L1_Decoder_0_0.xci",
-        "inst_hier_path": "CoreSight_L1_Decoder_0",
+      "L1_ID_led_dump_0": {
+        "vlnv": "xilinx.com:module_ref:L1_ID_led_dump:1.0",
+        "xci_name": "CoreSight_Debug_L1_ID_led_dump_0_0",
+        "xci_path": "ip/CoreSight_Debug_L1_ID_led_dump_0_0/CoreSight_Debug_L1_ID_led_dump_0_0.xci",
+        "inst_hier_path": "L1_ID_led_dump_0",
         "reference_info": {
           "ref_type": "hdl",
-          "ref_name": "CoreSight_L1_Decoder_lee",
+          "ref_name": "L1_ID_led_dump",
           "boundary_crc": "0x0"
         },
         "ports": {
@@ -1171,28 +1233,15 @@
               }
             }
           },
-          "in_data": {
+          "test_data": {
             "direction": "I",
-            "left": "127",
+            "left": "239",
             "right": "0"
           },
           "in_valid": {
             "direction": "I"
           },
-          "i_last_ID": {
-            "direction": "I",
-            "left": "7",
-            "right": "0"
-          },
-          "out_data": {
-            "direction": "O",
-            "left": "239",
-            "right": "0"
-          },
-          "out_valid": {
-            "direction": "O"
-          },
-          "o_last_ID": {
+          "out_led": {
             "direction": "O",
             "left": "7",
             "right": "0"
@@ -1219,12 +1268,31 @@
           "CoreSight_L1_Decoder_0/i_last_ID"
         ]
       },
+      "CoreSight_L1_Decoder_0_out_data": {
+        "ports": [
+          "CoreSight_L1_Decoder_0/out_data",
+          "L1_ID_led_dump_0/test_data"
+        ]
+      },
+      "CoreSight_L1_Decoder_0_out_valid": {
+        "ports": [
+          "CoreSight_L1_Decoder_0/out_valid",
+          "L1_ID_led_dump_0/in_valid"
+        ]
+      },
+      "L1_ID_led_dump_0_out_led": {
+        "ports": [
+          "L1_ID_led_dump_0/out_led",
+          "led_0"
+        ]
+      },
       "zynq_ultra_ps_e_0_pl_clk0": {
         "ports": [
           "zynq_ultra_ps_e_0/pl_clk0",
           "zynq_ultra_ps_e_0/pl_ps_trace_clk",
+          "CoreSight_L1_Decoder_0/trace_clk",
           "CoreSight_L0_Decoder_0/trace_clk",
-          "CoreSight_L1_Decoder_0/trace_clk"
+          "L1_ID_led_dump_0/trace_clk"
         ]
       },
       "zynq_ultra_ps_e_0_ps_pl_tracedata": {

@@ -7,8 +7,7 @@
       "name": "CoreSight_Decode",
       "rev_ctrl_bd_flag": "RevCtrlBdOff",
       "synth_flow_mode": "Hierarchical",
-      "tool_version": "2021.2",
-      "validated": "true"
+      "tool_version": "2021.2"
     },
     "design_tree": {
       "zynq_ultra_ps_e_0": "",
@@ -19,8 +18,8 @@
         }
       },
       "rst_ps8_0_99M": "",
-      "CoreSight_L0_Decoder_1": "",
-      "CoreSight_Dump_0": ""
+      "CoreSight_Dump_0": "",
+      "CoreSight_L0_Decoder_1": ""
     },
     "ports": {
       "led_0": {
@@ -1456,6 +1455,12 @@
         "xci_path": "ip/CoreSight_Decode_rst_ps8_0_99M_2/CoreSight_Decode_rst_ps8_0_99M_2.xci",
         "inst_hier_path": "rst_ps8_0_99M"
       },
+      "CoreSight_Dump_0": {
+        "vlnv": "user.org:user:CoreSight_Dump:1.0",
+        "xci_name": "CoreSight_Decode_CoreSight_Dump_0_2",
+        "xci_path": "ip/CoreSight_Decode_CoreSight_Dump_0_2/CoreSight_Decode_CoreSight_Dump_0_2.xci",
+        "inst_hier_path": "CoreSight_Dump_0"
+      },
       "CoreSight_L0_Decoder_1": {
         "vlnv": "xilinx.com:module_ref:CoreSight_L0_Decoder_simp:1.0",
         "xci_name": "CoreSight_Decode_CoreSight_L0_Decoder_1_0",
@@ -1469,17 +1474,7 @@
         "ports": {
           "trace_clk": {
             "type": "clk",
-            "direction": "I",
-            "parameters": {
-              "FREQ_HZ": {
-                "value": "99990005",
-                "value_src": "user_prop"
-              },
-              "CLK_DOMAIN": {
-                "value": "CoreSight_Decode_zynq_ultra_ps_e_0_0_pl_clk0",
-                "value_src": "default_prop"
-              }
-            }
+            "direction": "I"
           },
           "trace_data": {
             "direction": "I",
@@ -1498,10 +1493,6 @@
               "SENSITIVITY": {
                 "value": "LEVEL_HIGH",
                 "value_src": "constant"
-              },
-              "PortWidth": {
-                "value": "1",
-                "value_src": "default_prop"
               }
             }
           },
@@ -1514,12 +1505,6 @@
             "direction": "O"
           }
         }
-      },
-      "CoreSight_Dump_0": {
-        "vlnv": "user.org:user:CoreSight_Dump:1.0",
-        "xci_name": "CoreSight_Decode_CoreSight_Dump_0_2",
-        "xci_path": "ip/CoreSight_Decode_CoreSight_Dump_0_2/CoreSight_Decode_CoreSight_Dump_0_2.xci",
-        "inst_hier_path": "CoreSight_Dump_0"
       }
     },
     "interface_nets": {
@@ -1585,8 +1570,8 @@
           "ps8_0_axi_periph/M00_ACLK",
           "ps8_0_axi_periph/ACLK",
           "zynq_ultra_ps_e_0/pl_ps_trace_clk",
-          "CoreSight_L0_Decoder_1/trace_clk",
-          "CoreSight_Dump_0/s_axi_aclk"
+          "CoreSight_Dump_0/s_axi_aclk",
+          "CoreSight_L0_Decoder_1/trace_clk"
         ]
       },
       "zynq_ultra_ps_e_0_pl_resetn0": {
@@ -1598,8 +1583,8 @@
       "zynq_ultra_ps_e_0_ps_pl_tracedata": {
         "ports": [
           "zynq_ultra_ps_e_0/ps_pl_tracedata",
-          "CoreSight_L0_Decoder_1/trace_data",
-          "CoreSight_Dump_0/trace_in"
+          "CoreSight_Dump_0/trace_in",
+          "CoreSight_L0_Decoder_1/trace_data"
         ]
       }
     },

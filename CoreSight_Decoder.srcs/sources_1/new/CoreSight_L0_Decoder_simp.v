@@ -19,7 +19,7 @@
 // 
 //////////////////////////////////////////////////////////////////////////////////
 
-
+/* A simplified implementation of L0_Decoder, all packets are treated as 32-aligned*/
 module CoreSight_L0_Decoder_simp(
         input trace_clk,
         input [31:0] trace_data,

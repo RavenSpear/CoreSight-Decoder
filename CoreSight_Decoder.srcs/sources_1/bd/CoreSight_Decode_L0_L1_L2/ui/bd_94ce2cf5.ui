@@ -6,24 +6,24 @@
    "guistr":"# # String gsaved with Nlview 7.0r4  2019-12-20 bk=1.5203 VDI=41 GEI=36 GUI=JA:10.0 TLS
 #  -string -flagsOSRD
 preplace inst zynq_ultra_ps_e_0 -pg 1 -lvl 1 -x 350 -y 310 -defaultsOSRD
-preplace inst CoreSight_L0_Decoder_0 -pg 1 -lvl 2 -x 870 -y 90 -defaultsOSRD
 preplace inst CoreSight_L1_Decoder_0 -pg 1 -lvl 3 -x 1250 -y 110 -defaultsOSRD
 preplace inst CoreSight_Dump_0 -pg 1 -lvl 3 -x 1250 -y 380 -defaultsOSRD
 preplace inst ps8_0_axi_periph -pg 1 -lvl 2 -x 870 -y 320 -defaultsOSRD
 preplace inst rst_ps8_0_99M -pg 1 -lvl 1 -x 350 -y 530 -defaultsOSRD
-preplace netloc CoreSight_Dump_0_intr 1 0 4 30 420 690J 200 NJ 200 1410
-preplace netloc CoreSight_L0_Decoder_0_bug_type 1 2 1 1050 100n
-preplace netloc CoreSight_L0_Decoder_0_frame_out 1 2 1 1060 60n
+preplace inst CoreSight_L0_Decoder_0 -pg 1 -lvl 2 -x 870 -y 90 -defaultsOSRD
+preplace netloc CoreSight_Dump_0_intr 1 0 4 10 630 NJ 630 NJ 630 1410
+preplace netloc CoreSight_L0_Decoder_0_bug_type 1 2 1 1040 100n
+preplace netloc CoreSight_L0_Decoder_0_frame_out 1 2 1 1050 60n
 preplace netloc CoreSight_L0_Decoder_0_frame_valid 1 2 1 1080 120n
-preplace netloc CoreSight_L1_Decoder_0_o_last_ID 1 2 2 1090 210 1420
-preplace netloc rst_ps8_0_99M_peripheral_aresetn 1 1 2 700 440 NJ
-preplace netloc zynq_ultra_ps_e_0_pl_clk0 1 0 3 20 630 680 190 1070
-preplace netloc zynq_ultra_ps_e_0_pl_resetn0 1 0 2 30 430 670
-preplace netloc zynq_ultra_ps_e_0_ps_pl_tracedata 1 1 2 670 180 1040
+preplace netloc CoreSight_L1_Decoder_0_o_last_ID 1 2 2 1090 20 1410
+preplace netloc rst_ps8_0_99M_peripheral_aresetn 1 1 2 700 450 1090J
+preplace netloc zynq_ultra_ps_e_0_pl_clk0 1 0 3 20 200 680 180 1070
+preplace netloc zynq_ultra_ps_e_0_pl_resetn0 1 0 2 30 420 670
+preplace netloc zynq_ultra_ps_e_0_ps_pl_tracedata 1 1 2 690 440 1060
 preplace netloc ps8_0_axi_periph_M00_AXI 1 2 1 N 320
 preplace netloc zynq_ultra_ps_e_0_M_AXI_HPM0_FPD 1 1 1 N 260
-levelinfo -pg 1 0 350 870 1250 1440
-pagesize -pg 1 -db -bbox -sgen 0 0 1440 640
+levelinfo -pg 1 -10 350 870 1250 1440
+pagesize -pg 1 -db -bbox -sgen -10 0 1440 640
 "
 }
 {

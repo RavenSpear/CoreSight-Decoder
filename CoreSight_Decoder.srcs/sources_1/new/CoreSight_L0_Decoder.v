@@ -19,7 +19,7 @@
 // 
 //////////////////////////////////////////////////////////////////////////////////
 
-
+/* A deprecated implementation of L0_Decoder, since half-aligned raw data not appeared*/
 module CoreSight_L0_Decoder(
         input trace_clk,
         input [31:0] trace_data,
