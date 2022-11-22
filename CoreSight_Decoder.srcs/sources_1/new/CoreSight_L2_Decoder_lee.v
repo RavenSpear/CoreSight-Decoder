@@ -31,7 +31,7 @@ module CoreSight_L2_Decoder_lee(
     //output out_data_valid,
 
     //input in_read_fifo
-    output[191:0] addr
+    output[63:0] addr
     );
     
     //PreProcess
@@ -60,7 +60,7 @@ module CoreSight_L2_Decoder_lee(
     FIFO F1(trace_clk, RS, out_data_valid, read_fifo, FIFO_valid, out_data, fifo_empty);
     ControlCore CC1(trace_clk, out_data, FIFO_valid, fifo_empty, addr1, addr2, addr3, buf_atom ,read_fifo);
     
-    assign addr = {addr1, addr2, addr3};
+    assign addr = addr1;
 endmodule
 
 
@@ -1077,7 +1077,8 @@ module PreProcess(
     reg [7:0] R_tmp[14:0]; 
     wire [3:0] w_R_index[14:0]; 
     reg [3:0] R_index[14:0];
-    reg [119:0] R = 120'bX;
+    //reg [119:0] R = 120'bX;
+    reg [119:0] R;
     reg [239:0] input_data;
     
     integer i;

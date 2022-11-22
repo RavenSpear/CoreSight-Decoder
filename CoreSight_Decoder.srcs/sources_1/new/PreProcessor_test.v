@@ -3,7 +3,7 @@
 // Company: 
 // Engineer: 
 // 
-// Create Date: 11/21/2022 07:13:53 PM
+// Create Date: 11/21/2022 09:55:32 PM
 // Design Name: 
 // Module Name: PreProcessor_test
 // Project Name: 
@@ -19,9 +19,8 @@
 // 
 //////////////////////////////////////////////////////////////////////////////////
 
-/* Standalone module as PreProcessor */
 
-module PreProcess_test(
+module PreProcessor_test(
     input trace_clk,
     input [239:0] in_data,
     input in_data_valid,
@@ -37,7 +36,7 @@ module PreProcess_test(
     reg [7:0] R_tmp[14:0]; 
     wire [3:0] w_R_index[14:0]; 
     reg [3:0] R_index[14:0];
-    reg [119:0] R = 120'bX;
+    reg [119:0] R;
     reg [239:0] input_data;
     
     integer i;
@@ -86,6 +85,8 @@ module PreProcess_test(
     
     assign w_R_valid = R_valid ;
     assign out_R = R;
+    //assign out_R = in_data[119:0];
     assign out_cnt = R_valid_cnt;
     assign PP_out_valid = valid;
+    //assign PP_out_valid = in_data_valid;
 endmodule
