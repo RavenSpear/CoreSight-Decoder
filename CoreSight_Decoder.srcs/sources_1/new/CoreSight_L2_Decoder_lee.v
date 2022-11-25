@@ -31,7 +31,8 @@ module CoreSight_L2_Decoder_lee(
     //output out_data_valid,
 
     //input in_read_fifo
-    output[63:0] addr
+    output[63:0] addr,
+    output addr_valid
     );
     
     //PreProcess
@@ -51,6 +52,7 @@ module CoreSight_L2_Decoder_lee(
     wire [63:0] addr2;
     wire [63:0] addr3;
     wire [128:0] buf_atom;
+    wire cc_addr_valid;
     
     //debug
     //PreProcess P1(trace_clk, in_data, in_data_valid, in_ID, out_cnt, out_data, out_data_valid);
@@ -58,9 +60,10 @@ module CoreSight_L2_Decoder_lee(
     PreProcess P1(trace_clk, in_data, in_data_valid, in_ID, Val, R, PP_valid);
     Collection C1(trace_clk, R, Val, PP_valid, RS, out_data_valid);
     FIFO F1(trace_clk, RS, out_data_valid, read_fifo, FIFO_valid, out_data, fifo_empty);
-    ControlCore CC1(trace_clk, out_data, FIFO_valid, fifo_empty, addr1, addr2, addr3, buf_atom ,read_fifo);
+    ControlCore CC1(trace_clk, out_data, FIFO_valid, fifo_empty, addr1, addr2, addr3, buf_atom ,read_fifo,cc_addr_valid);
     
     assign addr = addr1;
+    assign addr_valid = cc_addr_valid;
 endmodule
 
 
@@ -77,7 +80,8 @@ module ControlCore(
     output [63:0] addr3,
     output [128:0] buf_atom,
 
-    output read_enable
+    output read_enable,
+    output cc_addr_valid
     );
 
 
@@ -214,6 +218,7 @@ module ControlCore(
     //integer payload_length = 0; //replace to  parsed_length
     wire payload_fix_wire;
     reg payload_fix = 1'b0;
+    reg addr_valid;
     
     //payload analyze finish
     //finish replace to dynamic_parse_done, need to debug
@@ -227,6 +232,7 @@ module ControlCore(
 
 
     always @(posedge clk) begin
+        if(addr_valid) addr_valid <= 1'b0;
         case(state) 
             PROCESS:begin
                 // switch_enable <= 1;
@@ -240,11 +246,11 @@ module ControlCore(
                     index = index - 8;
                 end   
 
-                // if(index == 0 ) begin 
-                //     send_read_data <= 1'b1;
-                //     buf_data_valid <= 0;
-                //     state <= SUSPEND;
-                // end 
+//                 if(index == 0 ) begin 
+//                     send_read_data <= 1'b1;
+//                     buf_data_valid <= 0;
+//                     state <= SUSPEND;
+//                 end 
 
                 if(switch_enable) begin 
                     header_payload <= header_payload_wire;
@@ -260,10 +266,13 @@ module ControlCore(
                         send_read_data <= 1'b1;
                         state <= SUSPEND;
                     end else begin
-                        if(payload_fix == 0) begin 
+                        if(payload_fix == 0 &&!dynamic_parse_done) begin 
                             //handle variable packet payload
-                            if(dynamic_parse_done) dynamic_parse_done <= 1'b0;//multi-drive?
-                            if(parsed_length + 1 > bytes_remain) state <= SUSPEND;//!!!!!!!!!!!!!!!!!!More discussion
+                            //if(dynamic_parse_done) dynamic_parse_done <= 1'b0;//multi-drive?
+                            if(parsed_length + 1 > bytes_remain)begin
+                                send_read_data <= 1'b1;
+                                state <= SUSPEND;//!!!!!!!!!!!!!!!!!!More discussion
+                            end
                             else if(state==PROCESS)
                                 casex(header)
                                     /*
@@ -319,7 +328,10 @@ module ControlCore(
                                                     cc_threshold[11:7] <= buf_data[parsed_length*8+12-:5];
                                                     dynamic_parse_done <= 1'b1;
                                                 end
-                                                else if(buf_data[parsed_length*8+7]&&parsed_length + 2 > bytes_remain) state <= SUSPEND;
+                                                else if(buf_data[parsed_length*8+7]&&parsed_length + 2 > bytes_remain)begin 
+                                                    state <= SUSPEND;
+                                                    send_read_data <= 1'b1;
+                                                end
                                                 else begin
                                                     parsed_length <= parsed_length + 1;
                                                     cc_threshold[6:0] <= buf_data[parsed_length*8+6-:7];
@@ -336,9 +348,11 @@ module ControlCore(
                                                 if(parsed_length + ADDR_L_64ISO_LENGTH + 1 <= bytes_remain)begin //ADDR Section & Context INFO Byte.
                                                     address_reg[2] <= address_reg[1];
                                                     address_reg[1] <= address_reg[0];
+                                                    address_reg[0][1:0] <= 2'b0;
                                                     address_reg[0][8:2] <= buf_data[parsed_length*8+6-:7];
                                                     address_reg[0][15:9] <= buf_data[parsed_length*8+8+6-:7];
-                                                    address_reg[0][63:16] <= buf_data[parsed_length*8+16+7-:48];
+                                                    address_reg[0][63:16] <= buf_data[parsed_length*8+63-:48];
+                                                    addr_valid <= 'b1;
                                                     ex_level <= buf_data[parsed_length*8+64+1-:2];
                                                     sixty_four_bit <= buf_data[parsed_length*8+64+4];
                                                     security <= buf_data[parsed_length*8+64+5];
@@ -350,8 +364,11 @@ module ControlCore(
                                                         ctxt_info_sec <= buf_data[parsed_length*8+64+7-:2];
                                                     end
                                                 end
-                                                else
+                                                else begin
+                                                    //buf_data_valid <= 1'b0;
+                                                    send_read_data <= 1'b1;
                                                     state <= SUSPEND;
+                                                end
                                             ADDR_CTXT_VMID:begin
                                                 if(ctxt_info_sec[0])begin
                                                     parsed_length <= parsed_length + 1;
@@ -368,12 +385,16 @@ module ControlCore(
                                                     parsed_length <= parsed_length + 4;
                                                     dynamic_parse_done <= 1'b1;
                                                 end
-                                                else state <= SUSPEND;
+                                                else begin
+                                                    send_read_data <= 1'b1;
+                                                    state <= SUSPEND;
+                                                end
                                             end
                                             default:;
                                         endcase
                                     end
                                     ADDR_S_ISO:begin
+                                        addr_valid <= 'b1;
                                         address_reg[2] <= address_reg[1];
                                         address_reg[1] <= address_reg[0];
                                         address_reg[0][1:0] <= 2'b00;
@@ -383,7 +404,10 @@ module ControlCore(
                                             address_reg[0][16:9] <= buf_data[parsed_length*8+15-:8];
                                             dynamic_parse_done <= 1'b1;
                                         end
-                                        else if(buf_data[parsed_length*8+7]&&parsed_length + 2 > bytes_remain) state <= SUSPEND;
+                                        else if(buf_data[parsed_length*8+7]&&parsed_length + 2 > bytes_remain) begin
+                                            state <= SUSPEND;
+                                            send_read_data <= 1'b1;
+                                        end
                                         else begin
                                             parsed_length <= parsed_length + 1;
                                             address_reg[0][8:2] <= buf_data[parsed_length*8+6-:7];
@@ -398,7 +422,10 @@ module ControlCore(
                                             exception_type[9:0] <= {buf_data[parsed_length*8+5-:5],buf_data[parsed_length*8+8+4-:5]};
                                             dynamic_parse_done <= 1'b1;
                                         end
-                                        else if(buf_data[parsed_length*8+7]&&parsed_length + 2 > bytes_remain) state <= SUSPEND;
+                                        else if(buf_data[parsed_length*8+7]&&parsed_length + 2 > bytes_remain)begin
+                                            state <= SUSPEND;
+                                            send_read_data <= 1'b1;
+                                        end
                                         else begin
                                             parsed_length <= parsed_length + 1;
                                             EE <= {buf_data[parsed_length*8+6],buf_data[parsed_length*8]};
@@ -421,6 +448,7 @@ module ControlCore(
                                 A_SYNC: if(buf_data[87:0]==88'h80_0000_0000_0000_0000_0000);        
                                 TRACE_ON:;
                                 ADDR_MATCH:begin
+                                    addr_valid <= 'b1;
                                     address_reg[2] <= address_reg[1];
                                     address_reg[1] <= address_reg[0];
                                     case(header[1:0])
@@ -430,11 +458,13 @@ module ControlCore(
                                     endcase
                                 end
                                 ADDR_L_64ISO:begin
+                                    addr_valid <= 'b1;
                                     address_reg[2] <= address_reg[1];
                                     address_reg[1] <= address_reg[0];
                                     address_reg[0] <= buf_data[ADDR_L_64ISO_LENGTH*8-1:0];   
                                 end
                                 ADDR_L_32ISO:begin
+                                    addr_valid <= 'b1;
                                     address_reg[2] <= address_reg[1];
                                     address_reg[1] <= address_reg[0];
                                     address_reg[0][31:0] <= buf_data[ADDR_L_32ISO_LENGTH*8-1:0];
@@ -536,7 +566,8 @@ module ControlCore(
             SUSPEND:begin 
                 if(fifo_empty == 1) begin
                     send_read_data <= 1'b1;
-                end else begin
+                end 
+                else begin
                     send_read_data <= 1'b0;
                 end
                 if(in_valid == 1) begin 
@@ -556,6 +587,7 @@ module ControlCore(
     assign addr2 = address_reg[1];
     assign addr3 = address_reg[2];
     assign buf_atom = atom_buff;
+    assign cc_addr_valid = addr_valid;
 endmodule 
 
 
@@ -608,7 +640,7 @@ module ControlSwitch (
                 TRACE_INFO: begin 
                     mode <= TRACE_INFO;
                     fix <= 0;
-                    len <= 32'd1;
+                    len <= 32'd0;
                     header <= 1'b1;
                 end 
                 TRACE_ON: begin 
@@ -620,7 +652,7 @@ module ControlSwitch (
                 ADDR_CTXT_L_64ISO: begin 
                     mode <= ADDR_CTXT_L_64ISO;
                     fix <= 0;
-                    len <= 32'd1;
+                    len <= 32'd0;
                     header <= 1'b1;
                 end 
                 ADDR_MATCH: begin 
@@ -644,7 +676,7 @@ module ControlSwitch (
                 ADDR_S_ISO: begin 
                     mode <= ADDR_S_ISO;
                     fix <= 0;
-                    len <= 32'd1;
+                    len <= 32'd0;
                     header <= 1'b1;
                 end 
                 ATOM_F1: begin 
@@ -705,7 +737,7 @@ module ControlSwitch (
                 EXCEPTION: begin 
                     mode <= EXCEPTION;
                     fix <= 0;
-                    len <= 32'd1;
+                    len <= 32'd0;
                     header <= 1'b1;
                 end 
                 default: begin 

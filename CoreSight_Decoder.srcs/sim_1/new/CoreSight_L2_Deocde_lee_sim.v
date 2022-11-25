@@ -54,7 +54,7 @@ module CoreSight_L2_Deocde_lee_sim;
 //    event out_data_valid;
     
 initial begin     
-    in_file = $fopen("/home/marvin/Documents/CoreSightDocs/CoreSight_Decoder_test/L2_ControlCore_in-1","r");
+    in_file = $fopen("/home/marvin/Documents/CoreSightDocs/CoreSight_Decoder_test/L2_ControlCore_in-4","r");
     out_file = $fopen("/home/marvin/Documents/CoreSightDocs/CoreSight_Decoder_test/L2_ControlCore_out-1","w"); 
 //    repeat(10000) begin 
 //    @(posedge out_data_valid ) begin 

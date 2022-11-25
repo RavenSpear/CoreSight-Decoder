@@ -25,6 +25,7 @@ module L1_led_dump_sim;
     parameter BLINK_CYCLE = 10;
     parameter CYCLE = 1;
     
+//    reg remake;
     reg trace_clk;
     reg in_valid;
     reg[DATA_WIDTH-1:0] test_data;
@@ -36,6 +37,7 @@ module L1_led_dump_sim;
         .DATA_WIDTH(DATA_WIDTH),
         .BLINK_CYCLE(BLINK_CYCLE)
     )L1_led_dump_i(
+//        .remake(remake),
         .trace_clk(trace_clk),
         .test_data(test_data),
         .in_valid(in_valid),
@@ -60,6 +62,66 @@ initial begin
     in_valid = 1'b1;
     //test_data = 'h00_0101_8000_0000_0000_0000_0000_0000;
     test_data = 'hee_dd_cc_bb_aa_99_88_77_66_55_44_33_22_11_00;
+    #2
+    in_valid = 1'b0;
+    test_data = 'hX;
+    #500
+    in_valid = 1'b1;
+    //test_data = 'h00_0101_8000_0000_0000_0000_0000_0000;
+    //remake = 1'b1;
+    test_data = 'h22_11_22_11_22_11_22_11_22_11_22_11_22_11_22;
+    #2
+    //remake = 1'b0;
+    in_valid = 1'b0;
+    test_data = 'hX;
+    #2
+    in_valid = 1'b1;
+    //test_data = 'h00_0101_8000_0000_0000_0000_0000_0000;
+    test_data = 'h22_11_22_11_22_11_22_11_22_11_22_11_22_11_22;
+    #2
+    in_valid = 1'b0;
+    test_data = 'hX;
+    #2
+    in_valid = 1'b1;
+    //test_data = 'h00_0101_8000_0000_0000_0000_0000_0000;
+    //remake = 1'b1;
+    test_data = 'h22_11_22_11_22_11_22_11_22_11_22_11_22_11_22;
+    #2
+    //remake = 1'b0;
+    in_valid = 1'b0;
+    test_data = 'hX;
+    #2
+    in_valid = 1'b1;
+    //test_data = 'h00_0101_8000_0000_0000_0000_0000_0000;
+    test_data = 'h22_11_22_11_22_11_22_11_22_11_22_11_22_11_22;
+    #2
+    in_valid = 1'b0;
+    test_data = 'hX;
+    #2
+    in_valid = 1'b1;
+    //test_data = 'h00_0101_8000_0000_0000_0000_0000_0000;
+    test_data = 'h22_11_22_11_22_11_22_11_22_11_22_11_22_11_22;
+    #2
+    in_valid = 1'b0;
+    test_data = 'hX;
+    #2
+    in_valid = 1'b1;
+    //test_data = 'h00_0101_8000_0000_0000_0000_0000_0000;
+    test_data = 'h22_11_22_11_22_11_22_11_22_11_22_11_22_11_22;
+    #2
+    in_valid = 1'b0;
+    test_data = 'hX;
+    #2
+    in_valid = 1'b1;
+    //test_data = 'h00_0101_8000_0000_0000_0000_0000_0000;
+    test_data = 'h22_11_22_11_22_11_22_11_22_11_22_11_22_11_22;
+    #2
+    in_valid = 1'b0;
+    test_data = 'hX;
+    #2
+    in_valid = 1'b1;
+    //test_data = 'h00_0101_8000_0000_0000_0000_0000_0000;
+    test_data = 'h22_11_22_11_22_11_22_11_22_11_22_11_22_11_22;
     #2
     in_valid = 1'b0;
     test_data = 'hX;
