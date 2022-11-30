@@ -29,41 +29,66 @@ module CoreSight_L2_Decoder_lee(
     //output [3:0] out_cnt,
     //output [127:0] out_data,
     //output out_data_valid,
-
     //input in_read_fifo
-    output[63:0] addr,
-    output addr_valid
+    
+    /* the output not strictly defined, declared as needed */
+    output[63:0] out_addr,
+    output out_data_valid,
+    output out_data_type,
+    output[5:0] out_atom_length,
+    output[4:0] out_atom
     );
     
-    //PreProcess
+    /*
+    **  PreProcess
+    */
     wire [119:0] R;
     wire [3:0] Val;
     wire PP_valid;
-
-    //FIFO
+    
+    /*
+    **  Collection
+    */
+    wire c_data_valid;
+    
+    /*
+    **  FIFO
+    */
     wire [127:0] RS;
     wire fifo_empty;
     wire FIFO_valid;
     wire read_fifo;
     wire [127:0] out_data;
 
-    //ControlCore
-    wire [63:0] addr1;
-    wire [63:0] addr2;
-    wire [63:0] addr3;
-    wire [128:0] buf_atom;
-    wire cc_addr_valid;
+    /*
+    **  ControlCore
+    */
+    wire[63:0] cc_out_addr;
+    wire cc_out_data_valid;
+    wire cc_out_data_type;
+    wire[5:0] cc_out_atom_length;
+    wire[4:0] cc_out_atom;
+//    wire [63:0] addr1;
+//    wire [63:0] addr2;
+//    wire [63:0] addr3;
+//    wire [128:0] buf_atom;
+//    wire cc_addr_valid;
     
     //debug
     //PreProcess P1(trace_clk, in_data, in_data_valid, in_ID, out_cnt, out_data, out_data_valid);
   
     PreProcess P1(trace_clk, in_data, in_data_valid, in_ID, Val, R, PP_valid);
-    Collection C1(trace_clk, R, Val, PP_valid, RS, out_data_valid);
-    FIFO F1(trace_clk, RS, out_data_valid, read_fifo, FIFO_valid, out_data, fifo_empty);
-    ControlCore CC1(trace_clk, out_data, FIFO_valid, fifo_empty, addr1, addr2, addr3, buf_atom ,read_fifo,cc_addr_valid);
+    Collection C1(trace_clk, R, Val, PP_valid, RS, c_data_valid);
+    FIFO F1(trace_clk, RS, c_data_valid, read_fifo, FIFO_valid, out_data, fifo_empty);
+    ControlCore CC1(trace_clk, out_data, FIFO_valid, fifo_empty, cc_out_addr, cc_out_data_valid, cc_out_data_type, cc_out_atom_length, cc_out_atom, read_fifo);
     
-    assign addr = addr1;
-    assign addr_valid = cc_addr_valid;
+//    assign addr = addr1;
+//    assign addr_valid = cc_addr_valid;
+    assign out_addr = cc_out_addr;
+    assign out_atom = cc_out_atom;
+    assign out_data_valid = cc_out_data_valid;
+    assign out_data_type = cc_out_data_type;
+    assign out_atom_length = cc_out_atom_length;
 endmodule
 
 
@@ -71,22 +96,27 @@ module ControlCore(
     input clk,
     input [127:0] Core_i_data,
     input in_valid,
-
     input fifo_empty,
     
-    //debug
-    output [63:0] addr1,
-    output [63:0] addr2,
-    output [63:0] addr3,
-    output [128:0] buf_atom,
-
-    output read_enable,
-    output cc_addr_valid
+    /* output not strictly defined, declared as needed */
+    output[63:0] cc_out_addr,
+    output cc_out_data_valid,
+    output cc_out_data_type,
+    output[5:0] cc_out_atom_length,
+    output[4:0] cc_out_atom,
+//    output [63:0] addr1,
+//    output [63:0] addr2,
+//    output [63:0] addr3,
+//    output [128:0] buf_atom,
+    
+    /* read from fifo */
+    output read_enable
+//    output cc_addr_valid
     );
 
 
     /*
-        ETM Header Types
+    **  ETM Header Types
     */
     parameter A_SYNC = 8'b0000_0000;
     parameter TRACE_INFO = 8'b0000_0001;
@@ -106,11 +136,10 @@ module ControlCore(
     parameter ATOM_F6_1 = 8'b11X1_00XX;
     parameter ATOM_F6_2 = 8'b11X1_0100;
     parameter EXCEPTION = 8'b0000_0110;
-    
-    
+
     
     /*
-        Trace Info States
+    **  Trace Info States
     */
     parameter TRACE_INFO_SEC_INFO = 3'b0;
     parameter TRACE_INFO_SEC_KEY = 3'b1;
@@ -119,14 +148,14 @@ module ControlCore(
     parameter TRACE_INFO_SEC_PLCTL = 3'b100;
     
     /*
-        Address with Context States
+    **  Address with Context States
     */
     parameter ADDR_CTXT_ADDR_CTXT = 2'b0;
     parameter ADDR_CTXT_VMID = 2'b1;
     parameter ADDR_CTXT_CTXT_ID = 2'b10;
     
     /*
-        Fixed Length Packets' Payload Length
+    **  Fixed Length Packets' Payload Length
     */
     parameter integer A_SYNC_LENGTH = 11;
     parameter integer TRACE_ON_LENGTH = 0;
@@ -145,7 +174,7 @@ module ControlCore(
     parameter integer ATOM_F6_3_LENGTH = 0;
 
     /*
-        ETM Data
+    **  ETM Data
     */
     reg[63:0] address_reg[2:0];
     reg[128:0] atom_buff;
@@ -156,7 +185,7 @@ module ControlCore(
     reg sixty_four_bit;
     
     /*
-        Trace Info Data
+    **  Trace Info Data
     */
     reg[2:0] trace_info_state = TRACE_INFO_SEC_PLCTL;
     reg[3:0] trace_info_sec = 4'b0;
@@ -167,72 +196,86 @@ module ControlCore(
     reg p0_store = 1'b0;
     
     /*
-        Address with Context Data
+    **  Address with Context Data
     */
     reg[1:0] addr_ctxt_state = 2'b0;
     reg[1:0] ctxt_info_sec = 2'b0;
     
     /*
-        Exception Data
+    **  Exception Data
     */
     reg[1:0] EE = 2'b0;
     reg[9:0] exception_type = 10'b0;
     reg P = 1'b0;
     
     /*
-        L2 Decoder & ETM Decoder shared Data
+    **  L2 Decoder & ETM Decoder shared Data
     */
-    reg dynamic_parse_done = 1'b0;
-    // reg [1:0] state = SUSPEND;
-    integer bytes_remain = 0;
-    integer parsed_length = 0;
-    // reg[7:0] header;
-    // reg[255:0] payload_buff; //payload_buff, replace to buf_data
-    wire [31:0] payload_length_wire;
+    reg dynamic_parse_done = 1'b0; /* indicates payload parsing done by ETM Decoder */
+    integer bytes_remain = 0; /* indicates the bytes number remained in buf_data. Caution: bytes_remain & index are duplicated */
+    integer parsed_length = 0; /* indicates the length of parsed payload, valid as dynamic_parse_done goes up */
 
-    //
-    integer FIFO_group_count = 16;
-    //integer data_byte_count = 0;//valid byte in data buffer // replace to bytes_remain
-    integer index = 0;//tail point to bit data buffer
+    reg send_read_data = 1'b0; /* if CC requires data, write 'b1, mostly goes up where state trans to SUSPEND */
     
-    //FSM
+    reg [7:0] header; /* indicates packet type currently being processed */
+    reg [255:0] buf_data ; /* payload buff storing ETM data */
+
+    /*
+    **  L2 Decoder Control Data
+    */
+    parameter FIFO_GROUP_COUNT = 16; /* indicates the group number in FIFO */
+    integer index = 0; /* indicates the bits no. remained in buf_data, duplicated to bytes_remain */
+    
     parameter PROCESS = 2'h0;
     parameter SUSPEND = 2'h1;
-    reg [1:0] state = SUSPEND;
+    reg [1:0] state = SUSPEND; /* Finite State Machine, indicates the state of ControlCore */
 
-    //data buffer
-    reg buf_data_valid = 1'b0;
-    reg [255:0] buf_data ; //payload_buff
-
-    //need to read new data
-    reg send_read_data = 1'b0;
+    reg buf_data_valid = 1'b0; /* indicates buf_data is valid for parsing */
     
-
-    //packet header 
-    reg [7:0] header;
-
-    //payload parameter
-    wire header_payload_wire;
-    reg header_payload = 1'b0;//0 -- need to handel header, 1 -- need to handel payload 
+    
+    /*
+    **  L2 Decoder & ControlSwitch shared nets and regs
+    */
+    wire header_payload_wire; /* write from CS, write 'b1 to header_payload, rises as CS enabled */
+    wire payload_fix_wire; /* write to payload_fix */
+    wire [31:0] payload_length_wire; /* write to parsed_length, if payload_fix, output 0, if not output fixed payload length */
+    wire Switch_out_valid_wire = 1'b0; /* maybe it is useless */
+    
+    reg payload_fix = 1'b0; /* 1 for fixed length payload, 0 for dynamic length */
+    reg switch_enable = 1'b0; /* CC calls CS */
+    reg header_payload = 1'b0; /* indicates what being processed, 0 for header, calling CS, 1 for payload, calling ETM_Decoder */
+    
+    /*
+    **  Iteration control
+    */
+    integer i;
+    
+    /*
+    **  output registers
+    */
+    /* reg [63:0] cc_out_addr; out reg is address_reg[0]; */
+    reg out_data_valid;
+    reg out_data_type;
+    reg[5:0] out_atom_length;
+    reg[4:0] out_atom;
+    //reg addr_valid;
+    
     // parameter valid_length = 1'b0;
     //integer payload_length = 0; //replace to  parsed_length
-    wire payload_fix_wire;
-    reg payload_fix = 1'b0;
-    reg addr_valid;
-    
+
     //payload analyze finish
     //finish replace to dynamic_parse_done, need to debug
     // reg finish = 1'b0;  //fix_parse_done?  //reg dynamic_parse_done
-
-    reg switch_enable = 1'b0;
-    wire Switch_out_valid_wire = 1'b0;
-    integer i;
 
     ControlSwitch Packet_Switch(switch_enable, header, header_payload_wire,  payload_fix_wire, payload_length_wire, Switch_out_valid_wire);
 
 
     always @(posedge clk) begin
-        if(addr_valid) addr_valid <= 1'b0;
+        /* output reset */
+        if(out_data_valid) out_data_valid <= 1'b0;
+        if(out_data_type) out_data_type <= 1'b0;
+        if(out_atom_length) out_atom_length <= 'b0;
+        if(out_atom) out_data_type <= 'b0;
         case(state) 
             PROCESS:begin
                 // switch_enable <= 1;
@@ -346,13 +389,15 @@ module ControlCore(
                                         case(addr_ctxt_state)
                                             ADDR_CTXT_ADDR_CTXT:
                                                 if(parsed_length + ADDR_L_64ISO_LENGTH + 1 <= bytes_remain)begin //ADDR Section & Context INFO Byte.
+                                                    out_data_valid <= 'b1;
+                                                    out_data_type <= 'b1;
                                                     address_reg[2] <= address_reg[1];
                                                     address_reg[1] <= address_reg[0];
                                                     address_reg[0][1:0] <= 2'b0;
                                                     address_reg[0][8:2] <= buf_data[parsed_length*8+6-:7];
                                                     address_reg[0][15:9] <= buf_data[parsed_length*8+8+6-:7];
                                                     address_reg[0][63:16] <= buf_data[parsed_length*8+63-:48];
-                                                    addr_valid <= 'b1;
+                                                    //addr_valid <= 'b1;
                                                     ex_level <= buf_data[parsed_length*8+64+1-:2];
                                                     sixty_four_bit <= buf_data[parsed_length*8+64+4];
                                                     security <= buf_data[parsed_length*8+64+5];
@@ -394,7 +439,9 @@ module ControlCore(
                                         endcase
                                     end
                                     ADDR_S_ISO:begin
-                                        addr_valid <= 'b1;
+                                        out_data_valid <= 'b1;
+                                        out_data_type <= 'b1;
+                                        //addr_valid <= 'b1;
                                         address_reg[2] <= address_reg[1];
                                         address_reg[1] <= address_reg[0];
                                         address_reg[0][1:0] <= 2'b00;
@@ -439,7 +486,7 @@ module ControlCore(
                             // finish <= 1'b1;
                         end else if(!dynamic_parse_done) begin 
                             /*
-                                handle fixed packet payload
+                            **  handle fixed packet payload
                             */
                             casex(header)
                                 /*
@@ -448,7 +495,9 @@ module ControlCore(
                                 A_SYNC: if(buf_data[87:0]==88'h80_0000_0000_0000_0000_0000);        
                                 TRACE_ON:;
                                 ADDR_MATCH:begin
-                                    addr_valid <= 'b1;
+                                    //addr_valid <= 'b1;
+                                    out_data_valid <= 'b1;
+                                    out_data_type <= 'b1;
                                     address_reg[2] <= address_reg[1];
                                     address_reg[1] <= address_reg[0];
                                     case(header[1:0])
@@ -458,18 +507,29 @@ module ControlCore(
                                     endcase
                                 end
                                 ADDR_L_64ISO:begin
-                                    addr_valid <= 'b1;
+                                    //addr_valid <= 'b1;
+                                    out_data_valid <= 'b1;
+                                    out_data_type <= 'b1;
                                     address_reg[2] <= address_reg[1];
                                     address_reg[1] <= address_reg[0];
                                     address_reg[0] <= buf_data[ADDR_L_64ISO_LENGTH*8-1:0];   
                                 end
                                 ADDR_L_32ISO:begin
-                                    addr_valid <= 'b1;
+                                    //addr_valid <= 'b1;
+                                    out_data_valid <= 'b1;
+                                    out_data_type <= 'b1;
                                     address_reg[2] <= address_reg[1];
                                     address_reg[1] <= address_reg[0];
                                     address_reg[0][31:0] <= buf_data[ADDR_L_32ISO_LENGTH*8-1:0];
                                 end
                                 ATOM_F1:begin
+                                    /* output */
+                                    out_data_valid <= 'b1;
+                                    out_data_type <= 'b0;
+                                    out_atom_length <= 'b000001;
+                                    out_atom <= header[0];
+                                    
+                                    /* update atom_buff */
                                     for(i = 0;i<127;i=i+1)begin
                                         atom_buff[i+1] <= atom_buff[i];
                                     end
@@ -479,6 +539,13 @@ module ControlCore(
                                     endcase
                                 end
                                 ATOM_F2:begin
+                                    /* output */
+                                    out_data_valid <= 'b1;
+                                    out_data_type <= 'b0;
+                                    out_atom_length <= 'b000010;
+                                    out_atom <= header[1:0];
+                                    
+                                    /* update atom_buff */
                                     for(i = 0;i<126;i=i+1)begin
                                         atom_buff[i+2] <= atom_buff[i];
                                     end
@@ -490,12 +557,31 @@ module ControlCore(
                                     endcase
                                 end
                                 ATOM_F3:begin
+                                    /* output */
+                                    out_data_valid <= 'b1;
+                                    out_data_type <= 'b0;
+                                    out_atom_length <= 'b000011;
+                                    out_atom <= header[2:0];
+                                
+                                    /* update atom_buff */
                                     for(i = 0;i<125;i=i+1)begin
                                         atom_buff[i+3] <= atom_buff[i];
                                     end
                                     atom_buff[2:0] <= header[2:0];
                                 end
                                 ATOM_F4:begin
+                                    /* output */
+                                    out_data_valid <= 'b1;
+                                    out_data_type <= 'b0;
+                                    out_atom_length <= 'b000100;
+                                    case(header[1:0])
+                                        2'b00:out_atom[3:0] <= 4'b1110;
+                                        2'b01:out_atom[3:0] <= 4'b0000;
+                                        2'b10:out_atom[3:0] <= 4'b1010;
+                                        2'b11:out_atom[3:0] <= 4'b0101;
+                                    endcase
+                                    
+                                    /* update atom_buff */
                                     for(i = 0;i<124;i=i+1)begin
                                         atom_buff[i+4] <= atom_buff[i];
                                     end
@@ -507,17 +593,37 @@ module ControlCore(
                                     endcase
                                 end
                                 ATOM_F5_0, ATOM_F5_1:begin
+                                    /* output */
+                                    out_data_valid <= 'b1;
+                                    out_data_type <= 'b0;
+                                    out_atom_length <= 'b000101;
+                                    case({header[5],header[1:0]})
+                                        3'b101:out_atom[4:0] <= 5'b11110;
+                                        3'b001:out_atom[4:0] <= 5'b00000;
+                                        3'b010:out_atom[4:0] <= 5'b01010;
+                                        3'b011:out_atom[4:0] <= 5'b10101;
+                                    endcase
+                                    
+                                    /* update atom_buff */
                                     for(i = 0;i<123;i=i+1)begin
                                         atom_buff[i+5] <= atom_buff[i];
                                     end
                                     case({header[5],header[1:0]})
-                                        3'b101:atom_buff[2:0] <= 5'b11110;
-                                        3'b001:atom_buff[2:0] <= 5'b00000;
-                                        3'b010:atom_buff[2:0] <= 5'b01010;
-                                        3'b011:atom_buff[2:0] <= 5'b10101;
+                                        3'b101:atom_buff[4:0] <= 5'b11110;
+                                        3'b001:atom_buff[4:0] <= 5'b00000;
+                                        3'b010:atom_buff[4:0] <= 5'b01010;
+                                        3'b011:atom_buff[4:0] <= 5'b10101;
                                     endcase
                                 end
                                 ATOM_F6_0, ATOM_F6_1, ATOM_F6_2:begin
+                                    /* output */
+                                    out_data_valid <= 'b1;
+                                    out_data_type <= 'b0;
+                                    out_atom_length[4:0] <= header[4:0];
+                                    out_atom_length[5] <= 'b1;
+                                    out_atom[0] <= header[5];
+                                    
+                                    /* update atom_buff */
                                     atom_buff[header[4:0]] <= header[5];
                                     for(i = 0;i<128-header[4:0];i=i+1)begin
                                         atom_buff[i+header[4:0]] <= atom_buff[i];
@@ -574,7 +680,7 @@ module ControlCore(
                     buf_data[index +: 128 ] <= Core_i_data;
                     index <= index + 128;
                     buf_data_valid <= 1'b1;
-                    bytes_remain <= bytes_remain + FIFO_group_count;
+                    bytes_remain <= bytes_remain + FIFO_GROUP_COUNT;
                     send_read_data <= 1'b0;
                     state <= PROCESS;
                 end 
@@ -583,11 +689,18 @@ module ControlCore(
     end 
     
     assign read_enable = send_read_data;
-    assign addr1 = address_reg[0];
-    assign addr2 = address_reg[1];
-    assign addr3 = address_reg[2];
-    assign buf_atom = atom_buff;
-    assign cc_addr_valid = addr_valid;
+    
+    /* output assign */
+    assign cc_out_addr = address_reg[0];
+    assign cc_out_data_valid = out_data_valid;
+    assign cc_out_data_type = out_data_type;
+    assign cc_out_atom_length = out_atom_length;
+    assign cc_out_atom = out_atom;
+    //assign addr1 = address_reg[0];
+    //assign addr2 = address_reg[1];
+    //assign addr3 = address_reg[2];
+    //assign buf_atom = atom_buff;
+    //assign cc_addr_valid = addr_valid;
 endmodule 
 
 
@@ -857,14 +970,14 @@ module Collection(
     input [119:0] C_i_data,
     input [3:0] in_valid_cnt,
     input valid,
-    
+   
     output [127:0] C_o_data,
     output o_fifo_write
     );
 
     integer index = 0,valid_count;
     integer n,cf,write_en;
-
+    
     reg [7:0] tmp_data [31:0];
     reg [119:0] in_tmp_data;
     reg [127:0] out_tmp_data;
@@ -1088,7 +1201,7 @@ module Collection(
        end      
     end
     
-    assign o_fifo_write = write_en ;
+    assign o_fifo_write = write_en;
     assign C_o_data = out_tmp_data;
 endmodule 
 

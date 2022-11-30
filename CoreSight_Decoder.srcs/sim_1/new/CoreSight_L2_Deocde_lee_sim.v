@@ -29,7 +29,7 @@ module CoreSight_L2_Deocde_lee_sim;
     //wire [127:0] out_data;
     //wire out_data_valid;  
     
-    wire[63:0] addr_out;
+    //wire[63:0] addr_out;
     //reg read_fifo;
 
     integer in_file;
@@ -42,8 +42,8 @@ module CoreSight_L2_Deocde_lee_sim;
         .trace_clk(trace_clk),
         .in_data(in_data),
         .in_data_valid(in_data_valid),
-        .in_ID(in_ID),
-        .addr(addr_out)
+        .in_ID(in_ID)
+        //.addr(addr_out)
         
         //.out_cnt(out_cnt),
         //.out_data(out_data),
@@ -55,7 +55,7 @@ module CoreSight_L2_Deocde_lee_sim;
 //    event out_data_valid;
     
 initial begin     
-    in_file = $fopen("/home/marvin/Documents/CoreSightDocs/Directions/CoreSight_Decoder_test/L2_ControlCore_in-3","r");
+    in_file = $fopen("/home/marvin/Documents/CoreSightDocs/Directions/CoreSight_Decoder_test/L2_ControlCore_in-4","r");
 //    out_file = $fopen("/home/marvin/Documents/CoreSightDocs/CoreSight_Decoder_test/L2_ControlCore_out-1","w"); 
 //    repeat(10000) begin 
 //    @(posedge out_data_valid ) begin 
