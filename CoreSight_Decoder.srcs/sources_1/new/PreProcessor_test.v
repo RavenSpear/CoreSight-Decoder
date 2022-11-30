@@ -20,6 +20,8 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
+/* this is a module for test purpose, now deprecated */
+
 module PreProcessor_test(
     input trace_clk,
     input [239:0] in_data,

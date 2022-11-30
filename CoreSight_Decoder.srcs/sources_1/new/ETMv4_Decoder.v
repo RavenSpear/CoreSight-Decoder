@@ -19,6 +19,7 @@
 // 
 //////////////////////////////////////////////////////////////////////////////////
 
+/* this is a module for development purpose, now deprecated */
 
 module ETMv4_Decoder(
         input trace_clk,
