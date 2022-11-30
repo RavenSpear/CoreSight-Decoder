@@ -1,2 +1,2 @@
-# CoreSight_Decoder
+# CoreSight-Decoder
 An FPGA-based CoreSight Decoder for ZCU-102 Board
