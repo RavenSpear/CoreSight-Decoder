@@ -6,3 +6,5 @@
 /CoreSight_Decoder.sim
 /CoreSight_Decoder.ip_user_files
 *.xsa
+*.log
+

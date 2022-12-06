@@ -46,7 +46,6 @@
     <Option Name="ActiveSimSet" Val="sim_1"/>
     <Option Name="DefaultLib" Val="xil_defaultlib"/>
     <Option Name="ProjectType" Val="Default"/>
-    <Option Name="IPRepoPath" Val="$PPRDIR/../ip_repo/CoreSight_Capture_1.0"/>
     <Option Name="IPRepoPath" Val="$PPRDIR/../ip_repo"/>
     <Option Name="IPOutputRepo" Val="$PCACHEDIR/ip"/>
     <Option Name="IPDefaultOutputPath" Val="$PGENDIR/sources_1"/>
@@ -102,13 +101,6 @@
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
-      <File Path="$PSRCDIR/sources_1/new/L1_led_dump.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
       <File Path="$PSRCDIR/sources_1/new/CoreSight_L2_Decoder_lee.v">
         <FileInfo>
           <Attr Name="UsedIn" Val="synthesis"/>
@@ -128,12 +120,23 @@
         <CompFileExtendedInfo CompFileName="CoreSight_Debug.bd" FileRelPathName="ip/CoreSight_Debug_CoreSight_L0_Decoder_0_0/CoreSight_Debug_CoreSight_L0_Decoder_0_0.xci">
           <Proxy FileSetName="CoreSight_Debug_CoreSight_L0_Decoder_0_0"/>
         </CompFileExtendedInfo>
-        <CompFileExtendedInfo CompFileName="CoreSight_Debug.bd" FileRelPathName="ip/CoreSight_Debug_L1_led_dump_0_3/CoreSight_Debug_L1_led_dump_0_3.xci">
-          <Proxy FileSetName="CoreSight_Debug_L1_led_dump_0_3"/>
+        <CompFileExtendedInfo CompFileName="CoreSight_Debug.bd" FileRelPathName="ip/CoreSight_Debug_CoreSight_L2_Decoder_0_1/CoreSight_Debug_CoreSight_L2_Decoder_0_1.xci">
+          <Proxy FileSetName="CoreSight_Debug_CoreSight_L2_Decoder_0_1"/>
+        </CompFileExtendedInfo>
+        <CompFileExtendedInfo CompFileName="CoreSight_Debug.bd" FileRelPathName="ip/CoreSight_Debug_CoreSight_Capture_0_0/CoreSight_Debug_CoreSight_Capture_0_0.xci">
+          <Proxy FileSetName="CoreSight_Debug_CoreSight_Capture_0_0"/>
         </CompFileExtendedInfo>
       </File>
       <File Path="$PGENDIR/sources_1/bd/CoreSight_Debug/hdl/CoreSight_Debug_wrapper.v">
         <FileInfo>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="implementation"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PSRCDIR/sources_1/new/L1_led_dump.v">
+        <FileInfo>
+          <Attr Name="AutoDisabled" Val="1"/>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="implementation"/>
           <Attr Name="UsedIn" Val="simulation"/>
@@ -409,9 +412,15 @@
         <Option Name="UseBlackboxStub" Val="1"/>
       </Config>
     </FileSet>
-    <FileSet Name="CoreSight_Debug_L1_led_dump_0_3" Type="BlockSrcs" RelSrcDir="$PSRCDIR/CoreSight_Debug_L1_led_dump_0_3" RelGenDir="$PGENDIR/CoreSight_Debug_L1_led_dump_0_3">
+    <FileSet Name="CoreSight_Debug_CoreSight_L2_Decoder_0_1" Type="BlockSrcs" RelSrcDir="$PSRCDIR/CoreSight_Debug_CoreSight_L2_Decoder_0_1" RelGenDir="$PGENDIR/CoreSight_Debug_CoreSight_L2_Decoder_0_1">
       <Config>
-        <Option Name="TopModule" Val="CoreSight_Debug_L1_led_dump_0_3"/>
+        <Option Name="TopModule" Val="CoreSight_Debug_CoreSight_L2_Decoder_0_1"/>
+        <Option Name="UseBlackboxStub" Val="1"/>
+      </Config>
+    </FileSet>
+    <FileSet Name="CoreSight_Debug_CoreSight_Capture_0_0" Type="BlockSrcs" RelSrcDir="$PSRCDIR/CoreSight_Debug_CoreSight_Capture_0_0" RelGenDir="$PGENDIR/CoreSight_Debug_CoreSight_Capture_0_0">
+      <Config>
+        <Option Name="TopModule" Val="CoreSight_Debug_CoreSight_Capture_0_0"/>
         <Option Name="UseBlackboxStub" Val="1"/>
       </Config>
     </FileSet>
@@ -518,9 +527,21 @@
       <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
       <RQSFiles/>
     </Run>
-    <Run Id="CoreSight_Debug_L1_led_dump_0_3_synth_1" Type="Ft3:Synth" SrcSet="CoreSight_Debug_L1_led_dump_0_3" Part="xczu9eg-ffvb1156-2-e" ConstrsSet="CoreSight_Debug_L1_led_dump_0_3" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/CoreSight_Debug_L1_led_dump_0_3_synth_1" IncludeInArchive="true" IsChild="false" AutoIncrementalDir="$PSRCDIR/utils_1/imports/CoreSight_Debug_L1_led_dump_0_3_synth_1">
+    <Run Id="CoreSight_Debug_CoreSight_L2_Decoder_0_1_synth_1" Type="Ft3:Synth" SrcSet="CoreSight_Debug_CoreSight_L2_Decoder_0_1" Part="xczu9eg-ffvb1156-2-e" ConstrsSet="CoreSight_Debug_CoreSight_L2_Decoder_0_1" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/CoreSight_Debug_CoreSight_L2_Decoder_0_1_synth_1" IncludeInArchive="true" IsChild="false" AutoIncrementalDir="$PSRCDIR/utils_1/imports/CoreSight_Debug_CoreSight_L2_Decoder_0_1_synth_1">
       <Strategy Version="1" Minor="2">
         <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2021"/>
+        <Step Id="synth_design"/>
+      </Strategy>
+      <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
+      <ReportStrategy Name="Vivado Synthesis Default Reports" Flow="Vivado Synthesis 2021"/>
+      <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
+      <RQSFiles/>
+    </Run>
+    <Run Id="CoreSight_Debug_CoreSight_Capture_0_0_synth_1" Type="Ft3:Synth" SrcSet="CoreSight_Debug_CoreSight_Capture_0_0" Part="xczu9eg-ffvb1156-2-e" ConstrsSet="CoreSight_Debug_CoreSight_Capture_0_0" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/CoreSight_Debug_CoreSight_Capture_0_0_synth_1" IncludeInArchive="true" IsChild="false" AutoIncrementalDir="$PSRCDIR/utils_1/imports/CoreSight_Debug_CoreSight_Capture_0_0_synth_1">
+      <Strategy Version="1" Minor="2">
+        <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2021">
+          <Desc>Vivado Synthesis Defaults</Desc>
+        </StratHandle>
         <Step Id="synth_design"/>
       </Strategy>
       <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
@@ -665,9 +686,28 @@
       <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
       <RQSFiles/>
     </Run>
-    <Run Id="CoreSight_Debug_L1_led_dump_0_3_impl_1" Type="Ft2:EntireDesign" Part="xczu9eg-ffvb1156-2-e" ConstrsSet="CoreSight_Debug_L1_led_dump_0_3" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" SynthRun="CoreSight_Debug_L1_led_dump_0_3_synth_1" IncludeInArchive="false" IsChild="false" GenFullBitstream="true" AutoIncrementalDir="$PSRCDIR/utils_1/imports/CoreSight_Debug_L1_led_dump_0_3_impl_1">
+    <Run Id="CoreSight_Debug_CoreSight_L2_Decoder_0_1_impl_1" Type="Ft2:EntireDesign" Part="xczu9eg-ffvb1156-2-e" ConstrsSet="CoreSight_Debug_CoreSight_L2_Decoder_0_1" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" SynthRun="CoreSight_Debug_CoreSight_L2_Decoder_0_1_synth_1" IncludeInArchive="false" IsChild="false" GenFullBitstream="true" AutoIncrementalDir="$PSRCDIR/utils_1/imports/CoreSight_Debug_CoreSight_L2_Decoder_0_1_impl_1">
       <Strategy Version="1" Minor="2">
         <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2021"/>
+        <Step Id="init_design"/>
+        <Step Id="opt_design"/>
+        <Step Id="power_opt_design"/>
+        <Step Id="place_design"/>
+        <Step Id="post_place_power_opt_design"/>
+        <Step Id="phys_opt_design"/>
+        <Step Id="route_design"/>
+        <Step Id="post_route_phys_opt_design"/>
+        <Step Id="write_bitstream"/>
+      </Strategy>
+      <ReportStrategy Name="Vivado Implementation Default Reports" Flow="Vivado Implementation 2021"/>
+      <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
+      <RQSFiles/>
+    </Run>
+    <Run Id="CoreSight_Debug_CoreSight_Capture_0_0_impl_1" Type="Ft2:EntireDesign" Part="xczu9eg-ffvb1156-2-e" ConstrsSet="CoreSight_Debug_CoreSight_Capture_0_0" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" SynthRun="CoreSight_Debug_CoreSight_Capture_0_0_synth_1" IncludeInArchive="false" IsChild="false" GenFullBitstream="true" AutoIncrementalDir="$PSRCDIR/utils_1/imports/CoreSight_Debug_CoreSight_Capture_0_0_impl_1">
+      <Strategy Version="1" Minor="2">
+        <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2021">
+          <Desc>Default settings for Implementation.</Desc>
+        </StratHandle>
         <Step Id="init_design"/>
         <Step Id="opt_design"/>
         <Step Id="power_opt_design"/>

@@ -503,7 +503,7 @@ module ControlCore(
                                     case(header[1:0])
                                         2'b00:address_reg[0] <= address_reg[0];
                                         2'b01:address_reg[0] <= address_reg[1];
-                                        2'b01:address_reg[0] <= address_reg[2];
+                                        2'b10:address_reg[0] <= address_reg[2];
                                     endcase
                                 end
                                 ADDR_L_64ISO:begin
