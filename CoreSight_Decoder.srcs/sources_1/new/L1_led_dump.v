@@ -21,7 +21,7 @@
 
 
 module L1_led_dump #(
-        parameter DATA_WIDTH = 64,
+        parameter DATA_WIDTH = 128,
         parameter BLINK_CYCLE = 100_000_000
     )(
         input trace_clk,
@@ -33,10 +33,11 @@ module L1_led_dump #(
     );
     
 
-    reg[DATA_WIDTH-1:0] data;
+    reg[DATA_WIDTH+8+8-1:0] data;
     reg flag = 1'b1;
 //    reg mask = 1'b0;
     reg[7:0] led = 8'b0;
+    reg[7:0] valid_count = 8'b0;
     integer count = 0;
     integer cycle = 0;
 //    integer maskcount = 0;
@@ -56,12 +57,21 @@ module L1_led_dump #(
 //            led <= 'b0;
 //        end
 //        else 
-        if(in_valid&&test_data!='b0
+        if(in_valid) valid_count <= valid_count + 1'b1;
+        if(in_valid
+        &&test_data!='b0
+        &&test_data!='h9d00_0101_8000_0000_0000_0000_0000_0000
+        &&test_data!='hffff_8000_10e8_4f68_9d00_0101_8000_0000
+//        &&test_data!='h0000_0000_0000_0000_ffff_8000_10e8_4f68
+//        &&test_data!='h0010_0000_0000_0000_ffff_8000_10e8_4f68
+//        &&test_data!='h0000_0000_0000_0000_ffff_8000_100a_2976
 //        &&test_data!='h00_0101_8000_0000_0000_0000_0000_0000
 //        &&test_data!='hab_7f71_8504_0000_0000_0000_0000_9d00
 //        &&test_data!='hff_8000_10ad_1e7a_9dfc_31ff_ff80_0010
         &&flag) begin
-            data <= test_data;
+            data[DATA_WIDTH+8+8-1:16] <= test_data;
+            data[7:0] <= 'b10100101;
+            data[15:8] <= valid_count;
 //            led[3:0] <= in_cnt;
 //            led[7:4] <= 'b0;
 //            if(test_data[DATA_WIDTH/8-1:0]!='b10011101) led[0:0] <= 1'b1;
@@ -78,7 +88,7 @@ module L1_led_dump #(
             led <= data[8*cycle+7 -: 8];
             if(count == BLINK_CYCLE - 1) begin
                 count <= 0;
-                if(cycle == DATA_WIDTH/8-1) cycle <= 0;
+                if(cycle == (DATA_WIDTH+8+8)/8-1) cycle <= 0;
                 else cycle <= cycle + 1;
             end
             else count = count + 1;

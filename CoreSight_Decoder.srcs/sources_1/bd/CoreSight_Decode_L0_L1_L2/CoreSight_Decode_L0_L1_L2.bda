@@ -26,36 +26,15 @@
       <data key="VT">PM</data>
     </node>
     <node id="n1">
-      <data key="BA">0x00A0000000</data>
-      <data key="BP">C_S_AXI_BASEADDR</data>
-      <data key="HA">0x00A000FFFF</data>
-      <data key="HP">C_S_AXI_HIGHADDR</data>
-      <data key="MA">Data</data>
-      <data key="MX">/zynq_ultra_ps_e_0</data>
-      <data key="MI">M_AXI_HPM0_FPD</data>
-      <data key="MS">SEG_CoreSight_Dump_0_S_AXI_reg</data>
-      <data key="MV">xilinx.com:ip:zynq_ultra_ps_e:3.3</data>
-      <data key="TM">both</data>
-      <data key="SX">/CoreSight_Dump_0</data>
-      <data key="SI">S_AXI</data>
-      <data key="SS">S_AXI_reg</data>
-      <data key="SV">user.org:user:CoreSight_Dump:1.0</data>
-      <data key="TU">register</data>
-      <data key="VT">AC</data>
-    </node>
-    <node id="n2">
       <data key="VH">2</data>
       <data key="VM">CoreSight_Decode_L0_L1_L2</data>
       <data key="VT">VR</data>
     </node>
-    <node id="n3">
+    <node id="n2">
       <data key="VM">CoreSight_Decode_L0_L1_L2</data>
       <data key="VT">BC</data>
     </node>
-    <edge id="e0" source="n3" target="n2"/>
-    <edge id="e1" source="n2" target="n0"/>
-    <edge id="e2" source="n1" target="n0">
-      <data key="EH">2</data>
-    </edge>
+    <edge id="e0" source="n2" target="n1"/>
+    <edge id="e1" source="n1" target="n0"/>
   </graph>
 </graphml>

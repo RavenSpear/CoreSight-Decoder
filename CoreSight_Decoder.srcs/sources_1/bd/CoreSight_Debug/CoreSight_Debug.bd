@@ -7,8 +7,7 @@
       "name": "CoreSight_Debug",
       "rev_ctrl_bd_flag": "RevCtrlBdOff",
       "synth_flow_mode": "Hierarchical",
-      "tool_version": "2021.2",
-      "validated": "true"
+      "tool_version": "2021.2"
     },
     "design_tree": {
       "zynq_ultra_ps_e_0": "",
@@ -22,8 +21,8 @@
         }
       },
       "rst_ps8_0_99M": "",
-      "CoreSight_L2_Decoder_0": "",
-      "CoreSight_Capture_0": ""
+      "CoreSight_Capture_0": "",
+      "CoreSight_L2_Decoder_0": ""
     },
     "ports": {
       "led_0": {
@@ -1569,6 +1568,12 @@
         "xci_path": "ip/CoreSight_Debug_rst_ps8_0_99M_1/CoreSight_Debug_rst_ps8_0_99M_1.xci",
         "inst_hier_path": "rst_ps8_0_99M"
       },
+      "CoreSight_Capture_0": {
+        "vlnv": "user.org:user:CoreSight_Capture:1.0",
+        "xci_name": "CoreSight_Debug_CoreSight_Capture_0_0",
+        "xci_path": "ip/CoreSight_Debug_CoreSight_Capture_0_0/CoreSight_Debug_CoreSight_Capture_0_0.xci",
+        "inst_hier_path": "CoreSight_Capture_0"
+      },
       "CoreSight_L2_Decoder_0": {
         "vlnv": "xilinx.com:module_ref:CoreSight_L2_Decoder_lee:1.0",
         "xci_name": "CoreSight_Debug_CoreSight_L2_Decoder_0_1",
@@ -1582,17 +1587,7 @@
         "ports": {
           "trace_clk": {
             "type": "clk",
-            "direction": "I",
-            "parameters": {
-              "FREQ_HZ": {
-                "value": "99990005",
-                "value_src": "user_prop"
-              },
-              "CLK_DOMAIN": {
-                "value": "CoreSight_Debug_zynq_ultra_ps_e_0_0_pl_clk0",
-                "value_src": "default_prop"
-              }
-            }
+            "direction": "I"
           },
           "in_data": {
             "direction": "I",
@@ -1629,12 +1624,6 @@
             "right": "0"
           }
         }
-      },
-      "CoreSight_Capture_0": {
-        "vlnv": "user.org:user:CoreSight_Capture:1.0",
-        "xci_name": "CoreSight_Debug_CoreSight_Capture_0_0",
-        "xci_path": "ip/CoreSight_Debug_CoreSight_Capture_0_0/CoreSight_Debug_CoreSight_Capture_0_0.xci",
-        "inst_hier_path": "CoreSight_Capture_0"
       }
     },
     "interface_nets": {
@@ -1750,8 +1739,8 @@
           "ps8_0_axi_periph/S00_ACLK",
           "rst_ps8_0_99M/slowest_sync_clk",
           "ps8_0_axi_periph/M00_ACLK",
-          "CoreSight_L2_Decoder_0/trace_clk",
-          "CoreSight_Capture_0/s00_axi_aclk"
+          "CoreSight_Capture_0/s00_axi_aclk",
+          "CoreSight_L2_Decoder_0/trace_clk"
         ]
       },
       "zynq_ultra_ps_e_0_pl_resetn0": {

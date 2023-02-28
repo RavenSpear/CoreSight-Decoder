@@ -1,0 +1,56 @@
+{
+   "ActiveEmotionalView":"Default View",
+   "Default View_ScaleFactor":"0.768111",
+   "Default View_TopLeft":"944,263",
+   "ExpandedHierarchyInLayout":"",
+   "guistr":"# # String gsaved with Nlview 7.0r4  2019-12-20 bk=1.5203 VDI=41 GEI=36 GUI=JA:10.0 TLS
+#  -string -flagsOSRD
+preplace portBus led_0 -pg 1 -lvl 7 -x 2440 -y 490 -defaultsOSRD
+preplace inst zynq_ultra_ps_e_0 -pg 1 -lvl 1 -x 350 -y 490 -defaultsOSRD
+preplace inst xlconstant_1 -pg 1 -lvl 3 -x 1220 -y 340 -defaultsOSRD
+preplace inst axi_bram_ctrl_0 -pg 1 -lvl 3 -x 1220 -y 480 -defaultsOSRD
+preplace inst axi_smc -pg 1 -lvl 2 -x 870 -y 460 -defaultsOSRD
+preplace inst rst_ps8_0_99M -pg 1 -lvl 1 -x 350 -y 710 -defaultsOSRD
+preplace inst axi_bram_ctrl_0_bram -pg 1 -lvl 4 -x 1580 -y 560 -defaultsOSRD
+preplace inst CoreSight_L0_Decoder_0 -pg 1 -lvl 2 -x 870 -y 210 -defaultsOSRD
+preplace inst CoreSight_L1_Decoder_0 -pg 1 -lvl 3 -x 1220 -y 190 -defaultsOSRD
+preplace inst xlconstant_0 -pg 1 -lvl 3 -x 1220 -y 60 -defaultsOSRD
+preplace inst util_vector_logic_0 -pg 1 -lvl 3 -x 1220 -y 620 -defaultsOSRD
+preplace inst Bram_Collector_simp_0 -pg 1 -lvl 6 -x 2260 -y 460 -defaultsOSRD
+preplace inst Collection_0 -pg 1 -lvl 5 -x 1940 -y 480 -defaultsOSRD
+preplace inst PreProcess_0 -pg 1 -lvl 4 -x 1580 -y 180 -defaultsOSRD
+preplace netloc Bram_Collector_simp_0_addr 1 3 4 1410 430 1730J 590 NJ 590 2420
+preplace netloc Bram_Collector_simp_0_din 1 3 4 1390 690 NJ 690 NJ 690 2410
+preplace netloc Bram_Collector_simp_0_led 1 6 1 N 490
+preplace netloc Bram_Collector_simp_0_we 1 3 4 1410 700 NJ 700 NJ 700 2400
+preplace netloc Collection_0_C_o_data 1 5 1 N 470
+preplace netloc Collection_0_o_fifo_write 1 5 1 N 490
+preplace netloc CoreSight_L0_Decoder_0_frame_out 1 2 1 N 180
+preplace netloc CoreSight_L0_Decoder_0_frame_valid 1 2 1 1040 200n
+preplace netloc CoreSight_L1_Decoder_0_o_last_ID 1 2 2 1060 280 1380
+preplace netloc CoreSight_L1_Decoder_0_out_data 1 3 1 N 170
+preplace netloc CoreSight_L1_Decoder_0_out_valid 1 3 1 N 190
+preplace netloc PreProcess_0_PP_out_valid 1 4 1 1750 200n
+preplace netloc PreProcess_0_out_R 1 4 1 1760 180n
+preplace netloc PreProcess_0_out_cnt 1 4 1 1770 160n
+preplace netloc axi_bram_ctrl_0_bram_rstb_busy 1 4 2 NJ 570 2120
+preplace netloc rst_ps8_0_99M_peripheral_aresetn 1 1 2 700 540 1050
+preplace netloc util_vector_logic_0_Res 1 3 1 1380 610n
+preplace netloc xlconstant_0_dout 1 3 1 1410 60n
+preplace netloc xlconstant_1_dout 1 3 1 1380J 340n
+preplace netloc zynq_ultra_ps_e_0_pl_clk0 1 0 6 20 600 680 120 1050 400 1400 420 1740 580 2110
+preplace netloc zynq_ultra_ps_e_0_pl_resetn0 1 0 2 30 610 670
+preplace netloc zynq_ultra_ps_e_0_ps_pl_tracedata 1 1 1 690 220n
+preplace netloc axi_bram_ctrl_0_BRAM_PORTA 1 3 1 1390 480n
+preplace netloc axi_smc_M00_AXI 1 2 1 N 460
+preplace netloc zynq_ultra_ps_e_0_M_AXI_HPM0_FPD 1 1 1 N 440
+levelinfo -pg 1 0 350 870 1220 1580 1940 2260 2440
+pagesize -pg 1 -db -bbox -sgen 0 0 2570 830
+"
+}
+{
+   "da_axi4_cnt":"4",
+   "da_bram_cntlr_cnt":"17",
+   "da_clkrst_cnt":"9",
+   "da_zynq_ultra_ps_e_cnt":"1"
+}

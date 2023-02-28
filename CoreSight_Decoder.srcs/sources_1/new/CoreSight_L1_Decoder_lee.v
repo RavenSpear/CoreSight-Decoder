@@ -85,7 +85,7 @@ module CoreSight_L1_Decoder_lee(
     
     reg [3:0] cnt = 4'd0;
     always @ (posedge trace_clk) begin 
-        //if(ovalid) ovalid <= 1'b0;
+        if(ovalid) ovalid <= 1'b0;
         if(in_valid) begin 
             //save input data
             trace_data <= in_data ;

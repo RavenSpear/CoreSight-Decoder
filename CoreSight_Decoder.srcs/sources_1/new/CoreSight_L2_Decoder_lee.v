@@ -26,17 +26,12 @@ module CoreSight_L2_Decoder_lee(
     input in_data_valid,
     input [7:0] in_ID,
     
-    //output [3:0] out_cnt,
-    //output [127:0] out_data,
-    //output out_data_valid,
-    //input in_read_fifo
-    
     /* the output not strictly defined, declared as needed */
-    output[63:0] out_addr,
-    output out_data_valid,
-    output out_data_type,
-    output[5:0] out_atom_length,
-    output[4:0] out_atom
+    output[127:0] out_addr,
+    output out_data_valid
+//    output out_data_type,
+//    output[5:0] out_atom_length,
+//    output[4:0] out_atom
     );
     
     /*
@@ -59,36 +54,29 @@ module CoreSight_L2_Decoder_lee(
     wire FIFO_valid;
     wire read_fifo;
     wire [127:0] out_data;
+    wire [31:0] index;
 
     /*
     **  ControlCore
     */
-    wire[63:0] cc_out_addr;
+    wire[127:0] cc_out_addr;
     wire cc_out_data_valid;
-    wire cc_out_data_type;
-    wire[5:0] cc_out_atom_length;
-    wire[4:0] cc_out_atom;
-//    wire [63:0] addr1;
-//    wire [63:0] addr2;
-//    wire [63:0] addr3;
-//    wire [128:0] buf_atom;
-//    wire cc_addr_valid;
-    
-    //debug
-    //PreProcess P1(trace_clk, in_data, in_data_valid, in_ID, out_cnt, out_data, out_data_valid);
+//    wire cc_out_data_type;
+//    wire[5:0] cc_out_atom_length;
+//    wire[4:0] cc_out_atom;
   
     PreProcess P1(trace_clk, in_data, in_data_valid, in_ID, Val, R, PP_valid);
     Collection C1(trace_clk, R, Val, PP_valid, RS, c_data_valid);
-    FIFO F1(trace_clk, RS, c_data_valid, read_fifo, FIFO_valid, out_data, fifo_empty);
-    ControlCore CC1(trace_clk, out_data, FIFO_valid, fifo_empty, cc_out_addr, cc_out_data_valid, cc_out_data_type, cc_out_atom_length, cc_out_atom, read_fifo);
+    FIFO F1(trace_clk, RS, c_data_valid, read_fifo, FIFO_valid, out_data, fifo_empty, index);
+    ControlCore CC1(trace_clk, out_data, FIFO_valid, fifo_empty, index, cc_out_addr, cc_out_data_valid, 
+//    cc_out_data_type, cc_out_atom_length, cc_out_atom, 
+    read_fifo);
     
-//    assign addr = addr1;
-//    assign addr_valid = cc_addr_valid;
     assign out_addr = cc_out_addr;
-    assign out_atom = cc_out_atom;
+    // assign out_atom = cc_out_atom;
     assign out_data_valid = cc_out_data_valid;
-    assign out_data_type = cc_out_data_type;
-    assign out_atom_length = cc_out_atom_length;
+    // assign out_data_type = cc_out_data_type;
+    // assign out_atom_length = cc_out_atom_length;
 endmodule
 
 
@@ -98,20 +86,17 @@ module ControlCore(
     input in_valid,
     input fifo_empty,
     
+    input[31:0] fifo_index,
+    
     /* output not strictly defined, declared as needed */
-    output[63:0] cc_out_addr,
+    output[127:0] cc_out_addr,
     output cc_out_data_valid,
-    output cc_out_data_type,
-    output[5:0] cc_out_atom_length,
-    output[4:0] cc_out_atom,
-//    output [63:0] addr1,
-//    output [63:0] addr2,
-//    output [63:0] addr3,
-//    output [128:0] buf_atom,
+//    output cc_out_data_type,
+//    output[5:0] cc_out_atom_length,
+//    output[4:0] cc_out_atom,
     
     /* read from fifo */
     output read_enable
-//    output cc_addr_valid
     );
 
 
@@ -122,6 +107,7 @@ module ControlCore(
     parameter TRACE_INFO = 8'b0000_0001;
     parameter TRACE_ON = 8'b0000_0100;
     parameter ADDR_CTXT_L_64ISO = 8'b1000_0101;
+    parameter ADDR_CTXT_L_32ISO = 8'b1000_0010;
     parameter ADDR_MATCH = 8'b1001_00XX;
     parameter ADDR_L_64ISO = 8'b1001_1101;
     parameter ADDR_L_32ISO = 8'b1001_1010;
@@ -253,47 +239,35 @@ module ControlCore(
     /*
     **  output registers
     */
-    /* reg [63:0] cc_out_addr; out reg is address_reg[0]; */
     reg out_data_valid;
     reg out_data_type;
-    reg[5:0] out_atom_length;
-    reg[4:0] out_atom;
-    //reg addr_valid;
-    
-    // parameter valid_length = 1'b0;
-    //integer payload_length = 0; //replace to  parsed_length
+    reg[127:0] out_data;
+    reg[31:0] group_index;
+    // reg[5:0] out_atom_length;
+    // reg[4:0] out_atom;
 
-    //payload analyze finish
-    //finish replace to dynamic_parse_done, need to debug
-    // reg finish = 1'b0;  //fix_parse_done?  //reg dynamic_parse_done
 
     ControlSwitch Packet_Switch(switch_enable, header, header_payload_wire,  payload_fix_wire, payload_length_wire, Switch_out_valid_wire);
 
 
     always @(posedge clk) begin
         /* output reset */
-        if(out_data_valid) out_data_valid <= 1'b0;
-        if(out_data_type) out_data_type <= 1'b0;
-        if(out_atom_length) out_atom_length <= 'b0;
-        if(out_atom) out_data_type <= 'b0;
+        if(out_data_valid)begin 
+            out_data_valid <= 1'b0;
+            out_data_type <= 1'b0;
+            out_data <= 'b0;
+        end
+        // if(out_atom_length) out_atom_length <= 'b0;
+        // if(out_atom) out_data_type <= 'b0;
         case(state) 
             PROCESS:begin
-                // switch_enable <= 1;
-                // if(buf_data_valid && header_payload == 0 && switch_enable == 0 && index != 0) begin 
                 if(buf_data_valid && header_payload == 0 && switch_enable == 0) begin 
-                    //ins switch 
                     header <= buf_data[0 +: 8];
                     switch_enable <= 1;
                     
                     buf_data <= buf_data>>8;
                     index = index - 8;
                 end   
-
-//                 if(index == 0 ) begin 
-//                     send_read_data <= 1'b1;
-//                     buf_data_valid <= 0;
-//                     state <= SUSPEND;
-//                 end 
 
                 if(switch_enable) begin 
                     header_payload <= header_payload_wire;
@@ -311,7 +285,6 @@ module ControlCore(
                     end else begin
                         if(payload_fix == 0 &&!dynamic_parse_done) begin 
                             //handle variable packet payload
-                            //if(dynamic_parse_done) dynamic_parse_done <= 1'b0;//multi-drive?
                             if(parsed_length + 1 > bytes_remain)begin
                                 send_read_data <= 1'b1;
                                 state <= SUSPEND;//!!!!!!!!!!!!!!!!!!More discussion
@@ -324,6 +297,12 @@ module ControlCore(
                                     TRACE_INFO:begin
                                         case(trace_info_state)
                                             TRACE_INFO_SEC_PLCTL:begin
+                                                //output
+                                                out_data_valid <= 'b1;
+                                                out_data_type <= 'b0;
+                                                out_data <= {header, 112'h0 ,8'hBF};
+
+
                                                 parsed_length <= parsed_length + 1;
                                                 trace_info_sec <= buf_data[parsed_length*8+3-:4];
                                                 trace_info_state <= TRACE_INFO_SEC_INFO;
@@ -336,7 +315,10 @@ module ControlCore(
                                                     p0_load <= buf_data[parsed_length*8+4];
                                                     p0_store <= buf_data[parsed_length*8+5];
                                                 end
-                                                if(trace_info_sec[3:1]==3'b000) dynamic_parse_done <= 1'b1;//Mostly quit here.
+                                                if(trace_info_sec[3:1]==3'b000)begin 
+                                                    dynamic_parse_done <= 1'b1;//Mostly quit here.
+                                                    trace_info_state <= TRACE_INFO_SEC_PLCTL;
+                                                end
                                                 else trace_info_state <= TRACE_INFO_SEC_KEY;
                                             end
                                             TRACE_INFO_SEC_KEY:begin
@@ -391,6 +373,7 @@ module ControlCore(
                                                 if(parsed_length + ADDR_L_64ISO_LENGTH + 1 <= bytes_remain)begin //ADDR Section & Context INFO Byte.
                                                     out_data_valid <= 'b1;
                                                     out_data_type <= 'b1;
+                                                    out_data <= header;
                                                     address_reg[2] <= address_reg[1];
                                                     address_reg[1] <= address_reg[0];
                                                     address_reg[0][1:0] <= 2'b0;
@@ -438,14 +421,71 @@ module ControlCore(
                                             default:;
                                         endcase
                                     end
+                                    
+                                    ADDR_CTXT_L_32ISO:begin
+                                        case(addr_ctxt_state)
+                                            ADDR_CTXT_ADDR_CTXT:
+                                                if(parsed_length + ADDR_L_32ISO_LENGTH + 1 <= bytes_remain)begin //ADDR Section & Context INFO Byte.
+                                                    out_data_valid <= 'b1;
+                                                    out_data_type <= 'b1;
+                                                    out_data <= header;
+                                                    address_reg[2] <= address_reg[1];
+                                                    address_reg[1] <= address_reg[0];
+                                                    address_reg[0][1:0] <= 2'b0;
+                                                    address_reg[0][8:2] <= buf_data[parsed_length*8+6-:7];
+                                                    address_reg[0][15:9] <= buf_data[parsed_length*8+8+6-:7];
+                                                    address_reg[0][31:16] <= buf_data[parsed_length*8+31-:16];
+                                                    //addr_valid <= 'b1;
+                                                    ex_level <= buf_data[parsed_length*8+32+1-:2];
+                                                    sixty_four_bit <= buf_data[parsed_length*8+32+4];
+                                                    security <= buf_data[parsed_length*8+32+5];
+                                                    parsed_length <= parsed_length + ADDR_L_32ISO_LENGTH + 1;
+                                                    
+                                                    if(buf_data[parsed_length*8+32+7-:2]==2'b00) dynamic_parse_done <= 1'b1;//Mostly quit here.
+                                                    else begin
+                                                        addr_ctxt_state <= ADDR_CTXT_VMID;
+                                                        ctxt_info_sec <= buf_data[parsed_length*8+32+7-:2];
+                                                    end
+                                                end
+                                                else begin
+                                                    //buf_data_valid <= 1'b0;
+                                                    send_read_data <= 1'b1;
+                                                    state <= SUSPEND;
+                                                end
+                                            ADDR_CTXT_VMID:begin
+                                                if(ctxt_info_sec[0])begin
+                                                    parsed_length <= parsed_length + 1;
+                                                    vmid[7:0] <= buf_data[parsed_length*8+7-:8];
+                                                    addr_ctxt_state <= ADDR_CTXT_CTXT_ID;
+                                                end
+                                                else addr_ctxt_state <= ADDR_CTXT_CTXT_ID;
+                                            end
+                                            ADDR_CTXT_CTXT_ID:begin
+                                                addr_ctxt_state <= ADDR_CTXT_ADDR_CTXT;
+                                                if(!ctxt_info_sec[1]) dynamic_parse_done <= 1'b1;
+                                                else if(parsed_length + 4 <= bytes_remain) begin
+                                                    context_id[31:0] <= buf_data[parsed_length*8+31-:32];
+                                                    parsed_length <= parsed_length + 4;
+                                                    dynamic_parse_done <= 1'b1;
+                                                end
+                                                else begin
+                                                    send_read_data <= 1'b1;
+                                                    state <= SUSPEND;
+                                                end
+                                            end
+                                            default:;
+                                        endcase
+                                    end
+                                    
                                     ADDR_S_ISO:begin
-                                        out_data_valid <= 'b1;
-                                        out_data_type <= 'b1;
-                                        //addr_valid <= 'b1;
                                         address_reg[2] <= address_reg[1];
                                         address_reg[1] <= address_reg[0];
                                         address_reg[0][1:0] <= 2'b00;
                                         if(buf_data[parsed_length*8+7]&&parsed_length + 2 <= bytes_remain)begin
+                                            out_data_valid <= 'b1;
+                                            out_data_type <= 'b1;
+                                            out_data <= header;
+
                                             parsed_length <= parsed_length + 2;
                                             address_reg[0][8:2] <= buf_data[parsed_length*8+6-:7];
                                             address_reg[0][16:9] <= buf_data[parsed_length*8+15-:8];
@@ -456,6 +496,10 @@ module ControlCore(
                                             send_read_data <= 1'b1;
                                         end
                                         else begin
+                                            out_data_valid <= 'b1;
+                                            out_data_type <= 'b1;
+                                            out_data <= header;
+
                                             parsed_length <= parsed_length + 1;
                                             address_reg[0][8:2] <= buf_data[parsed_length*8+6-:7];
                                             dynamic_parse_done <= 1'b1;
@@ -463,6 +507,10 @@ module ControlCore(
                                     end
                                     EXCEPTION:begin
                                         if(buf_data[parsed_length*8+7]&&parsed_length + 2 <= bytes_remain)begin
+                                            out_data_valid <= 'b1;
+                                            out_data_type <= 'b0;
+                                            out_data <= {header, 112'h0 ,8'hEE};
+
                                             parsed_length <= parsed_length + 2;
                                             EE <= {buf_data[parsed_length*8+6],buf_data[parsed_length*8]};
                                             P <= buf_data[parsed_length*8+8+5];
@@ -481,9 +529,12 @@ module ControlCore(
                                         end
                                     end
 
-                                    default:;
+                                    default:begin
+                                        out_data_valid <= 'b1;
+                                        out_data_type <= 'b0;
+                                        out_data <= {header, 112'h0 ,8'he2};
+                                    end
                                 endcase
-                            // finish <= 1'b1;
                         end else if(!dynamic_parse_done) begin 
                             /*
                             **  handle fixed packet payload
@@ -492,12 +543,20 @@ module ControlCore(
                                 /*
                                     Fixed Length Packet
                                 */
-                                A_SYNC: if(buf_data[87:0]==88'h80_0000_0000_0000_0000_0000);        
-                                TRACE_ON:;
+                                A_SYNC: if(buf_data[87:0]==88'h80_0000_0000_0000_0000_0000)begin
+                                    out_data_valid <= 'b1;
+                                    out_data_type <= 'b0;
+                                    out_data <= { header, 112'h0 , 8'hAC };
+                                end     
+                                TRACE_ON:begin
+                                    out_data_valid <= 'b1;
+                                    out_data_type <= 'b0;
+                                    out_data <= { header, 112'h0 , 8'hBE};
+                                end
                                 ADDR_MATCH:begin
-                                    //addr_valid <= 'b1;
                                     out_data_valid <= 'b1;
                                     out_data_type <= 'b1;
+                                    out_data <= header;
                                     address_reg[2] <= address_reg[1];
                                     address_reg[1] <= address_reg[0];
                                     case(header[1:0])
@@ -507,27 +566,34 @@ module ControlCore(
                                     endcase
                                 end
                                 ADDR_L_64ISO:begin
-                                    //addr_valid <= 'b1;
                                     out_data_valid <= 'b1;
                                     out_data_type <= 'b1;
+                                    out_data <= header;
                                     address_reg[2] <= address_reg[1];
                                     address_reg[1] <= address_reg[0];
-                                    address_reg[0] <= buf_data[ADDR_L_64ISO_LENGTH*8-1:0];   
+                                    address_reg[0][1:0] <= 2'b0;
+                                    address_reg[0][8:2] <= buf_data[6-:7];
+                                    address_reg[0][15:9] <= buf_data[8+6-:7];
+                                    address_reg[0][63:16] <= buf_data[63-:48];
                                 end
                                 ADDR_L_32ISO:begin
-                                    //addr_valid <= 'b1;
                                     out_data_valid <= 'b1;
                                     out_data_type <= 'b1;
+                                    out_data <= header;
                                     address_reg[2] <= address_reg[1];
                                     address_reg[1] <= address_reg[0];
-                                    address_reg[0][31:0] <= buf_data[ADDR_L_32ISO_LENGTH*8-1:0];
+                                    address_reg[0][1:0] <= 2'b00;
+                                    address_reg[0][8:2] <= buf_data[6-:7];
+                                    address_reg[0][15:9] <= buf_data[14-:7];
+                                    address_reg[0][31:16] <= buf_data[31-:16];
                                 end
                                 ATOM_F1:begin
                                     /* output */
                                     out_data_valid <= 'b1;
                                     out_data_type <= 'b0;
-                                    out_atom_length <= 'b000001;
-                                    out_atom <= header[0];
+                                    out_data <= {header, 112'h0 ,8'hF1};
+                                    // out_atom_length <= 'b000001;
+                                    // out_atom <= header[0];
                                     
                                     /* update atom_buff */
                                     for(i = 0;i<127;i=i+1)begin
@@ -542,8 +608,9 @@ module ControlCore(
                                     /* output */
                                     out_data_valid <= 'b1;
                                     out_data_type <= 'b0;
-                                    out_atom_length <= 'b000010;
-                                    out_atom <= header[1:0];
+                                    out_data <= {header, 112'h0 ,8'hF2};
+                                    // out_atom_length <= 'b000010;
+                                    // out_atom <= header[1:0];
                                     
                                     /* update atom_buff */
                                     for(i = 0;i<126;i=i+1)begin
@@ -560,8 +627,9 @@ module ControlCore(
                                     /* output */
                                     out_data_valid <= 'b1;
                                     out_data_type <= 'b0;
-                                    out_atom_length <= 'b000011;
-                                    out_atom <= header[2:0];
+                                    out_data <= {header, 112'h0 ,8'hF3};
+                                    // out_atom_length <= 'b000011;
+                                    // out_atom <= header[2:0];
                                 
                                     /* update atom_buff */
                                     for(i = 0;i<125;i=i+1)begin
@@ -573,13 +641,14 @@ module ControlCore(
                                     /* output */
                                     out_data_valid <= 'b1;
                                     out_data_type <= 'b0;
-                                    out_atom_length <= 'b000100;
-                                    case(header[1:0])
-                                        2'b00:out_atom[3:0] <= 4'b1110;
-                                        2'b01:out_atom[3:0] <= 4'b0000;
-                                        2'b10:out_atom[3:0] <= 4'b1010;
-                                        2'b11:out_atom[3:0] <= 4'b0101;
-                                    endcase
+                                    out_data <= {header, 112'h0 ,8'hF4};
+                                    // out_atom_length <= 'b000100;
+                                    // case(header[1:0])
+                                    //     2'b00:out_atom[3:0] <= 4'b1110;
+                                    //     2'b01:out_atom[3:0] <= 4'b0000;
+                                    //     2'b10:out_atom[3:0] <= 4'b1010;
+                                    //     2'b11:out_atom[3:0] <= 4'b0101;
+                                    // endcase
                                     
                                     /* update atom_buff */
                                     for(i = 0;i<124;i=i+1)begin
@@ -596,13 +665,14 @@ module ControlCore(
                                     /* output */
                                     out_data_valid <= 'b1;
                                     out_data_type <= 'b0;
-                                    out_atom_length <= 'b000101;
-                                    case({header[5],header[1:0]})
-                                        3'b101:out_atom[4:0] <= 5'b11110;
-                                        3'b001:out_atom[4:0] <= 5'b00000;
-                                        3'b010:out_atom[4:0] <= 5'b01010;
-                                        3'b011:out_atom[4:0] <= 5'b10101;
-                                    endcase
+                                    out_data <= {header, 112'h0 ,8'hF5};
+                                    // out_atom_length <= 'b000101;
+                                    // case({header[5],header[1:0]})
+                                    //     3'b101:out_atom[4:0] <= 5'b11110;
+                                    //     3'b001:out_atom[4:0] <= 5'b00000;
+                                    //     3'b010:out_atom[4:0] <= 5'b01010;
+                                    //     3'b011:out_atom[4:0] <= 5'b10101;
+                                    // endcase
                                     
                                     /* update atom_buff */
                                     for(i = 0;i<123;i=i+1)begin
@@ -619,9 +689,10 @@ module ControlCore(
                                     /* output */
                                     out_data_valid <= 'b1;
                                     out_data_type <= 'b0;
-                                    out_atom_length[4:0] <= header[4:0];
-                                    out_atom_length[5] <= 'b1;
-                                    out_atom[0] <= header[5];
+                                    out_data <= {header, 112'h0 ,8'hF6};
+                                    // out_atom_length[4:0] <= header[4:0];
+                                    // out_atom_length[5] <= 'b1;
+                                    // out_atom[0] <= header[5];
                                     
                                     /* update atom_buff */
                                     atom_buff[header[4:0]] <= header[5];
@@ -632,6 +703,11 @@ module ControlCore(
                                         atom_buff[i] <= 1'b1;
                                     end
                                 end
+                                default:begin
+                                    out_data_valid <= 'b1;
+                                    out_data_type <= 'b0;
+                                    out_data <= {header, 112'h0 ,8'he2};
+                                end
                             endcase
                             // finish <= 1'b1;   
                             dynamic_parse_done <= 1'b1;
@@ -639,7 +715,6 @@ module ControlCore(
                         /*
                             consume and reset
                         */
-                        // if(finish) begin
                         if(dynamic_parse_done && index - parsed_length * 8 != 0) begin
                             bytes_remain <= bytes_remain - parsed_length;
                             // buf_data <= {buf_data[index-1 : parsed_length*8-1]};
@@ -677,6 +752,8 @@ module ControlCore(
                     send_read_data <= 1'b0;
                 end
                 if(in_valid == 1) begin 
+                    group_index <= fifo_index;
+                    
                     buf_data[index +: 128 ] <= Core_i_data;
                     index <= index + 128;
                     buf_data_valid <= 1'b1;
@@ -691,18 +768,12 @@ module ControlCore(
     assign read_enable = send_read_data;
     
     /* output assign */
-    assign cc_out_addr = address_reg[0];
+    assign cc_out_addr = out_data_type ? { out_data[7:0], group_index ,24'h0, address_reg[0]} : {out_data[127:120], group_index, 24'h0,  out_data[63:0]};
     assign cc_out_data_valid = out_data_valid;
-    assign cc_out_data_type = out_data_type;
-    assign cc_out_atom_length = out_atom_length;
-    assign cc_out_atom = out_atom;
-    //assign addr1 = address_reg[0];
-    //assign addr2 = address_reg[1];
-    //assign addr3 = address_reg[2];
-    //assign buf_atom = atom_buff;
-    //assign cc_addr_valid = addr_valid;
+    // assign cc_out_data_type = out_data_type;
+    // assign cc_out_atom_length = out_atom_length;
+    // assign cc_out_atom = out_atom;
 endmodule 
-
 
 module ControlSwitch (
     input enable,
@@ -726,6 +797,7 @@ module ControlSwitch (
     parameter TRACE_INFO = 8'b0000_0001;
     parameter TRACE_ON = 8'b0000_0100;
     parameter ADDR_CTXT_L_64ISO = 8'b1000_0101;
+    parameter ADDR_CTXT_L_32ISO = 8'b1000_0010;
     parameter ADDR_MATCH = 8'b1001_00XX;
     parameter ADDR_L_64ISO = 8'b1001_1101;
     parameter ADDR_L_32ISO = 8'b1001_1010;
@@ -768,6 +840,12 @@ module ControlSwitch (
                     len <= 32'd0;
                     header <= 1'b1;
                 end 
+                ADDR_CTXT_L_32ISO: begin 
+                    mode <= ADDR_CTXT_L_32ISO;
+                    fix <= 0;
+                    len <= 32'd0;
+                    header <= 1'b1;
+                end
                 ADDR_MATCH: begin 
                     mode <= ADDR_MATCH;
                     fix <= 1;
@@ -870,100 +948,300 @@ module ControlSwitch (
     assign Switch_out_valid = valid;
 endmodule
 
+module FIFO#(
+    parameter depth = 256,
+    parameter width = 128
+)
+(
+    input                     clk,
+    input [width-1:0]         din,
+    input                     wr_en,
+    input                     rd_en,
+  
+    output                    o_valid,
+    output [width-1:0]        dout,
+    output                    empty,
+//    output                    full,
+    output [31:0]  data_count
+);
+    wire full;
+    reg [$clog2(depth)-1:0] wr_addr,rd_addr;
+    reg wr_flag,rd_flag;
+    reg valid_r;
+    initial begin
+        valid_r <= 1'b0;
+        {wr_flag, wr_addr} <= 'b0;
+        {rd_flag, rd_addr} <= 'b0;
+    end
 
-module FIFO(
-    input clk,
-    input [127:0] F_i_data,
-    input write_enable,
-    input read_enable,
-    
-    output out_valid,
-    output [127:0] F_o_data,
-    output empty
-    );
-    
-    parameter FIFO_length = 8;
-    integer group_index = 0;
-    reg [127:0] mem [FIFO_length:0];
-    integer i;
-    reg [127:0] tmp_data;
-    reg out_tmp_valid = 1'b0;
-    
-    always @ (posedge clk) begin 
-        out_tmp_valid <= 1'b0;
-        if(write_enable == 1 ) begin 
-            if(group_index <= FIFO_length ) begin
-                mem[group_index] <= F_i_data;
-                group_index <= group_index + 1;
-            end else begin 
-                //Debug
-            end 
-        end 
+FIFO_RAM #(
+    .depth(depth),
+    .width(width)
+) u1(
+    .wr_clk(clk),
+    .wr_en(wr_en && (!full)),
+    .wr_addr(wr_addr),
+    .wr_data(din),
 
-        if(read_enable == 1 ) begin 
-            if(group_index != 0 )begin 
-                tmp_data <= mem[0];
-                out_tmp_valid <= 1'b1;
-                
-                case(group_index)
-                    0:begin
-                        //nothing to do
-                    end
-                    1:begin
-                        for(i=0; i<1; i=i+1) begin 
-                            mem[i] <= mem[i+1];
-                        end
-                    end
-                    2:begin
-                        for(i=0; i<2; i=i+1) begin 
-                            mem[i] <= mem[i+1];
-                        end
-                    end
-                    3:begin
-                        for(i=0; i<3; i=i+1) begin 
-                            mem[i] <= mem[i+1];
-                        end
-                    end
-                    4:begin
-                        for(i=0; i<4; i=i+1) begin 
-                            mem[i] <= mem[i+1];
-                        end
-                    end
-                    5:begin
-                        for(i=0; i<5; i=i+1) begin 
-                            mem[i] <= mem[i+1];
-                        end
-                    end
-                    6:begin
-                        for(i=0; i<6; i=i+1) begin 
-                            mem[i] <= mem[i+1];
-                        end
-                    end
-                    7:begin
-                        for(i=0; i<7; i=i+1) begin 
-                            mem[i] <= mem[i+1];
-                        end
-                    end
-                endcase
-                mem[group_index] <= 128'bX;
-                
-//                for(i=1; i<group_index; i=i+1) begin 
-//                    mem[i-1] <= mem[i];
-//                end 
-                group_index <= group_index - 1;
-                
-            end else begin 
-                //Debug
-                out_tmp_valid <= 1'b0;
-            end 
-        end 
-    end  
-    
-    assign F_o_data = tmp_data;
-    assign out_valid = out_tmp_valid;
-    assign empty = group_index == 0 ? 1 : 0;
+    .rd_clk(clk),
+    .rd_en(rd_en && (!empty)),
+    .rd_addr(rd_addr),
+    .rd_data(dout)
+);
+
+// ----------------pointer counter-------------------
+always @(posedge clk) begin
+   if (valid_r) valid_r <= 1'b0;
+   if (wr_en)
+       if (wr_addr != rd_addr)
+           {wr_flag, wr_addr} <= {wr_flag, wr_addr} + 'b1;
+       else if (wr_flag == rd_flag)
+           {wr_flag, wr_addr} <= {wr_flag, wr_addr} + 'b1;
+
+   if (rd_en) begin
+       if (!((wr_addr == rd_addr) && (wr_flag == rd_flag))) valid_r <= 1'b1;
+       if (wr_addr != rd_addr)
+           {rd_flag, rd_addr} <= {rd_flag, rd_addr} + 'b1;
+       else if (wr_flag != rd_flag)
+           {rd_flag, rd_addr} <= {rd_flag, rd_addr} + 'b1;
+   end
+end
+// ---------------------------------------------------
+
+// ----------------Flag logic-------------------------
+//assign data_count = {wr_flag, wr_addr} - {rd_flag, rd_addr};
+assign data_count = {3'b0, wr_flag, 4'b0, wr_addr, 3'b0, rd_flag, 4'b0, rd_addr};
+assign full = ((wr_addr == rd_addr) && (wr_flag != rd_flag));
+assign empty = ((wr_addr == rd_addr) && (wr_flag == rd_flag));
+assign o_valid = valid_r;
+// ---------------------------------------------------
+
 endmodule
 
+module FIFO_RAM #(
+    parameter depth = 256,
+    parameter width = 8
+)(
+    input                            wr_clk,
+    input                            wr_en,
+    input       [$clog2(depth)-1:0]    wr_addr,
+    input       [width-1:0]          wr_data,
+
+    input                            rd_clk,
+    input                            rd_en,
+    input       [$clog2(depth)-1:0]    rd_addr,
+    output reg  [width-1:0]          rd_data
+);
+
+    reg [width-1:0] mem [0:depth-1];
+
+    initial begin:init
+        integer i;
+        for (i=0; i<depth; i=i+1)
+        mem[i] <= {width{1'b0}};
+    end
+
+always @(posedge wr_clk) begin
+    if (wr_en)
+        mem[wr_addr] <= wr_data;
+end
+
+always @(posedge rd_clk) begin
+    if (rd_en)
+        rd_data <= mem[rd_addr];
+end
+
+endmodule
+
+// module FIFO(
+//     input clk,
+//     input [127:0] F_i_data,
+//     input write_enable,
+//     input read_enable,
+    
+//     output out_valid,
+//     output [127:0] F_o_data,
+//     output empty,
+    
+//     output[31:0] index
+//     );
+    
+//     parameter FIFO_length = 16;
+//     integer group_index = 0;
+//     reg [127:0] mem [FIFO_length - 1:0];
+//     integer i;
+//     reg [127:0] tmp_data;
+//     reg out_tmp_valid = 1'b0;
+    
+//     always @ (posedge clk) begin 
+//         if(out_tmp_valid) out_tmp_valid <= 1'b0;
+//         if(write_enable == 1 && read_enable == 1 )begin
+//             out_tmp_valid <= 1'b1;
+//             if(group_index==0) tmp_data <= F_i_data; //this not happen, since no read if empty
+//             else begin
+//                 mem[group_index-1] <= F_i_data;
+//                 tmp_data <= mem[0];
+//                 case(group_index)
+//                     0:;//never happen
+//                     1:;//no need to move
+//                     2:begin
+//                         for(i=0; i<1; i=i+1) begin 
+//                     7:begin
+//                         for(i=0; i<6; i=i+1) begin 
+//                             mem[i] <= mem[i+1];
+//                         end
+//                     end
+//                     8:begin
+//                         for(i=0; i<7; i=i+1) begin 
+//                             mem[i] <= mem[i+1];
+//                         end
+//                     end
+//                     9:for(i=0; i<8; i=i+1) mem[i] <= mem[i+1];
+//                     10:for(i=0; i<9; i=i+1) mem[i] <= mem[i+1];
+//                     11:for(i=0; i<10; i=i+1) mem[i] <= mem[i+1];
+//                     12:for(i=0; i<11; i=i+1) mem[i] <= mem[i+1];
+//                     13:for(i=0; i<12; i=i+1) mem[i] <= mem[i+1];
+//                     14:for(i=0; i<13; i=i+1) mem[i] <= mem[i+1];
+//                     15:for(i=0; i<14; i=i+1) mem[i] <= mem[i+1];
+//                     16:for(i=0; i<15; i=i+1) mem[i] <= mem[i+1];
+//                     17:for(i=0; i<16; i=i+1) mem[i] <= mem[i+1];
+//                     18:for(i=0; i<17; i=i+1) mem[i] <= mem[i+1];
+//                     19:for(i=0; i<18; i=i+1) mem[i] <= mem[i+1];
+//                     20:for(i=0; i<19; i=i+1) mem[i] <= mem[i+1];
+//                     21:for(i=0; i<20; i=i+1) mem[i] <= mem[i+1];
+//                     22:for(i=0; i<21; i=i+1) mem[i] <= mem[i+1];
+//                     23:for(i=0; i<22; i=i+1) mem[i] <= mem[i+1];
+//                     24:for(i=0; i<23; i=i+1) mem[i] <= mem[i+1];
+//                     25:for(i=0; i<24; i=i+1) mem[i] <= mem[i+1];
+//                     26:for(i=0; i<25; i=i+1) mem[i] <= mem[i+1];
+//                     27:for(i=0; i<26; i=i+1) mem[i] <= mem[i+1];
+//                     28:for(i=0; i<27; i=i+1) mem[i] <= mem[i+1];
+//                     29:for(i=0; i<28; i=i+1) mem[i] <= mem[i+1];
+//                     30:for(i=0; i<29; i=i+1) mem[i] <= mem[i+1];
+//                     31:for(i=0; i<30; i=i+1) mem[i] <= mem[i+1];
+//                     32:for(i=0; i<31; i=i+1) mem[i] <= mem[i+1];
+//                 endcase
+//             end
+//         end
+//         else if(write_enable == 1) begin 
+//             //if(group_index < FIFO_length ) begin
+//                 mem[group_index] <= F_i_data;
+//                 group_index <= group_index + 1;
+//             //end else begin 
+//                 //Full
+//             //end 
+//         end 
+//         else if(read_enable == 1) begin 
+//             if(group_index != 0 )begin 
+//                 tmp_data <= mem[0];
+//                 out_tmp_valid <= 1'b1;
+//                 for(i=0; i<FIFO_length - 1; i=i+1) begin 
+//                     mem[i] <= mem[i+1];
+//                 end
+//                 mem[FIFO_length - 1] <= 128'bX;
+//                 group_index <= group_index - 1;
+//             end 
+//             else begin 
+//                 //empty then no read
+//                 out_tmp_valid <= 1'b0;
+//             end 
+//         end 
+//     end  
+    
+//     assign index = group_index;
+//     assign F_o_data = tmp_data;
+//     assign out_valid = out_tmp_valid;
+//     assign empty = group_index == 0 ? 1 : 0;
+// endmodule                     mem[i] <= mem[i+1];
+//                         end
+//                     end
+//                     3:begin
+//                         for(i=0; i<2; i=i+1) begin 
+//                             mem[i] <= mem[i+1];
+//                         end
+//                     end
+//                     4:begin
+//                         for(i=0; i<3; i=i+1) begin 
+//                             mem[i] <= mem[i+1];
+//                         end
+//                     end
+//                     5:begin
+//                         for(i=0; i<4; i=i+1) begin 
+//                             mem[i] <= mem[i+1];
+//                         end
+//                     end
+//                     6:begin
+//                         for(i=0; i<5; i=i+1) begin 
+//                             mem[i] <= mem[i+1];
+//                         end
+//                     end
+//                     7:begin
+//                         for(i=0; i<6; i=i+1) begin 
+//                             mem[i] <= mem[i+1];
+//                         end
+//                     end
+//                     8:begin
+//                         for(i=0; i<7; i=i+1) begin 
+//                             mem[i] <= mem[i+1];
+//                         end
+//                     end
+//                     9:for(i=0; i<8; i=i+1) mem[i] <= mem[i+1];
+//                     10:for(i=0; i<9; i=i+1) mem[i] <= mem[i+1];
+//                     11:for(i=0; i<10; i=i+1) mem[i] <= mem[i+1];
+//                     12:for(i=0; i<11; i=i+1) mem[i] <= mem[i+1];
+//                     13:for(i=0; i<12; i=i+1) mem[i] <= mem[i+1];
+//                     14:for(i=0; i<13; i=i+1) mem[i] <= mem[i+1];
+//                     15:for(i=0; i<14; i=i+1) mem[i] <= mem[i+1];
+//                     16:for(i=0; i<15; i=i+1) mem[i] <= mem[i+1];
+//                     17:for(i=0; i<16; i=i+1) mem[i] <= mem[i+1];
+//                     18:for(i=0; i<17; i=i+1) mem[i] <= mem[i+1];
+//                     19:for(i=0; i<18; i=i+1) mem[i] <= mem[i+1];
+//                     20:for(i=0; i<19; i=i+1) mem[i] <= mem[i+1];
+//                     21:for(i=0; i<20; i=i+1) mem[i] <= mem[i+1];
+//                     22:for(i=0; i<21; i=i+1) mem[i] <= mem[i+1];
+//                     23:for(i=0; i<22; i=i+1) mem[i] <= mem[i+1];
+//                     24:for(i=0; i<23; i=i+1) mem[i] <= mem[i+1];
+//                     25:for(i=0; i<24; i=i+1) mem[i] <= mem[i+1];
+//                     26:for(i=0; i<25; i=i+1) mem[i] <= mem[i+1];
+//                     27:for(i=0; i<26; i=i+1) mem[i] <= mem[i+1];
+//                     28:for(i=0; i<27; i=i+1) mem[i] <= mem[i+1];
+//                     29:for(i=0; i<28; i=i+1) mem[i] <= mem[i+1];
+//                     30:for(i=0; i<29; i=i+1) mem[i] <= mem[i+1];
+//                     31:for(i=0; i<30; i=i+1) mem[i] <= mem[i+1];
+//                     32:for(i=0; i<31; i=i+1) mem[i] <= mem[i+1];
+//                 endcase
+//             end
+//         end
+//         else if(write_enable == 1) begin 
+//             //if(group_index < FIFO_length ) begin
+//                 mem[group_index] <= F_i_data;
+//                 group_index <= group_index + 1;
+//             //end else begin 
+//                 //Full
+//             //end 
+//         end 
+//         else if(read_enable == 1) begin 
+//             if(group_index != 0 )begin 
+//                 tmp_data <= mem[0];
+//                 out_tmp_valid <= 1'b1;
+//                 for(i=0; i<FIFO_length - 1; i=i+1) begin 
+//                     mem[i] <= mem[i+1];
+//                 end
+//                 mem[FIFO_length - 1] <= 128'bX;
+//                 group_index <= group_index - 1;
+//             end 
+//             else begin 
+//                 //empty then no read
+//                 out_tmp_valid <= 1'b0;
+//             end 
+//         end 
+//     end  
+    
+//     assign index = group_index;
+//     assign F_o_data = tmp_data;
+//     assign out_valid = out_tmp_valid;
+//     assign empty = group_index == 0 ? 1 : 0;
+// endmodule
 
 module Collection(
     input trace_clk,
@@ -1205,7 +1483,6 @@ module Collection(
     assign C_o_data = out_tmp_data;
 endmodule 
 
-
 module PreProcess(
     input trace_clk,
     input [239:0] in_data,
@@ -1252,7 +1529,7 @@ module PreProcess(
                     R_valid_cnt = R_valid_cnt +1'd1;
                 end else begin 
                     R_valid[i] <= 0;
-                    R_tmp[i] =  8'hXX;
+                    R_tmp[i] =  8'h00;
                 end              
                 R[(w_R_index[i]-1'd1)*8+7 -: 8] = R_tmp[i];     
             end 
@@ -1264,18 +1541,33 @@ module PreProcess(
         end 
     end 
     
-    generate 
-        for(t=0;t<15;t=t+1) begin 
-            Index_Formmatter IF (w_R_valid[t], {b0,R_valid[t:0]}, w_R_index[t]);
-        end 
-    endgenerate 
+//    generate 
+//        for(t=0;t<15;t=t+1) begin 
+//            Index_Formmatter IF (w_R_valid[t], {b0,R_valid[t:0]}, w_R_index[t]);
+//        end 
+//    endgenerate 
+    Index_Formmatter IF0 (w_R_valid[0], {14'b0,R_valid[0:0]}, w_R_index[0]);
+    Index_Formmatter IF1 (w_R_valid[1], {13'b0,R_valid[1:0]}, w_R_index[1]);
+    Index_Formmatter IF2 (w_R_valid[2], {12'b0,R_valid[2:0]}, w_R_index[2]);
+    Index_Formmatter IF3 (w_R_valid[3], {11'b0,R_valid[3:0]}, w_R_index[3]);
+    Index_Formmatter IF4 (w_R_valid[4], {10'b0,R_valid[4:0]}, w_R_index[4]);
+    Index_Formmatter IF5 (w_R_valid[5], {9'b0,R_valid[5:0]}, w_R_index[5]);
+    Index_Formmatter IF6 (w_R_valid[6], {8'b0,R_valid[6:0]}, w_R_index[6]);
+    Index_Formmatter IF7 (w_R_valid[7], {7'b0,R_valid[7:0]}, w_R_index[7]);
+    Index_Formmatter IF8 (w_R_valid[8], {6'b0,R_valid[8:0]}, w_R_index[8]);
+    Index_Formmatter IF9 (w_R_valid[9], {5'b0,R_valid[9:0]}, w_R_index[9]);
+    Index_Formmatter IFa (w_R_valid[10], {4'b0,R_valid[10:0]}, w_R_index[10]);
+    Index_Formmatter IFb (w_R_valid[11], {3'b0,R_valid[11:0]}, w_R_index[11]);
+    Index_Formmatter IFc (w_R_valid[12], {2'b0,R_valid[12:0]}, w_R_index[12]);
+    Index_Formmatter IFd (w_R_valid[13], {1'b0,R_valid[13:0]}, w_R_index[13]);
+    Index_Formmatter IFe (w_R_valid[14], R_valid[14:0], w_R_index[14]);
+    
     
     assign w_R_valid = R_valid ;
     assign out_R = R;
     assign out_cnt = R_valid_cnt;
     assign PP_out_valid = valid;
 endmodule
-
 
 module Index_Formmatter(
     input IF_i_data_valid,
@@ -1291,6 +1583,6 @@ module Index_Formmatter(
             if(count[i] == 1)
                 cnt = cnt + 1'b1;
     end 
-    assign IF_o_data = IF_i_data_valid == 1 ? cnt : 4'bX;
+    assign IF_o_data = IF_i_data_valid == 1 ? cnt : 4'b0;
     
 endmodule     

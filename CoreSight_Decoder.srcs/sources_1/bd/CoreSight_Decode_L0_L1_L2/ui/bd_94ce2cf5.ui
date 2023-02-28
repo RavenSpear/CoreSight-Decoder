@@ -1,29 +1,34 @@
 {
    "ActiveEmotionalView":"Default View",
-   "Default View_ScaleFactor":"0.827778",
-   "Default View_TopLeft":"0,-18",
+   "Default View_ScaleFactor":"0.89607",
+   "Default View_TopLeft":"-10,-59",
    "ExpandedHierarchyInLayout":"",
    "guistr":"# # String gsaved with Nlview 7.0r4  2019-12-20 bk=1.5203 VDI=41 GEI=36 GUI=JA:10.0 TLS
 #  -string -flagsOSRD
-preplace inst zynq_ultra_ps_e_0 -pg 1 -lvl 1 -x 350 -y 310 -defaultsOSRD
-preplace inst CoreSight_L1_Decoder_0 -pg 1 -lvl 3 -x 1250 -y 110 -defaultsOSRD
-preplace inst CoreSight_Dump_0 -pg 1 -lvl 3 -x 1250 -y 380 -defaultsOSRD
-preplace inst ps8_0_axi_periph -pg 1 -lvl 2 -x 870 -y 320 -defaultsOSRD
-preplace inst rst_ps8_0_99M -pg 1 -lvl 1 -x 350 -y 530 -defaultsOSRD
-preplace inst CoreSight_L0_Decoder_0 -pg 1 -lvl 2 -x 870 -y 90 -defaultsOSRD
-preplace netloc CoreSight_Dump_0_intr 1 0 4 10 630 NJ 630 NJ 630 1410
-preplace netloc CoreSight_L0_Decoder_0_bug_type 1 2 1 1040 100n
-preplace netloc CoreSight_L0_Decoder_0_frame_out 1 2 1 1050 60n
-preplace netloc CoreSight_L0_Decoder_0_frame_valid 1 2 1 1080 120n
-preplace netloc CoreSight_L1_Decoder_0_o_last_ID 1 2 2 1090 20 1410
-preplace netloc rst_ps8_0_99M_peripheral_aresetn 1 1 2 700 450 1090J
-preplace netloc zynq_ultra_ps_e_0_pl_clk0 1 0 3 20 200 680 180 1070
-preplace netloc zynq_ultra_ps_e_0_pl_resetn0 1 0 2 30 420 670
-preplace netloc zynq_ultra_ps_e_0_ps_pl_tracedata 1 1 2 690 440 1060
-preplace netloc ps8_0_axi_periph_M00_AXI 1 2 1 N 320
-preplace netloc zynq_ultra_ps_e_0_M_AXI_HPM0_FPD 1 1 1 N 260
-levelinfo -pg 1 -10 350 870 1250 1440
-pagesize -pg 1 -db -bbox -sgen -10 0 1440 640
+preplace portBus led_0 -pg 1 -lvl 7 -x 2350 -y 150 -defaultsOSRD
+preplace inst zynq_ultra_ps_e_0 -pg 1 -lvl 1 -x 320 -y 130 -defaultsOSRD
+preplace inst CoreSight_L1_Decoder_0 -pg 1 -lvl 4 -x 1440 -y 90 -defaultsOSRD
+preplace inst CoreSight_L0_Decoder_0 -pg 1 -lvl 2 -x 800 -y 110 -defaultsOSRD
+preplace inst xlconstant_0 -pg 1 -lvl 4 -x 1440 -y 250 -defaultsOSRD
+preplace inst Collection_test_0 -pg 1 -lvl 5 -x 1830 -y 410 -defaultsOSRD
+preplace inst L1_led_dump_0 -pg 1 -lvl 6 -x 2180 -y 150 -defaultsOSRD
+preplace inst PreProcessor_test_0 -pg 1 -lvl 5 -x 1830 -y 220 -defaultsOSRD
+preplace netloc Collection_test_0_C_o_data 1 5 1 2020 150n
+preplace netloc Collection_test_0_o_fifo_write 1 5 1 2030 170n
+preplace netloc CoreSight_L0_Decoder_0_frame_out 1 2 2 N 80 N
+preplace netloc CoreSight_L0_Decoder_0_frame_valid 1 2 2 970 100 N
+preplace netloc CoreSight_L1_Decoder_0_o_last_ID 1 3 2 1150 180 1600
+preplace netloc CoreSight_L1_Decoder_0_out_data 1 4 1 1630 70n
+preplace netloc CoreSight_L1_Decoder_0_out_valid 1 4 1 1610 90n
+preplace netloc L1_led_dump_0_out_led 1 6 1 N 150
+preplace netloc PreProcessor_test_0_PP_out_valid 1 4 2 1660 310 2000
+preplace netloc PreProcessor_test_0_out_R 1 4 2 1640 110 2010
+preplace netloc PreProcessor_test_0_out_cnt 1 4 2 1650 120 2000
+preplace netloc xlconstant_0_dout 1 4 1 NJ 250
+preplace netloc zynq_ultra_ps_e_0_pl_clk0 1 0 6 10 220 630 200 N 200 1140 190 1620 130 NJ
+preplace netloc zynq_ultra_ps_e_0_ps_pl_tracedata 1 1 1 N 120
+levelinfo -pg 1 -10 320 800 1120 1440 1830 2180 2350
+pagesize -pg 1 -db -bbox -sgen -10 -90 2480 550
 "
 }
 {

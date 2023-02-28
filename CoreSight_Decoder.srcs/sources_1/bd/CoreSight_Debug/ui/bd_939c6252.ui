@@ -1,7 +1,7 @@
 {
    "ActiveEmotionalView":"Default View",
-   "Default View_ScaleFactor":"0.627038",
-   "Default View_TopLeft":"0,-19",
+   "Default View_ScaleFactor":"0.62704",
+   "Default View_TopLeft":"383,0",
    "ExpandedHierarchyInLayout":"",
    "guistr":"# # String gsaved with Nlview 7.0r4  2019-12-20 bk=1.5203 VDI=41 GEI=36 GUI=JA:10.0 TLS
 #  -string -flagsOSRD
@@ -12,8 +12,8 @@ preplace inst CoreSight_L0_Decoder_0 -pg 1 -lvl 1 -x 190 -y 290 -defaultsOSRD
 preplace inst xlconstant_0 -pg 1 -lvl 2 -x 710 -y 760 -defaultsOSRD
 preplace inst ps8_0_axi_periph -pg 1 -lvl 3 -x 1260 -y 480 -defaultsOSRD
 preplace inst rst_ps8_0_99M -pg 1 -lvl 2 -x 710 -y 100 -defaultsOSRD
-preplace inst CoreSight_L2_Decoder_0 -pg 1 -lvl 3 -x 1260 -y 730 -defaultsOSRD
 preplace inst CoreSight_Capture_0 -pg 1 -lvl 4 -x 1630 -y 550 -defaultsOSRD
+preplace inst CoreSight_L2_Decoder_0 -pg 1 -lvl 3 -x 1260 -y 730 -defaultsOSRD
 preplace netloc CoreSight_Capture_0_intr 1 1 4 390 600 NJ 600 1440J 420 1760
 preplace netloc CoreSight_Capture_0_leds 1 4 1 N 540
 preplace netloc CoreSight_L0_Decoder_0_frame_out 1 1 1 N 260
@@ -28,13 +28,13 @@ preplace netloc CoreSight_L2_Decoder_0_out_data_type 1 3 1 1460 520n
 preplace netloc CoreSight_L2_Decoder_0_out_data_valid 1 3 1 1450 500n
 preplace netloc rst_ps8_0_99M_peripheral_aresetn 1 2 2 1070 620 NJ
 preplace netloc xlconstant_0_dout 1 2 1 NJ 760
-preplace netloc zynq_ultra_ps_e_0_pl_clk0 1 0 4 20 200 360 580 1080 630 1480J
-preplace netloc zynq_ultra_ps_e_0_pl_resetn0 1 1 2 380 610 1030
+preplace netloc zynq_ultra_ps_e_0_pl_clk0 1 0 4 10 380 360 610 1080 610 1480J
+preplace netloc zynq_ultra_ps_e_0_pl_resetn0 1 1 2 380 580 1030
 preplace netloc zynq_ultra_ps_e_0_ps_pl_tracedata 1 0 3 20 590 NJ 590 1040
 preplace netloc ps8_0_axi_periph_M00_AXI 1 3 1 N 480
 preplace netloc zynq_ultra_ps_e_0_M_AXI_HPM0_FPD 1 2 1 N 420
-levelinfo -pg 1 0 190 710 1260 1630 1780
-pagesize -pg 1 -db -bbox -sgen 0 0 1910 830
+levelinfo -pg 1 -10 190 710 1260 1630 1780
+pagesize -pg 1 -db -bbox -sgen -10 0 1910 830
 "
 }
 {
